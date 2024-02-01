@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
     <AuthContext.Provider
       value={{ isLoggedIn, setIsLoggedIn, userProfile, setUserProfile }}
     >
-      <html lang="en">
+      <html lang="fr">
         <body className={inter.className}>
           <div className="container">
             <Navbar />

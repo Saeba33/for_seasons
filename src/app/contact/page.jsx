@@ -5,7 +5,7 @@ import styles from "./contact.module.css";
 const Contact = () => {
   return (
     <div className={styles.container}>
-      <h1>Contact</h1>
+      <h1>Contactez-nous</h1>
       <div className={styles.formContainer}>
         <form action="" className={styles.form}>
           <input type="text" placeholder="Name" />
