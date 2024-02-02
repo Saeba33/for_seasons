@@ -28,10 +28,8 @@ const loginUser = async (email, password) => {
   try {
     const user = await getUserByEmail(email);
     if (!user) throw new Error("User not found");
-
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) throw new Error("Incorrect password");
-
     return user;
   } catch (err) {
     console.error(err.message);
