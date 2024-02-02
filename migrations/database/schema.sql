@@ -22,7 +22,7 @@ CREATE TABLE products (
   description VARCHAR(255)
 );
 
-CREATE TABLE products_of_months (
+CREATE TABLE products_of_month (
   product_of_month_id INTEGER PRIMARY KEY AUTO_INCREMENT,
   month VARCHAR(255) NOT NULL,
   product_id INTEGER NOT NULL,
