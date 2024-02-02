@@ -1,7 +1,7 @@
 import {
-  deleteProductById,
   readProductById,
   updateProductById,
+  deleteProductById,
 } from "@/lib/products";
 
 export default async function handler(req, res) {

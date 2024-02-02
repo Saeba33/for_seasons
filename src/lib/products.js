@@ -17,6 +17,15 @@ const createProduct = async ({ name, category, picture, description }) => {
 };
 
 //R
+const readAllProducts = async () => {
+  try {
+    const [rows] = await db.query("SELECT * FROM products");
+    return rows;
+  } catch (err) {
+    throw new Error("Failed to retrieve products. There was a server error.");
+  }
+};
+
 const readProductById = async (id) => {
   try {
     const [rows] = await db.query(
@@ -29,15 +38,6 @@ const readProductById = async (id) => {
     throw new Error(
       `Failed to retrieve product with ID: ${id}. ${err.message}`
     );
-  }
-};
-
-const readAllProducts = async () => {
-  try {
-    const [rows] = await db.query("SELECT * FROM products");
-    return rows;
-  } catch (err) {
-    throw new Error("Failed to retrieve products. There was a server error.");
   }
 };
 
@@ -83,8 +83,8 @@ const deleteProductById = async (id) => {
 
 export {
   createProduct,
-  deleteProductById,
   readAllProducts,
   readProductById,
   updateProductById,
+  deleteProductById,
 };
