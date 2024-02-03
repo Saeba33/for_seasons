@@ -1,11 +1,12 @@
 "use client";
 
-import HeartButton from "@/components/heart-button/HeartButton";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "@/utils/AuthContext";
 
 const RecipeDetails = ({ userId, authToken }) => {
   const [recipe, setRecipe] = useState(null);
+  const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     const recipeId = window.location.pathname.split("/").pop();
@@ -14,6 +15,29 @@ const RecipeDetails = ({ userId, authToken }) => {
       .then((data) => setRecipe(data))
       .catch((error) => console.error("Error fetching recipe:", error));
   }, []);
+
+  const addFavorite = async () => {
+    const recipeId = window.location.pathname.split("/").pop();
+
+    try {
+      const response = await fetch("/api/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ recipe_id: recipeId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add favorite");
+      }
+
+      alert("Recette ajoutée aux favoris!");
+    } catch (error) {
+      console.error("Error adding to favorites:", error);
+    }
+  };
 
   if (!recipe) {
     return <div>Loading...</div>;
@@ -25,7 +49,9 @@ const RecipeDetails = ({ userId, authToken }) => {
         <Image
           src={recipe.photo}
           alt={recipe.title}
-          style={{ width: "100%", height: "auto", marginBottom: "20px" }}
+          width={500}
+          height={300}
+          layout="responsive"
         />
       )}
       <h1>{recipe.title}</h1>
@@ -33,12 +59,8 @@ const RecipeDetails = ({ userId, authToken }) => {
       <div>
         <h2>Instructions</h2>
         <p>{recipe.instructions}</p>
-        <HeartButton
-          recipeId={recipe.id}
-          userId={userId}
-          authToken={authToken}
-        />
       </div>
+      {isLoggedIn && <button onClick={addFavorite}>Ajouter aux favoris</button>}
     </div>
   );
 };

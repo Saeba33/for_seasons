@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(null);
   const [recipeId, setRecipeId] = useState(null);
+  const [authToken, setAuthToken] = useState(null);
 
   const value = {
     isLoggedIn,
@@ -18,9 +19,28 @@ export const AuthProvider = ({ children }) => {
     setUserId,
     recipeId,
     setRecipeId,
+    authToken,
+    setAuthToken,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        userProfile,
+        setUserProfile,
+        userId,
+        setUserId,
+        recipeId,
+        setRecipeId,
+        authToken,
+        setAuthToken,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthContext;

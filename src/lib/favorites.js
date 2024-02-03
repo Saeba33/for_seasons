@@ -41,26 +41,6 @@ const readFavoriteById = async (id) => {
     }
 };
 
-//U
-const updateFavoriteById = async ({ recipeId, userId, id }) => {
-    try {
-        const existingFavorite = await readFavoriteById(id);
-        const updatedRecipeId = recipeId || existingFavorite.recipe_id;
-        const updatedUserId = userId || existingFavorite.user_id;
-
-        const [result] = await db.query(
-            "UPDATE favorites SET recipe_id = ?, user_id = ? WHERE favorite_id = ?",
-            [updatedRecipeId, updatedUserId, id]
-        );
-        return {
-            message: `Favorite with ID: ${id} successfully updated.`,
-            affectedRows: result.affectedRows,
-        };
-    } catch (err) {
-        throw new Error(`Failed to update favorite with ID: ${id}. ${err.message}`);
-    }
-};
-
 //D
 const deleteFavoriteById = async (id) => {
     try {
@@ -77,6 +57,5 @@ export {
     createFavorite,
     readAllFavorites,
     readFavoriteById,
-    updateFavoriteById,
     deleteFavoriteById,
 };

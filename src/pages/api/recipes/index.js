@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         utensils,
         information,
       } = req.body;
-      const userId = req.user.id;
+      const userId = req.user.user_id;
       const result = await createRecipe({
         title,
         photo,

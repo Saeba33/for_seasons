@@ -1,10 +1,11 @@
+// layout.js
 "use client";
 
+import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import AuthContext from "@/utils/AuthContext";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import Footer from "../components/footer/Footer";
-import Navbar from "../components/navbar/Navbar";
-import AuthContext from "../utils/AuthContext";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +22,6 @@ function parseJwt(token) {
         })
         .join("")
     );
-
     return JSON.parse(jsonPayload);
   } catch (e) {
     console.error("Error parsing JWT", e);
@@ -29,21 +29,20 @@ function parseJwt(token) {
   }
 }
 
-export default function RootLayout({ children }) {
+const Layout = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(null);
-  const [recipeId, setRecipeId] = useState(null);
+  const [authToken, setAuthToken] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsLoggedIn(true);
       const decoded = parseJwt(token);
-      if (decoded) {
-        setUserProfile(decoded.profile);
-        setUserId(decoded.userId);
-      }
+      setIsLoggedIn(true);
+      setUserProfile(decoded.profile);
+      setUserId(decoded.userId);
+      setAuthToken(token);
     }
   }, []);
 
@@ -56,8 +55,8 @@ export default function RootLayout({ children }) {
         setUserProfile,
         userId,
         setUserId,
-        recipeId,
-        setRecipeId,
+        authToken,
+        setAuthToken,
       }}
     >
       <html lang="fr">
@@ -71,4 +70,6 @@ export default function RootLayout({ children }) {
       </html>
     </AuthContext.Provider>
   );
-}
+};
+
+export default Layout;
