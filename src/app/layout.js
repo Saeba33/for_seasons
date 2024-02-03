@@ -9,7 +9,6 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// Définition de la fonction parseJwt (à remplacer par votre méthode de décodage)
 function parseJwt(token) {
   try {
     const base64Url = token.split(".")[1];
@@ -33,6 +32,7 @@ function parseJwt(token) {
 export default function RootLayout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -41,13 +41,21 @@ export default function RootLayout({ children }) {
       const decoded = parseJwt(token);
       if (decoded) {
         setUserProfile(decoded.profile);
+        setUserId(decoded.userId);
       }
     }
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, setIsLoggedIn, userProfile, setUserProfile }}
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        userProfile,
+        setUserProfile,
+        userId,
+        setUserId,
+      }}
     >
       <html lang="fr">
         <body className={inter.className}>

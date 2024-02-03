@@ -1,11 +1,11 @@
 import { db } from "../../migrations/db";
 
 // C
-const createProductOfMonth = async ({ month, product_id, featured }) => {
+const createProductOfMonth = async ({ month, productId, featured }) => {
   try {
     const [rows] = await db.query(
       "INSERT INTO products_of_month (month, product_id, featured) VALUES (?, ?, ?)",
-      [month, product_id, featured]
+      [month, productId, featured]
     );
     return {
       message: `Product of the month successfully created with ID: ${rows.insertId}.`,
@@ -45,16 +45,11 @@ const readProductOfMonthById = async (id) => {
 };
 
 // U
-const updateProductOfMonthById = async ({
-  month,
-  product_id,
-  featured,
-  id,
-}) => {
+const updateProductOfMonthById = async ({ month, productId, featured, id }) => {
   try {
     const [result] = await db.query(
       "UPDATE products_of_month SET month = ?, product_id = ?, featured = ? WHERE product_of_month_id = ?",
-      [month, product_id, featured, id]
+      [month, productId, featured, id]
     );
     return {
       message: `Product of the month with ID: ${id} successfully updated.`,

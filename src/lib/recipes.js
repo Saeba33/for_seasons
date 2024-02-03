@@ -6,11 +6,11 @@ const createRecipe = async ({
   photo,
   difficulty,
   duration,
-  number_persons,
+  numberPersons,
   instructions,
   utensils,
   information,
-  user_id,
+  userId,
 }) => {
   try {
     const [rows] = await db.query(
@@ -20,11 +20,11 @@ const createRecipe = async ({
         photo,
         difficulty,
         duration,
-        number_persons,
+        numberPersons,
         instructions,
         utensils,
         information,
-        user_id,
+        userId,
       ]
     );
     return {
@@ -64,11 +64,11 @@ const updateRecipeById = async ({
   photo,
   difficulty,
   duration,
-  number_persons,
+  numberPersons,
   instructions,
   utensils,
   information,
-  user_id,
+  userId,
   id,
 }) => {
   try {
@@ -78,11 +78,11 @@ const updateRecipeById = async ({
     const updatedDifficulty = difficulty || existingRecipe.difficulty;
     const updatedDuration = duration || existingRecipe.duration;
     const updatedNumberPersons =
-      number_persons || existingRecipe.number_persons;
+      numberPersons || existingRecipe.number_persons;
     const updatedInstructions = instructions || existingRecipe.instructions;
     const updatedUtensils = utensils || existingRecipe.utensils;
     const updatedInformation = information || existingRecipe.information;
-    const updatedUserId = user_id || existingRecipe.user_id;
+    const updatedUserId = userId || existingRecipe.user_id;
 
     const [result] = await db.query(
       "UPDATE recipes SET title = ?, photo = ?, difficulty = ?, duration = ?, number_persons = ?, instructions = ?, utensils = ?, information = ?, user_id = ? WHERE recipe_id = ?",

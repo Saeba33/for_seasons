@@ -1,14 +1,17 @@
 "use client";
 
+import jwt from "jsonwebtoken";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../../utils/AuthContext";
 import styles from "./loginForm.module.css";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const { setIsLoggedIn, setUserId } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,6 +33,9 @@ const LoginForm = () => {
       const data = await response.json();
       setIsLoggedIn(true);
       localStorage.setItem("token", data.token);
+      const decodedToken = jwt.decode(data.token);
+      setUserId(decodedToken.user_id);
+      console.log("User ID:", decodedToken.user_id);
       window.location.href = "/";
     } catch (error) {
       console.error(

@@ -30,24 +30,30 @@ const links = [
 const Links = ({ isLoggedIn, userProfile, handleLogout }) => {
   const [open, setOpen] = useState(false);
 
+  const renderLinks = () => (
+    <>
+      {links.map((link) => {
+        if (
+          !link.requireAdmin ||
+          (link.requireAdmin && userProfile === "administrator")
+        ) {
+          return <NavLink item={link} key={link.title} />;
+        }
+        return null;
+      })}
+      {isLoggedIn && (
+        <button className={styles.logout} onClick={handleLogout}>
+          Logout
+        </button>
+      )}
+      {!isLoggedIn && <NavLink item={{ title: "Login", path: "/login" }} />}
+    </>
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.links}>
-        {links.map((link) => {
-           if (
-            !link.requireAdmin ||
-            (link.requireAdmin && userProfile === "administrator")
-          ) {
-            return <NavLink item={link} key={link.title} />;
-          }
-          return null;
-        })}
-        {isLoggedIn && (
-          <button className={styles.logout} onClick={handleLogout}>
-            Logout
-          </button>
-        )}
-        {!isLoggedIn && <NavLink item={{ title: "Login", path: "/login" }} />}
+        {renderLinks()}
       </div>
       <Image
         className={styles.menuButton}
@@ -59,21 +65,7 @@ const Links = ({ isLoggedIn, userProfile, handleLogout }) => {
       />
       {open && (
         <div className={styles.mobileLinks}>
-          {links.map((link) => {
-            if (
-              !link.requireAdmin ||
-              (link.requireAdmin && userProfile === "administrator")
-            ) {
-              return <NavLink item={link} key={link.title} />;
-            }
-            return null;
-          })}
-          {isLoggedIn && (
-            <button className={styles.logout} onClick={handleLogout}>
-              Logout
-            </button>
-          )}
-          {!isLoggedIn && <NavLink item={{ title: "Login", path: "/login" }} />}
+          {renderLinks()}
         </div>
       )}
     </div>

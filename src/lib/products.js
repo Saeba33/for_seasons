@@ -41,6 +41,22 @@ const readProductById = async (id) => {
   }
 };
 
+const readProductsByMonth = async (month) => {
+  try {
+    const [rows] = await db.query(
+      `SELECT * FROM products JOIN products_of_month ON products.product_id = products_of_month.product_id WHERE products_of_month.month = ?`,
+      [month]
+    );
+    if (rows.length === 0)
+      throw new Error(`No product of the month found for month: ${month}`);
+    return rows;
+  } catch (err) {
+    throw new Error(
+      `Failed to retrieve product of the month for month: ${month}. ${err.message}`
+    );
+  }
+};
+
 //U
 const updateProductById = async ({
   name,
@@ -60,10 +76,10 @@ const updateProductById = async ({
       "UPDATE products SET name = ?, category = ?, picture = ?, description = ? WHERE product_id = ?",
       [updatedName, updatedCategory, updatedPicture, updatedDescription, id]
     );
- return {
-   message: `Product with ID: ${id} successfully updated.`,
-   affectedRows: result.affectedRows,
- };
+    return {
+      message: `Product with ID: ${id} successfully updated.`,
+      affectedRows: result.affectedRows,
+    };
   } catch (err) {
     throw new Error(`Failed to update product with ID: ${id}. ${err.message}`);
   }
@@ -83,8 +99,9 @@ const deleteProductById = async (id) => {
 
 export {
   createProduct,
+  deleteProductById,
   readAllProducts,
   readProductById,
+  readProductsByMonth,
   updateProductById,
-  deleteProductById,
 };

@@ -18,7 +18,7 @@ CREATE TABLE products (
   product_id INTEGER PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL, 
   category VARCHAR(255) NOT NULL,
-  picture BLOB,
+  picture TEXT,
   description VARCHAR(255)
 );
 

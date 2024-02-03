@@ -1,11 +1,11 @@
 import { db } from "../../migrations/db";
 
 //C
-const createFavorite = async ({ recipe_id, user_id }) => {
+const createFavorite = async ({ recipeId, userId }) => {
     try {
         const [rows] = await db.query(
             "INSERT INTO favorites (recipe_id, user_id) VALUES (?, ?)",
-            [recipe_id, user_id]
+            [recipeId, userId]
         );
         return {
             message: `Favorite successfully created with ID: ${rows.insertId}.`,
@@ -42,11 +42,11 @@ const readFavoriteById = async (id) => {
 };
 
 //U
-const updateFavoriteById = async ({ recipe_id, user_id, id }) => {
+const updateFavoriteById = async ({ recipeId, userId, id }) => {
     try {
         const existingFavorite = await readFavoriteById(id);
-        const updatedRecipeId = recipe_id || existingFavorite.recipe_id;
-        const updatedUserId = user_id || existingFavorite.user_id;
+        const updatedRecipeId = recipeId || existingFavorite.recipe_id;
+        const updatedUserId = userId || existingFavorite.user_id;
 
         const [result] = await db.query(
             "UPDATE favorites SET recipe_id = ?, user_id = ? WHERE favorite_id = ?",
