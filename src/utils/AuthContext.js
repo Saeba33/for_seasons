@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [recipeId, setRecipeId] = useState(null);
 
   const value = {
     isLoggedIn,
@@ -15,6 +16,8 @@ export const AuthProvider = ({ children }) => {
     setUserProfile,
     userId,
     setUserId,
+    recipeId,
+    setRecipeId,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

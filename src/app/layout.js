@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [recipeId, setRecipeId] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -55,6 +56,8 @@ export default function RootLayout({ children }) {
         setUserProfile,
         userId,
         setUserId,
+        recipeId,
+        setRecipeId,
       }}
     >
       <html lang="fr">
