@@ -18,18 +18,18 @@ const Admin = () => {
   });
 
   const months = [
-    "january",
-    "february",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december",
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
   ];
 
   useEffect(() => {
@@ -56,35 +56,23 @@ const Admin = () => {
     const url = selectedProduct
       ? `/api/admin/${selectedProduct}`
       : "/api/admin";
-
     try {
       const response = await fetch(url, {
         method: method,
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name,
-          category: formData.category,
-          picture: formData.picture || undefined,
-          description: formData.description || undefined,
-          month: formData.month || undefined,
-          featured: formData.featured,
-        }),
+        body: JSON.stringify(formData),
       });
-
       if (!response.ok) {
-        throw new Error(`Erreur ${response.status}: ${response.statusText}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+      const data = await response.json();
       fetchProducts();
       resetForm();
       setIsModalOpen(false);
     } catch (error) {
-      console.error(
-        "Erreur lors de la soumission du formulaire :",
-        error.message
-      );
+      console.error("Erreur lors de la soumission du formulaire:", error);
     }
   };
 
@@ -102,10 +90,15 @@ const Admin = () => {
   };
 
   const handleDelete = async (productId) => {
-    await fetch(`/api/admin/${productId}`, {
-      method: "DELETE",
-    });
-    fetchProducts();
+    const confirmDelete = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer ce produit ?"
+    );
+    if (confirmDelete) {
+      await fetch(`/api/admin/${productId}`, {
+        method: "DELETE",
+      });
+      fetchProducts();
+    }
   };
 
   const resetForm = () => {
@@ -165,13 +158,13 @@ const Admin = () => {
               >
                 <option value="">Sélectionnez un mois</option>
                 {months.map((month, index) => (
-                  <option key={index} value={index + 1}>
+                  <option key={index} value={month}>
                     {month}
                   </option>
                 ))}
               </select>
               <label>
-                Featured:
+                En vedette:
                 <input
                   type="checkbox"
                   name="featured"

@@ -1,4 +1,19 @@
-import { db } from "../../migrations/db";
+import { connectToDb, db } from "../../migrations/db";
+
+const monthConversion = {
+  Janvier: "january",
+  Février: "february",
+  Mars: "march",
+  Avril: "april",
+  Mai: "may",
+  Juin: "june",
+  Juillet: "july",
+  Août: "august",
+  Septembre: "september",
+  Octobre: "october",
+  Novembre: "november",
+  Décembre: "december",
+};
 
 //C
 async function createAdminProduct({
@@ -9,21 +24,23 @@ async function createAdminProduct({
   month,
   featured = false,
 }) {
+  const connection = await connectToDb();
   try {
-    await db.beginTransaction();
-    const [productResult] = await db.query(
+    await connection.beginTransaction();
+    const [productResult] = await connection.query(
       "INSERT INTO products (name, category, picture, description) VALUES (?, ?, ?, ?)",
       [name, category, picture || "", description || ""]
     );
     const productId = productResult.insertId;
 
     if (month) {
-      await db.query(
+      const monthInEnglish = monthConversion[month] || "";
+      await connection.query(
         "INSERT INTO products_of_month (product_id, month, featured) VALUES (?, ?, ?)",
-        [productId, month, featured]
+        [productId, monthInEnglish, featured]
       );
     }
-    await db.commit();
+    await connection.commit();
     return {
       message: `Product successfully created with ID: ${productId}${
         month ? " and added to products_of_month" : ""
@@ -31,8 +48,11 @@ async function createAdminProduct({
       id: productId,
     };
   } catch (error) {
-    await db.rollback();
+    await connection.rollback();
+    console.error("Error creating product:", error);
     throw new Error(`Error creating product: ${error.message}`);
+  } finally {
+    connection.release();
   }
 }
 
@@ -79,15 +99,30 @@ async function updateAdminProduct({
   month,
   featured,
 }) {
+  const connection = await connectToDb();
   try {
-    await db.beginTransaction();
-    const [current] = await db.query(
+    await connection.beginTransaction();
+    const [current] = await connection.query(
       "SELECT * FROM products WHERE product_id = ?",
       [product_id]
     );
-    if (current.length === 0)
+    if (current.length === 0) {
       throw new Error(`Product with ID: ${product_id} not found.`);
-    await db.query(
+    }
+    const monthInEnglish = monthConversion[month] || "";
+    if (month !== undefined && month !== current[0].month) {
+      await connection.query(
+        "UPDATE products_of_month SET month = ? WHERE product_id = ?",
+        [monthInEnglish, product_id]
+      );
+    }
+    if (featured !== undefined && featured !== current[0].featured) {
+      await connection.query(
+        "UPDATE products_of_month SET featured = ? WHERE product_id = ?",
+        [featured, product_id]
+      );
+    }
+    await connection.query(
       "UPDATE products SET name = ?, category = ?, picture = ?, description = ? WHERE product_id = ?",
       [
         name || current[0].name,
@@ -97,28 +132,14 @@ async function updateAdminProduct({
         product_id,
       ]
     );
-    if (month) {
-      const [existing] = await db.query(
-        "SELECT * FROM products_of_month WHERE product_id = ? AND month = ?",
-        [product_id, month]
-      );
-      if (existing.length > 0) {
-        await db.query(
-          "UPDATE products_of_month SET featured = ? WHERE product_id = ? AND month = ?",
-          [featured, product_id, month]
-        );
-      } else {
-        await db.query(
-          "INSERT INTO products_of_month (product_id, month, featured) VALUES (?, ?, ?)",
-          [product_id, month, featured]
-        );
-      }
-    }
-    await db.commit();
+    await connection.commit();
     return { message: `Product with ID: ${product_id} successfully updated.` };
   } catch (error) {
-    await db.rollback();
+    await connection.rollback();
+    console.error(`Failed to update product with ID: ${product_id}`, error);
     throw new Error(`Failed to update product: ${error.message}`);
+  } finally {
+    connection.release();
   }
 }
 
