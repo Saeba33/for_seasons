@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         { userId: user.user_id, profile: user.profile },
         process.env.JWT_SECRET
       );
-      res.status(200).json({ token });
+      res.status(200).json({ token, profile: user.profile });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
