@@ -1,5 +1,3 @@
-//ECHEC DU POST A REVOIR POUR RECUPERATION DE L'ID
-
 import { createRecipe, readAllRecipes } from "@/lib/recipes";
 
 export default async function handler(req, res) {

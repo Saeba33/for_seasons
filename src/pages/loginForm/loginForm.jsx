@@ -1,6 +1,6 @@
 "use client";
 
-import AuthContext from "@/utils/AuthContext"; // Ajustez le chemin si nécessaire
+import AuthContext from "@/utils/AuthContext";
 import jwt from "jsonwebtoken";
 import Link from "next/link";
 import { useContext, useState } from "react";
@@ -11,10 +11,8 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // Ajoutez setAuthToken à la déconstruction ici
   const { setIsLoggedIn, setUserId, setAuthToken } = useContext(AuthContext);
-  console.log(useContext(AuthContext));
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -35,14 +33,12 @@ const LoginForm = () => {
 
       const data = await response.json();
       setIsLoggedIn(true);
-      localStorage.setItem("token", data.token); // Continuez à stocker le token dans localStorage pour la persistance
+      localStorage.setItem("token", data.token); 
       const decodedToken = jwt.decode(data.token);
-      console.log(decodedToken);
-      setUserId(decodedToken.userId); // Assurez-vous que cette clé correspond à votre structure de token
+      setUserId(decodedToken.userId);
       setAuthToken(data.token);
       setAuthToken;
-      // Mettez à jour le contexte avec le token JWT
-      window.location.href = "/"; // Rediriger l'utilisateur après une connexion réussie
+      window.location.href = "/";
     } catch (error) {
       console.error(
         "A problem occurred when trying to reach the server:",
