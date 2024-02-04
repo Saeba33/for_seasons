@@ -46,6 +46,25 @@ const readFavoriteById = async (recipeId, userId) => {
   }
 };
 
+const readFavoritesByUserId = async (userId) => {
+  try {
+    const [rows] = await db.query(
+      `
+      SELECT * FROM recipes
+      INNER JOIN favorites ON favorites.recipe_id = recipes.recipe_id
+      WHERE favorites.user_id = ?
+    `,
+      [userId]
+    );
+
+    return rows;
+  } catch (err) {
+    throw new Error(
+      "Failed to retrieve favorites for the user. There was a server error."
+    );
+  }
+};
+
 //D
 const deleteFavoriteById = async (recipeId, userId) => {
   try {
@@ -84,4 +103,5 @@ export {
   deleteFavoriteById,
   readAllFavorites,
   readFavoriteById,
+  readFavoritesByUserId,
 };
