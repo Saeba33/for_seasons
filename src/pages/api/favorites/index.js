@@ -1,4 +1,8 @@
-import { createFavorite, readAllFavorites } from "@/lib/favorites";
+import {
+  checkIfFavorite,
+  createFavorite,
+  readAllFavorites,
+} from "@/lib/favorites";
 import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
@@ -6,8 +10,12 @@ export default async function handler(req, res) {
 
   switch (method) {
     case "GET":
-      const favorites = await readAllFavorites();
-      res.status(200).json(favorites);
+      try {
+        const favorites = await readAllFavorites();
+        res.status(200).json(favorites);
+      } catch (error) {
+        res.status(500).json({ message: "Server error: " + error.message });
+      }
       break;
 
     case "POST":
@@ -24,13 +32,18 @@ export default async function handler(req, res) {
         return res.status(401).json({ message: "Invalid or expired token" });
       }
 
-      const { recipe_id } = req.body;
-      const user_id = decoded.userId;
+      const userId = decoded.userId;
+      const { recipeId } = req.body;
+
       try {
-        const result = await createFavorite({
-          recipeId: recipe_id,
-          userId: user_id,
-        });
+        const alreadyFavorite = await checkIfFavorite(userId, recipeId);
+        if (alreadyFavorite) {
+          return res
+            .status(409)
+            .json({ message: "Recipe is already a favorite" });
+        }
+
+        const result = await createFavorite({ recipeId, userId });
         res
           .status(201)
           .json({ message: "Favorite added successfully", id: result.id });
@@ -41,6 +54,6 @@ export default async function handler(req, res) {
 
     default:
       res.setHeader("Allow", ["GET", "POST"]);
-      res.status(405).json({ message: `Method ${method} Not Allowed` });
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 }

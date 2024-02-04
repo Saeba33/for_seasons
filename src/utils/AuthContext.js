@@ -1,14 +1,56 @@
-"use client";
-import { createContext, useState } from "react";
+import jwt from "jsonwebtoken";
+import { createContext, useEffect, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext({
+  isLoggedIn: false,
+  setIsLoggedIn: () => {},
+  authToken: null,
+  setAuthToken: () => {},
+  userId: null,
+  setUserId: () => {},
+  userProfile: null,
+  setUserProfile: () => {},
+  login: () => {},
+  logout: () => {},
+});
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userProfile, setUserProfile] = useState(null);
-  const [userId, setUserId] = useState(null);
-  const [recipeId, setRecipeId] = useState(null);
   const [authToken, setAuthToken] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+      const decodedToken = jwt.decode(token);
+      setUserId(decodedToken?.userId);
+      setAuthToken(token);
+      setUserProfile(localStorage.getItem("userProfile"));
+    }
+  }, []);
+
+const login = (token, profile) => {
+  const decodedToken = jwt.decode(token);
+  setIsLoggedIn(true);
+  setAuthToken(token);
+  setUserId(decodedToken?.userId);
+  setUserProfile(decodedToken?.profile);
+  localStorage.setItem("token", token);
+  localStorage.setItem("userProfile", JSON.stringify(decodedToken?.profile));
+  window.location.href = "/";
+};
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    setAuthToken(null);
+    setUserId(null);
+    setUserProfile(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("userProfile");
+    window.location.href = "/login";
+  };
 
   const value = {
     isLoggedIn,
@@ -17,30 +59,11 @@ export const AuthProvider = ({ children }) => {
     setUserProfile,
     userId,
     setUserId,
-    recipeId,
-    setRecipeId,
     authToken,
     setAuthToken,
+    login,
+    logout,
   };
 
-  return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn,
-        setIsLoggedIn,
-        userProfile,
-        setUserProfile,
-        userId,
-        setUserId,
-        recipeId,
-        setRecipeId,
-        authToken,
-        setAuthToken,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
-export default AuthContext;

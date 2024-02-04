@@ -1,7 +1,6 @@
 "use client";
 
-import AuthContext from "@/utils/AuthContext";
-import jwt from "jsonwebtoken";
+import { AuthContext } from "@/utils/AuthContext";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import styles from "./loginForm.module.css";
@@ -11,8 +10,9 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { setIsLoggedIn, setUserId, setAuthToken } = useContext(AuthContext);
-  
+  const { login, userProfile, isLoggedIn, userId, authToken } =
+    useContext(AuthContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -32,13 +32,8 @@ const LoginForm = () => {
       }
 
       const data = await response.json();
-      setIsLoggedIn(true);
-      localStorage.setItem("token", data.token); 
-      const decodedToken = jwt.decode(data.token);
-      setUserId(decodedToken.userId);
-      setAuthToken(data.token);
-      setAuthToken;
-      window.location.href = "/";
+      const { token, profile } = data;
+      login(token, profile);
     } catch (error) {
       console.error(
         "A problem occurred when trying to reach the server:",

@@ -1,10 +1,14 @@
-import { deleteFavoriteById, readFavoriteById } from "@/lib/favorites";
+import {
+  checkIfFavorite,
+  deleteFavoriteById,
+  readFavoriteById,
+} from "@/lib/favorites";
 import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
   const {
     method,
-    query: { id },
+    query: { id: recipeId },
     headers,
   } = req;
 
@@ -20,23 +24,25 @@ export default async function handler(req, res) {
   } catch (error) {
     return res.status(401).json({ message: "Invalid or expired token" });
   }
+  const userId = decoded.userId;
+
   switch (method) {
     case "GET":
-      const favorite = await readFavoriteById(id);
-      if (!favorite) {
-        return res
-          .status(404)
-          .json({ message: `No favorite found with ID: ${id}.` });
+      try {
+        const favorite = await readFavoriteById(recipeId, userId);
+        res.status(200).json(favorite);
+      } catch (error) {
+        res.status(500).json({ message: `Server error: ${error.message}` });
       }
-      res.status(200).json(favorite);
       break;
 
     case "DELETE":
       try {
-        const result = await deleteFavoriteById(id);
-        if (result.affectedRows === 0) {
+        const isFavorite = await checkIfFavorite(userId, recipeId);
+        if (!isFavorite) {
           return res.status(404).json({ message: "Favorite not found" });
         }
+        await deleteFavoriteById(recipeId, userId);
         res.status(200).json({ message: "Favorite deleted successfully" });
       } catch (error) {
         res.status(500).json({ message: `Server error: ${error.message}` });
@@ -45,6 +51,6 @@ export default async function handler(req, res) {
 
     default:
       res.setHeader("Allow", ["GET", "DELETE"]);
-      res.status(405).json({ message: `Method ${method} Not Allowed` });
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 }

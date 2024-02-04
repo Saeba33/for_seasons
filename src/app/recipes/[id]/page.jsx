@@ -1,24 +1,56 @@
 "use client";
 
+import { AuthContext } from "@/utils/AuthContext";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "@/utils/AuthContext";
+import { useCallback, useContext, useEffect, useState } from "react";
 
-const RecipeDetails = ({ userId, authToken }) => {
+const RecipeDetails = () => {
+  const { isLoggedIn, authToken } = useContext(AuthContext);
   const [recipe, setRecipe] = useState(null);
-  const { isLoggedIn } = useContext(AuthContext);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isLoadingFavorite, setIsLoadingFavorite] = useState(true);
+
+  const checkIfFavorite = useCallback(
+    async (recipeId) => {
+      if (!isLoggedIn || !authToken) {
+        setIsFavorite(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/favorites/${recipeId}`, {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+
+        setIsFavorite(response.ok);
+      } catch (error) {
+        console.error("Error checking favorite:", error);
+        setIsFavorite(false);
+      }
+    },
+    [authToken, isLoggedIn]
+  );
 
   useEffect(() => {
-    const recipeId = window.location.pathname.split("/").pop();
-    fetch(`/api/recipes/${recipeId}`)
-      .then((response) => response.json())
-      .then((data) => setRecipe(data))
-      .catch((error) => console.error("Error fetching recipe:", error));
-  }, []);
+    const fetchRecipeAndCheckFavorite = async () => {
+      const recipeId = window.location.pathname.split("/").pop();
+      try {
+        const response = await fetch(`/api/recipes/${recipeId}`);
+        const data = await response.json();
+        setRecipe(data);
+      } catch (error) {
+        console.error("Error fetching recipe:", error);
+      }
+      await checkIfFavorite(recipeId);
+      setIsLoadingFavorite(false);
+    };
+    fetchRecipeAndCheckFavorite();
+  }, [checkIfFavorite]);
 
   const addFavorite = async () => {
     const recipeId = window.location.pathname.split("/").pop();
-
     try {
       const response = await fetch("/api/favorites", {
         method: "POST",
@@ -26,16 +58,38 @@ const RecipeDetails = ({ userId, authToken }) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${authToken}`,
         },
-        body: JSON.stringify({ recipe_id: recipeId }),
+        body: JSON.stringify({ recipeId }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to add favorite");
+      if (response.ok) {
+        setIsFavorite(true);
+        alert("Recette ajoutée aux favoris!");
+      } else {
+        console.error("Failed to add favorite");
       }
-
-      alert("Recette ajoutée aux favoris!");
     } catch (error) {
       console.error("Error adding to favorites:", error);
+    }
+  };
+
+  const removeFavorite = async () => {
+    const recipeId = window.location.pathname.split("/").pop();
+    try {
+      const response = await fetch(`/api/favorites/${recipeId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      if (response.ok) {
+        setIsFavorite(false);
+        alert("Recette retirée des favoris!");
+      } else {
+        console.error("Failed to remove favorite");
+      }
+    } catch (error) {
+      console.error("Error removing from favorites:", error);
     }
   };
 
@@ -60,7 +114,18 @@ const RecipeDetails = ({ userId, authToken }) => {
         <h2>Instructions</h2>
         <p>{recipe.instructions}</p>
       </div>
-      {isLoggedIn && <button onClick={addFavorite}>Ajouter aux favoris</button>}
+      {isLoggedIn && (
+        <button
+          onClick={isFavorite ? removeFavorite : addFavorite}
+          disabled={isLoadingFavorite}
+        >
+          {isLoadingFavorite
+            ? "Chargement..."
+            : isFavorite
+            ? "Retirer des favoris"
+            : "Ajouter aux favoris"}
+        </button>
+      )}
     </div>
   );
 };

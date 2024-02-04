@@ -1,16 +1,15 @@
+import { AuthContext } from "@/utils/AuthContext";
 import Image from "next/image";
 import { useContext } from "react";
 import logo from "../../../public/logo.webp";
-import AuthContext from "../../utils/AuthContext";
 import Links from "./links/Links";
 import styles from "./navbar.module.css";
 
 const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn, userProfile } = useContext(AuthContext);
+  const { isLoggedIn, userProfile, logout } = useContext(AuthContext);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
+    logout();
     window.location.href = "/login";
   };
 
