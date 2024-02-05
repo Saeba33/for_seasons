@@ -1,10 +1,10 @@
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.wrapper{
+.wrapper {
   width: 500px;
   background-color: var(--bgSoft);
   padding: 50px;
@@ -15,12 +15,37 @@
   border-radius: 5px;
 }
 
-.github{
+.github {
   width: 100%;
   padding: 20px;
   cursor: pointer;
   background-color: #fff;
   color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 30px;
+}
+
+.form input {
+  padding: 20px;
+  background-color: var(--bg);
+  color: var(--textColor);
+  border: none;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 20px;
+  cursor: pointer;
+  background-color: var(--btn);
+  color: var(--textColor);
   font-weight: bold;
   border: none;
   border-radius: 5px;

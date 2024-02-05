@@ -194,7 +194,7 @@ const Admin = () => {
                 height={200}
               />
             )}
-            {product.month && <p>Mois: {months[product.month - 1]}</p>}
+            <p>Mois: {product.month}</p>
             <p>En vedette: {product.featured ? "Oui" : "Non"}</p>
             <button onClick={() => handleEdit(product)}>Modifier</button>
             <button onClick={() => handleDelete(product.product_id)}>
