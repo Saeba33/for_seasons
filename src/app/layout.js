@@ -1,7 +1,7 @@
 "use client";
 
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/layouts/footer/Footer";
+import Navbar from "@/layouts/navbar/Navbar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Inter } from "next/font/google";
 import "./globals.css";
