@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { loginUser } from "../../middlewares/auth";
-import { requireAuth } from "../../middlewares/middleware";
+import { loginUser } from "@/middlewares/auth";
+import { requireAuth } from "@/middlewares/middleware";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

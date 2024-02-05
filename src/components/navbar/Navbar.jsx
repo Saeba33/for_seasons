@@ -1,7 +1,7 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import { useContext } from "react";
-import logo from "../../../public/logo.webp";
+import logo from "/public/logo.webp";
 import Links from "./links/Links";
 import styles from "./navbar.module.css";
 

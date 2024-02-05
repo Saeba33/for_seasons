@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { db } from "../../../database/connection";
+import { db } from "../../database/connection";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

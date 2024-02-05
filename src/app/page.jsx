@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Carousel from "../components/carousel/Carousel";
+import Carousel from "@/components/carousel/Carousel";
 import styles from "./page.module.css";
 
 const getCurrentMonth = () => {
