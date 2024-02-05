@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { db } from "../../../migrations/db";
+import { db } from "../../../database/connection";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   }
 
   try {
-     const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const connection = await db.getConnection();
     const [result] = await connection.query(
       "INSERT INTO users (email, password) VALUES (?, ?)",

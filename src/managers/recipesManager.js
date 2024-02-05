@@ -1,4 +1,4 @@
-import { db } from "../../migrations/db";
+import { db } from "../../database/connection";
 
 //C
 const createRecipe = async ({
@@ -77,8 +77,7 @@ const updateRecipeById = async ({
     const updatedPhoto = photo || existingRecipe.photo;
     const updatedDifficulty = difficulty || existingRecipe.difficulty;
     const updatedDuration = duration || existingRecipe.duration;
-    const updatedNumberPersons =
-      numberPersons || existingRecipe.number_persons;
+    const updatedNumberPersons = numberPersons || existingRecipe.number_persons;
     const updatedInstructions = instructions || existingRecipe.instructions;
     const updatedUtensils = utensils || existingRecipe.utensils;
     const updatedInformation = information || existingRecipe.information;

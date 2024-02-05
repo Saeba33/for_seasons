@@ -1,4 +1,7 @@
-import { createProductOfMonth, readAllProductsOfMonth } from "@/lib/monthly";
+import {
+  createProductOfMonth,
+  readAllProductsOfMonth,
+} from "@/managers/monthlyManager";
 
 export default async function handler(req, res) {
   const { method } = req;

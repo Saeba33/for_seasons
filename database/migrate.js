@@ -1,15 +1,15 @@
+import dotenv from "dotenv";
+import mysql from "mysql2/promise";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import mysql from "mysql2/promise";
-import dotenv from "dotenv";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-const schema = path.join(__dirname, "database", "schema.sql");
+const schema = path.join(__dirname, "schema", "schema.sql");
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 

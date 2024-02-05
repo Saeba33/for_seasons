@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthContext } from "@/utils/AuthContext";
+import { AuthContext } from "@/contexts/AuthContext";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import styles from "./loginForm.module.css";

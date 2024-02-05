@@ -1,4 +1,4 @@
-import { connectToDb, db } from "../../migrations/db";
+import { connectToDb, db } from "../../database/connection";
 
 const monthConversion = {
   Janvier: "january",

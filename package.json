@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "db:migrate": "node migrations/migrate.js",
-    "db:seed": "node migrations/database/seed.js",
+    "db:migrate": "node database/migrate.js",
+    "db:seed": "node database/seed.js",
     "start": "next start",
     "lint": "next lint"
   },

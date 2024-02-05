@@ -2,7 +2,7 @@
 
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import {AuthProvider} from "@/utils/AuthContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { Inter } from "next/font/google";
 import "./globals.css";
 

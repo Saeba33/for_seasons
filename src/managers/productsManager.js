@@ -1,4 +1,4 @@
-import { db } from "../../migrations/db";
+import { db } from "../../database/connection";
 
 //C
 const createProduct = async ({ name, category, picture, description }) => {

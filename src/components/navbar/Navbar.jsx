@@ -1,4 +1,4 @@
-import { AuthContext } from "@/utils/AuthContext";
+import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import { useContext } from "react";
 import logo from "../../../public/logo.webp";

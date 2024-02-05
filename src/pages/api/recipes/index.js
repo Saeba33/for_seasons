@@ -1,4 +1,4 @@
-import { createRecipe, readAllRecipes } from "@/lib/recipes";
+import { createRecipe, readAllRecipes } from "@/managers/recipesManager";
 
 export default async function handler(req, res) {
   const { method } = req;

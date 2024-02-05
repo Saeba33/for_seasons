@@ -2,7 +2,7 @@ import {
   deleteProductOfMonthById,
   readProductOfMonthById,
   updateProductOfMonthById,
-} from "@/lib/monthly";
+} from "@/managers/monthlyManager";
 
 export default async function handler(req, res) {
   const { method } = req;

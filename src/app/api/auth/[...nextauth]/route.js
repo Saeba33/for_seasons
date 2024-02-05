@@ -1,1 +1,1 @@
-export { createUser, getUserByEmail, loginUser } from "@/lib/auth";
+export { createUser, getUserByEmail, loginUser } from "@/middlewares/auth";

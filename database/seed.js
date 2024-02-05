@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { db as database } from "../db.js";
+import { db as database } from "./connection.js";
 const saltRounds = 10;
 
 dotenv.config();
