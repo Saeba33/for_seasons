@@ -1,8 +1,8 @@
 "use client";
 
+import { AuthProvider } from "@/contexts/AuthContext";
 import Footer from "@/layouts/footer/Footer";
 import Navbar from "@/layouts/navbar/Navbar";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   return (
     <AuthProvider>
       <html lang="fr">
-        <body className={inter.className}>
+        <body>
           <div className="container">
             <Navbar />
             {children}
