@@ -3,10 +3,7 @@
 import { AuthProvider } from "@/contexts/AuthContext";
 import Footer from "@/layouts/footer/Footer";
 import Navbar from "@/layouts/navbar/Navbar";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const Layout = ({ children }) => {
   return (
