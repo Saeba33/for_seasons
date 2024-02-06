@@ -1,4 +1,4 @@
-import { db } from "../../database/connection";
+import { db } from "@/database/connection";
 
 //C
 const createFavorite = async ({ recipeId, userId }) => {
