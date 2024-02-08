@@ -307,7 +307,7 @@ const seed = async () => {
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description, picture) VALUES (59, 'Maïs', 'vegetables', 'Description du maïs.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (59, 'Maïs', 'vegetables', 'Description du maïs.','/products/mais.webp')"
       )
     );
     queries.push(
