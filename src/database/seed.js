@@ -17,362 +17,362 @@ const seed = async () => {
     await database.query("delete from products");
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (1, 'Poire', 'fruits', 'Description de la poire.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (1, 'Poire', 'fruits', 'Description de la poire.','/products/poire.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (2, 'Clémentine', 'fruits', 'Description de la clémentine.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (2, 'Clémentine', 'fruits', 'Description de la clémentine.','/products/clementine.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (3, 'Banane', 'fruits', 'Description de la banane.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (3, 'Banane', 'fruits', 'Description de la banane.','/products/banane.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (4, 'Pomme', 'fruits', 'Description de la pomme.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (4, 'Pomme', 'fruits', 'Description de la pomme.','/products/pomme.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (5, 'Kiwi', 'fruits', 'Description du kiwi.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (5, 'Kiwi', 'fruits', 'Description du kiwi.','/products/kiwi.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (6, 'Raisin', 'fruits', 'Description du raisin.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (6, 'Raisin', 'fruits', 'Description du raisin.','/products/raisin.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description, picture) VALUES (7, 'Citron', 'fruits', 'Description du citron.','/citron.png')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (7, 'Citron', 'fruits', 'Description du citron.','/products/citron.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (8, 'Nectarine', 'fruits', 'Description de la nectarine.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (8, 'Nectarine', 'fruits', 'Description de la nectarine.','/products/nectarine.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (9, 'Groseille', 'fruits', 'Description de la groseille.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (9, 'Groseille', 'fruits', 'Description de la groseille.','/products/groseille.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (10, 'Pomme', 'fruits', 'Description de la pomme.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (10, 'Pomme', 'fruits', 'Description de la pomme.','/products/pomme.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (11, 'Abricot', 'fruits', 'Description de labricot.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (11, 'Abricot', 'fruits', 'Description de labricot.','/products/abricot.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (12, 'Pastèque', 'fruits', 'Description de la pastèque.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (12, 'Pastèque', 'fruits', 'Description de la pastèque.','/products/pastheque.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (13, 'Fraise', 'fruits', 'Description de la fraise.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (13, 'Fraise', 'fruits', 'Description de la fraise.','/products/fraise.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (14, 'Cerise', 'fruits', 'Description de la cerise.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (14, 'Cerise', 'fruits', 'Description de la cerise.','/products/cerise.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (15, 'Rhubarbe', 'fruits', 'Description de la rhubarbe.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (15, 'Rhubarbe', 'fruits', 'Description de la rhubarbe.','/products/rhubarbe.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (16, 'Melon', 'fruits', 'Description du melon.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (16, 'Melon', 'fruits', 'Description du melon.','/products/melon.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (17, 'Cassis', 'fruits', 'Description du cassis.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (17, 'Cassis', 'fruits', 'Description du cassis.','/products/cassis.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (18, 'Grenade', 'fruits', 'Description de la grenade.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (18, 'Grenade', 'fruits', 'Description de la grenade.','/products/grenade.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (19, 'Ananas', 'fruits', 'Description de lananas.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (19, 'Ananas', 'fruits', 'Description de lananas.','/products/ananas.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (20, 'Mirabelle', 'fruits', 'Description de la mirabelle.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (20, 'Mirabelle', 'fruits', 'Description de la mirabelle.','/products/mirabelle.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (21, 'Myrtille', 'fruits', 'Description de la myrtille.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (21, 'Myrtille', 'fruits', 'Description de la myrtille.','/products/myrtille.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (22, 'Pamplemousse', 'fruits', 'Description du pamplemousse.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (22, 'Pamplemousse', 'fruits', 'Description du pamplemousse.','/products/pamplemousse.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (23, 'Prune', 'fruits', 'Description de la prune.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (23, 'Prune', 'fruits', 'Description de la prune.','/products/prune.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (24, 'Mûre', 'fruits', 'Description de la mûre.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (24, 'Mûre', 'fruits', 'Description de la mûre.','/products/mure.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (25, 'Figue', 'fruits', 'Description de la figue.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (25, 'Figue', 'fruits', 'Description de la figue.','/products/figue.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (26, 'Physalis', 'fruits', 'Description du physalis.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (26, 'Physalis', 'fruits', 'Description du physalis.','/products/physalis.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (27, 'Pruneau', 'fruits', 'Description du pruneau.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (27, 'Pruneau', 'fruits', 'Description du pruneau.','/products/pruneau.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (28, 'Kaki', 'fruits', 'Description du kaki.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (28, 'Kaki', 'fruits', 'Description du kaki.','/products/kaki.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (29, 'Noisette', 'fruits', 'Description de la noisette.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (29, 'Noisette', 'fruits', 'Description de la noisette.','/products/noisette.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (30, 'Framboise', 'fruits', 'Description de la framboise.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (30, 'Framboise', 'fruits', 'Description de la framboise.','/products/framboise.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (31, 'Mangue', 'fruits', 'Description de la mangue.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (31, 'Mangue', 'fruits', 'Description de la mangue.','/products/mangue.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (32, 'Grenadille', 'fruits', 'Description de la grenadille.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (32, 'Fruit de la passion', 'fruits', 'Description du fruit de la passion.','/products/grenadille.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (33, 'Anone', 'fruits', 'Description de lanone.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (33, 'Anone', 'fruits', 'Description de lanone.','/products/anone.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (34, 'Coing', 'fruits', 'Description du coing.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (34, 'Coing', 'fruits', 'Description du coing.','/products/coing.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (35, 'Orange', 'fruits', 'Description de lorange.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (35, 'Orange', 'fruits', 'Description de lorange.','/products/orange.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (36, 'Mandarine', 'fruits', 'Description de la mandarine.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (36, 'Mandarine', 'fruits', 'Description de la mandarine.','/products/mandarine.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (37, 'Chou frisé', 'vegetables', 'Description du chou frisé.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (37, 'Chou frisé', 'vegetables', 'Description du chou frisé.','/products/choufrise.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (38, 'Carotte', 'vegetables', 'Description de la carotte.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (38, 'Carotte', 'vegetables', 'Description de la carotte.','/products/carotte.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (39, 'Panais', 'vegetables', 'Description du panais.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (39, 'Panais', 'vegetables', 'Description du panais.','/products/panais.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (40, 'Poireau', 'vegetables', 'Description du poireau.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (40, 'Poireau', 'vegetables', 'Description du poireau.','/products/poireau.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (41, 'Rutabaga', 'vegetables', 'Description du rutabaga.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (41, 'Rutabaga', 'vegetables', 'Description du rutabaga.','/products/rutabaga.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (42, 'Endive', 'vegetables', 'Description de lendive.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (42, 'Endive', 'vegetables', 'Description de lendive.','/products/endive.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (43, 'Épinard', 'vegetables', 'Description de lépinard.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (43, 'Épinard', 'vegetables', 'Description de lépinard.','/products/epinard.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (44, 'Navet', 'vegetables', 'Description du navet.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (44, 'Navet', 'vegetables', 'Description du navet.','/products/navet.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (45, 'Laitue', 'vegetables', 'Description de la laitue.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (45, 'Laitue', 'vegetables', 'Description de la laitue.','/products/laitue.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (46, 'Asperge', 'vegetables', 'Description de lasperge.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (46, 'Asperge', 'vegetables', 'Description de lasperge.','/products/asperge.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (47, 'Radis', 'vegetables', 'Description du radis.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (47, 'Radis', 'vegetables', 'Description du radis.','/products/radis.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (48, 'Cresson', 'vegetables', 'Description du cresson.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (48, 'Cresson', 'vegetables', 'Description du cresson.','/products/cresson.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (49, 'Petit pois', 'vegetables', 'Description du petit pois.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (49, 'Petit pois', 'vegetables', 'Description du petit pois.','/products/petitpois.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (50, 'Fève', 'vegetables', 'Description de la fève.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (50, 'Fève', 'vegetables', 'Description de la fève.','/products/feve.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (51, 'Courgette', 'vegetables', 'Description de la courgette.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (51, 'Courgette', 'vegetables', 'Description de la courgette.','/products/courgette.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (52, 'Brocoli', 'vegetables', 'Description du brocoli.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (52, 'Brocoli', 'vegetables', 'Description du brocoli.','/products/brocoli.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (53, 'Haricot vert', 'vegetables', 'Description de lharicot vert.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (53, 'Haricot vert', 'vegetables', 'Description de lharicot vert.','/products/haricotvert.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (54, 'Concombre', 'vegetables', 'Description du concombre.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (54, 'Concombre', 'vegetables', 'Description du concombre.','/products/concombre.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (55, 'Tomate', 'vegetables', 'Description de la tomate.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (55, 'Tomate', 'vegetables', 'Description de la tomate.','/products/tomate.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (56, 'Aubergine', 'vegetables', 'Description de laubergine.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (56, 'Aubergine', 'vegetables', 'Description de laubergine.','/products/aubergine.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (57, 'Poivron', 'vegetables', 'Description du poivron.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (57, 'Poivron', 'vegetables', 'Description du poivron.','/products/poivron.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (58, 'Courge', 'vegetables', 'Description de la courge.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (58, 'Courge', 'vegetables', 'Description de la courge.','/products/courge.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (59, 'Maïs', 'vegetables', 'Description du maïs.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (59, 'Maïs', 'vegetables', 'Description du maïs.')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (60, 'Betterave', 'vegetables', 'Description de la betterave.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (60, 'Betterave', 'vegetables', 'Description de la betterave.','/products/betterave.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (61, 'Chou romanesco', 'vegetables', 'Description du chou romanesco.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (61, 'Chou romanesco', 'vegetables', 'Description du chou romanesco.','/products/romanesco.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (62, 'Fenouil', 'vegetables', 'Description du fenouil.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (62, 'Fenouil', 'vegetables', 'Description du fenouil.','/products/fenouil.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (63, 'Artichaut', 'vegetables', 'Description de lartichaut.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (63, 'Artichaut', 'vegetables', 'Description de lartichaut.','/products/artichaut.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (64, 'Potiron', 'vegetables', 'Description du potiron.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (64, 'Potiron', 'vegetables', 'Description du potiron.','/products/potiron.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (65, 'Chou', 'vegetables', 'Description du chou.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (65, 'Chou', 'vegetables', 'Description du chou.','/products/chou.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (66, 'Pomme de terre', 'vegetables', 'Description de la pomme de terre.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (66, 'Pomme de terre', 'vegetables', 'Description de la pomme de terre.','/products/pdt.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (67, 'Topinambour', 'vegetables', 'Description du topinambour.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (67, 'Topinambour', 'vegetables', 'Description du topinambour.','/products/topinambour.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (68, 'Salsifi', 'vegetables', 'Description du salsifi.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (68, 'Salsifi', 'vegetables', 'Description du salsifi.','/products/salsifi.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (69, 'Chou-fleur', 'vegetables', 'Description du chou-fleur.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (69, 'Chou-fleur', 'vegetables', 'Description du chou-fleur.','/products/choufleur.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (70, 'Choux de Bruxelles', 'vegetables', 'Description des choux de Bruxelles.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (70, 'Choux de Bruxelles', 'vegetables', 'Description des choux de Bruxelles.','/products/bruxelles.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (71, 'Céleri-rave', 'vegetables', 'Description du céleri-rave.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (71, 'Céleri-rave', 'vegetables', 'Description du céleri-rave.','/products/rave.webp')"
       )
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description) VALUES (72, 'Oignon', 'vegetables', 'Description de loignon.')"
+        "INSERT INTO products (product_id, name, category, description, picture) VALUES (72, 'Oignon', 'vegetables', 'Description de loignon.','/products/oignon.webp')"
       )
     );
 
