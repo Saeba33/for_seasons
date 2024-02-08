@@ -14,7 +14,16 @@
 
 body {
   background-color: var(--bg);
+  font-family: 'Biryani', sans-serif;
   color: var(--text);
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Catamaran', sans-serif;
 }
 
 a {
