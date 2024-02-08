@@ -5,10 +5,10 @@ import styles from "./links.module.css";
 import NavLink from "./navLink/NavLink";
 
 const links = [
-  { title: "Home", path: "/" },
-  { title: "About", path: "/about" },
-  { title: "Contact", path: "/contact" },
-  { title: "Recipes", path: "/recipes" },
+  { title: "De saison", path: "/" },
+  { title: "Recettes", path: "/recipes" },
+  { title: "Contactez-nous", path: "/contact" },
+  { title: "À propos", path: "/about" },
   { title: "Admin", path: "/admin", requireAdmin: true },
 ];
 
@@ -30,10 +30,12 @@ const Links = ({ handleLogout }) => {
         })}
         {isLoggedIn && (
           <button className={styles.logout} onClick={handleLogout}>
-            Logout
+            Déconnexion
           </button>
         )}
-        {!isLoggedIn && <NavLink item={{ title: "Login", path: "/login" }} />}
+        {!isLoggedIn && (
+          <NavLink item={{ title: "Connexion", path: "/login" }} />
+        )}
       </div>
       <Image
         className={styles.menuButton}
@@ -56,10 +58,12 @@ const Links = ({ handleLogout }) => {
           })}
           {isLoggedIn && (
             <button className={styles.logout} onClick={handleLogout}>
-              Logout
+              Déconnexion
             </button>
           )}
-          {!isLoggedIn && <NavLink item={{ title: "Login", path: "/login" }} />}
+          {!isLoggedIn && (
+            <NavLink item={{ title: "Connexion", path: "/login" }} />
+          )}
         </div>
       )}
     </div>

@@ -8,17 +8,17 @@ const Contact = () => {
       <h1>Contactez-nous</h1>
       <div className={styles.formContainer}>
         <form action="" className={styles.form}>
-          <input type="text" placeholder="Name" />
+          <input type="text" placeholder="Nom" />
           <input type="text" placeholder="Email" />
-          <input type="text" placeholder="Subject" />
+          <input type="text" placeholder="Objet" />
           <textarea
             name=""
             id=""
             cols="30"
             rows="10"
-            placeholder="Your message"
+            placeholder="Votre message"
           ></textarea>
-          <button>Send</button>
+          <button>Envoyer</button>
         </form>
       </div>
     </div>

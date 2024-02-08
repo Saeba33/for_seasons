@@ -26,7 +26,7 @@ const LoginPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.message || "Login failed");
+        setError(errorData.message || "Identifiants invalides");
         return;
       }
 
@@ -55,15 +55,15 @@ const LoginPage = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mot de passe"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Login</button>
+            <button type="submit">Se connecter</button>
           {error && <div>{error}</div>}
           <Link href="/register">
-            {"Don't have an account?"} <b>Register</b>
+            {"Pas de compte"} <b>S&apos;enregistrer</b>
           </Link>
         </form>
       </div>

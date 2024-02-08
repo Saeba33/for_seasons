@@ -18,7 +18,7 @@ const RegisterPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      alert("Les mots de passe ne correspondent pas");
       return;
     }
 
@@ -39,7 +39,7 @@ const RegisterPage = () => {
       if (data.success) {
         setSuccess(true);
       } else {
-        alert("User registration failed");
+        alert("Enregistrement échoué");
       }
     } catch (error) {
       console.error(
@@ -62,19 +62,19 @@ const RegisterPage = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder="Confirmer mot de passe"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <button type="submit">Register</button>
+            <button type="submit">S&apos;enregistrer</button>
         </form>
       </div>
     </div>
