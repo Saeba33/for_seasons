@@ -1,15 +1,9 @@
-.card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 10px;
-  padding: 20px;
-  display: inline-block;
-  width: calc(33% - 20px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card h3 {
-  margin-top: 0;
+.container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 .modal {
@@ -18,11 +12,34 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  padding: 50px 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   width: 50%;
+}
+
+.modal input,
+.modal textarea,
+.modal select,
+.modal button {
+  padding: 10px;
+  width: 50%;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.modal button {
+  background-color: var(--btn);
+  color: white;
+  border: none;
+  border-radius: 10px;
 }
 
 .overlay {
@@ -32,5 +49,74 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(20% - 20px);
+}
+
+.card img {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 100%;
+  width: 80%;
+  height: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.content {
+  padding-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addButton {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editButton {
+  background-color: #ffc107;
+  color: white;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
 }

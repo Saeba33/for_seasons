@@ -1,8 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import "./admin.module.css";
+import styles from "./admin.module.css";
 
 const Admin = () => {
   const [products, setProducts] = useState([]);
@@ -114,92 +113,112 @@ const Admin = () => {
   };
 
   return (
-    <div className="Admin">
-      <h1>Admin</h1>
-      <button onClick={() => setIsModalOpen(true)}>Ajouter un produit</button>
+    <div className={styles.container}>
+      <h1>Gestion des produits</h1>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className={`${styles.addButton} ${styles.buttons}`}
+      >
+        Ajouter un produit
+      </button>
       {isModalOpen && (
         <>
-          <div className="overlay" onClick={() => setIsModalOpen(false)}></div>
-          <div className="modal">
-            <form onSubmit={handleSubmit}>
+          <div
+            className={styles.overlay}
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+          <form className={styles.modal} onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleFormChange}
+              placeholder="Nom du produit"
+              required
+            />
+            <input
+              type="text"
+              name="category"
+              value={formData.category}
+              onChange={handleFormChange}
+              placeholder="Catégorie"
+              required
+            />
+            <input
+              type="text"
+              name="picture"
+              value={formData.picture}
+              onChange={handleFormChange}
+              placeholder="Lien de l'image"
+            />
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleFormChange}
+              placeholder="Description"
+            />
+            <select
+              name="month"
+              value={formData.month}
+              onChange={handleFormChange}
+            >
+              <option value="">Sélectionnez un mois</option>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+            <div className={styles.checkbox}>
+              <label>En vedette :</label>
               <input
-                type="text"
-                name="name"
-                value={formData.name}
+                type="checkbox"
+                name="featured"
+                checked={formData.featured}
                 onChange={handleFormChange}
-                placeholder="Nom du produit"
-                required
               />
-              <input
-                type="text"
-                name="category"
-                value={formData.category}
-                onChange={handleFormChange}
-                placeholder="Catégorie"
-                required
-              />
-              <input
-                type="text"
-                name="picture"
-                value={formData.picture}
-                onChange={handleFormChange}
-                placeholder="Lien de l'image"
-              />
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleFormChange}
-                placeholder="Description"
-              />
-              <select
-                name="month"
-                value={formData.month}
-                onChange={handleFormChange}
-              >
-                <option value="">Sélectionnez un mois</option>
-                {months.map((month, index) => (
-                  <option key={index} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-              <label>
-                En vedette:
-                <input
-                  type="checkbox"
-                  name="featured"
-                  checked={formData.featured}
-                  onChange={handleFormChange}
-                />
-              </label>
-              <button type="submit">
-                {selectedProduct ? "Mettre à jour" : "Créer"}
-              </button>
-            </form>
-          </div>
+            </div>
+            <button type="submit">
+              {selectedProduct ? "Mettre à jour" : "Créer"}
+            </button>
+          </form>
         </>
       )}
-      <div>
+      <div className={styles.cards}>
         {products.map((product) => (
-          <div key={product.product_id} className="card">
-            <h3>{product.name}</h3>
-            <p>ID: {product.product_id}</p>
-            <p>Catégorie: {product.category}</p>
-            <p>Description: {product.description}</p>
-            {product.picture && (
-              <Image
-                src={product.picture}
-                alt={product.name}
-                width={200}
-                height={200}
-              />
-            )}
-            <p>Mois: {product.month}</p>
-            <p>En vedette: {product.featured ? "Oui" : "Non"}</p>
-            <button onClick={() => handleEdit(product)}>Modifier</button>
-            <button onClick={() => handleDelete(product.product_id)}>
-              Supprimer
-            </button>
+          <div key={product.product_id} className={styles.card}>
+            <div className={styles.header}>
+              <p>ID: {product.product_id}</p>
+              <h3>{product.name}</h3>
+            </div>
+            <div className={styles.content}>
+              {product.picture && (
+                <Image
+                  src={product.picture}
+                  alt={product.name}
+                  width={200}
+                  height={200}
+                />
+              )}
+              <p>Catégorie: {product.category}</p>
+              <p>Mois: {product.month}</p>
+              <p>En vedette: {product.featured ? "Oui" : "Non"}</p>
+              <p>Description: {product.description}</p>
+            </div>
+            <div className={styles.buttons}>
+              <button
+                className={`${styles.editButton}`}
+                onClick={() => handleEdit(product)}
+              >
+                Modifier
+              </button>
+              <button
+                className={`${styles.deleteButton}`}
+                onClick={() => handleDelete(product.product_id)}
+              >
+                Supprimer
+              </button>
+            </div>
           </div>
         ))}
       </div>
