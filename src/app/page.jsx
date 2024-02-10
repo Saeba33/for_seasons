@@ -43,10 +43,10 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <h1>Fruits et légumes de saison</h1>
-      <div>
-        <label htmlFor="month-selected">Choisissez un mois:</label>
+      <div className={styles.month}>
+        <label className={styles.selectMonth} htmlFor="month-selected">Choisissez un mois:</label>
         <select
-          id="selectedMonth"
+          className={styles.selectedMonth}
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(e.target.value)}
         >

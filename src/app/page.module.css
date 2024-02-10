@@ -1,24 +1,54 @@
 .container {
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
-  justify-content: center;
   width: 100%;
   font-size: x-large;
+  gap: 20px;
+}
 
+.month {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.selectMonth {
+  font-size: 1.5em;
+}
+
+.selectedMonth {
+  height: 2rem;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.sections {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.vegetables,
+.fruits {
+  display: flex;
+  flex-direction: column;
+  margin : 0 20px;
+}
+
+@media (max-width: 1024px) {
   .sections {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .vegetables,
-    .fruits {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      justify-content: center;
-      width: 100%;
-      margin: auto 50px;
-    }
+  .vegetables,
+  .fruits {
+    width: 100%;
+    margin-bottom: 50px;
   }
 }

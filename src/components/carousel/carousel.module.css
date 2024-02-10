@@ -1,7 +1,9 @@
 .container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .cards {
@@ -10,16 +12,43 @@
 }
 
 .card {
-  opacity: 0.5;
+  opacity: 0.4;
   scale: 0.75;
-  transition: opacity 0.5s;
+  align-self: center;
 }
 
 .mainCard {
   opacity: 1;
   scale: 1;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  .picture {
+    width: 500px;
+    height: 500px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .name {
+    padding-top: 20px;
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 16px;
+    padding: 20px;
+  }
 }
 
 .arrow {
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.arrow:hover {
+  transform: scale(1.2);
 }
