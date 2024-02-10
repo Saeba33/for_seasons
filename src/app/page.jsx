@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Carousel from "@/components/carousel/Carousel";
 import styles from "./page.module.css";
@@ -20,8 +19,7 @@ const getCurrentMonth = () => {
     "november",
     "december",
   ];
-  const currentMonthIndex = new Date().getMonth();
-  return monthNames[currentMonthIndex];
+  return monthNames[new Date().getMonth()];
 };
 
 const Home = () => {
@@ -33,7 +31,6 @@ const Home = () => {
     const fetchProductsByMonth = async (month) => {
       const response = await fetch(`/api/products?month=${month}`);
       const data = await response.json();
-
       setVegetables(
         data.filter((product) => product.category === "vegetables")
       );
@@ -70,73 +67,11 @@ const Home = () => {
       <div className={styles.sections}>
         <section className={styles.vegetables}>
           <h3>Légumes</h3>
-          <Carousel
-            items={[
-              ...vegetables
-                .filter((veg) => veg.featured === true)
-                .map((veg) => (
-                  <div key={veg.id} className={styles.card}>
-                    <Image
-                      src={veg.picture || "/placeholder.jpg"}
-                      alt={veg.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{veg.name}</h5>
-                    <p>{veg.description}</p>
-                  </div>
-                )),
-              ...vegetables
-                .filter((veg) => veg.featured !== true)
-                .map((veg) => (
-                  <div key={veg.id} className={styles.card}>
-                    <Image
-                      src={veg.picture || "/placeholder.jpg"}
-                      alt={veg.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{veg.name}</h5>
-                    <p>{veg.description}</p>
-                  </div>
-                )),
-            ]}
-          />
+          <Carousel items={vegetables} />
         </section>
         <section className={styles.fruits}>
           <h3>Fruits</h3>
-          <Carousel
-            items={[
-              ...fruits
-                .filter((fruit) => fruit.featured === true)
-                .map((fruit) => (
-                  <div key={fruit.id} className={styles.card}>
-                    <Image
-                      src={fruit.picture || "/placeholder.jpg"}
-                      alt={fruit.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{fruit.name}</h5>
-                    <p>{fruit.description}</p>
-                  </div>
-                )),
-              ...fruits
-                .filter((fruit) => fruit.featured !== true)
-                .map((fruit) => (
-                  <div key={fruit.id} className={styles.card}>
-                    <Image
-                      src={fruit.picture || "/placeholder.jpg"}
-                      alt={fruit.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{fruit.name}</h5>
-                    <p>{fruit.description}</p>
-                  </div>
-                )),
-            ]}
-          />
+          <Carousel items={fruits} />
         </section>
       </div>
     </div>
