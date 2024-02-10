@@ -27,6 +27,7 @@
 .modal button {
   padding: 10px;
   width: 50%;
+  font-family: "Biryani", sans-serif;
 }
 
 .checkbox {
@@ -71,7 +72,7 @@
   display: block;
   margin: 0 auto 20px;
   max-width: 100%;
-  width: 80%;
+  width: 100%;
   height: auto;
 }
 
@@ -88,7 +89,7 @@
 
 .buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 10px;
 }
 

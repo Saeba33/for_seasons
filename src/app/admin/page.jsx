@@ -52,6 +52,17 @@ const Admin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      formData.picture &&
+      !formData.picture.startsWith("/") &&
+      !formData.picture.startsWith("http://") &&
+      !formData.picture.startsWith("https://")
+    ) {
+      alert(
+        'L\'URL de l\'image doit commencer par "/" ou "http://" ou "https://"'
+      );
+      return;
+    }
     const method = selectedProduct ? "PUT" : "POST";
     const url = selectedProduct
       ? `/api/admin/${selectedProduct}`
@@ -137,14 +148,16 @@ const Admin = () => {
               placeholder="Nom du produit"
               required
             />
-            <input
-              type="text"
+            <select
               name="category"
               value={formData.category}
               onChange={handleFormChange}
-              placeholder="Catégorie"
               required
-            />
+            >
+              <option value="">Sélectionnez une catégorie</option>
+              <option value="fruits">Fruits</option>
+              <option value="vegetables">Légumes</option>
+            </select>
             <input
               type="text"
               name="picture"
