@@ -1,11 +1,14 @@
 .container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 100px;
+  font-size: x-large;
 }
 
 .formContainer {
   flex: 1;
+  width: 60%;
 }
 
 .form {
@@ -21,7 +24,7 @@
   border: none;
   outline: none;
   background-color: var(--bgSoft);
-  color: var(--text);
+  color: var(--textSoft);
 }
 
 .form textarea {
@@ -31,7 +34,7 @@
 .form button {
   padding: 20px;
   background-color: var(--btn);
-  color: var(--text);
+  color: var(--textSoft);
   font-weight: bold;
   border: none;
   border-radius: 5px;
