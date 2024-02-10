@@ -3,8 +3,8 @@ import { useState } from "react";
 import styles from "./carousel.module.css";
 import leftArrow from "/public/left_arrow.png";
 import rightArrow from "/public/right_arrow.png";
-import leftArrowHover from "/public/left_arrow_hover.png"; // Importez l'image de survol de la flèche gauche
-import rightArrowHover from "/public/right_arrow_hover.png"; // Importez l'image de survol de la flèche droite
+import leftArrowHover from "/public/left_arrow_hover.png";
+import rightArrowHover from "/public/right_arrow_hover.png";
 
 const Carousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
