@@ -52,14 +52,14 @@ CREATE TABLE quantities (
   quantity_label VARCHAR(255) NOT NULL,
   recipe_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
-  FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
-  FOREIGN KEY (product_id) REFERENCES products(product_id)
+  FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES products(product_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE favorites (
   favorite_id INTEGER PRIMARY KEY AUTO_INCREMENT,
   recipe_id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
-  FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
+  FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE
 );

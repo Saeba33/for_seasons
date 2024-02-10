@@ -44,29 +44,27 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Mot de passe"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-            <button type="submit">Se connecter</button>
-          {error && <div>{error}</div>}
-          <Link href="/register">
-            {"Pas de compte"} <b>S&apos;enregistrer</b>
-          </Link>
-        </form>
-      </div>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Se connecter</button>
+        {error && <div>{error}</div>}
+        <Link href="/register">
+          {"Pas de compte ?"} <span className={styles.register}>S&apos;enregistrer</span>
+        </Link>
+      </form>
     </div>
   );
 };

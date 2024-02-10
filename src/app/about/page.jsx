@@ -11,7 +11,7 @@ const About = () => {
         </p>
       </section>
       <section className={styles.firstSection}>
-        <h2>Découvrez les Stars de la Saison</h2>
+        <h2>Découvrez les stars de la saison</h2>
         <p>
           Chaque mois, &quot;4 Saisons&quot; met en lumière{" "}
           <strong>3 fruits et 3 légumes</strong> qui sont à leur apogée, vous
@@ -21,7 +21,7 @@ const About = () => {
         </p>
       </section>
       <section className={styles.secondSection}>
-        <h2>Inspiration Culinaire à Portée de Clic</h2>
+        <h2>Inspiration culinaire à portée de clic</h2>
         <p>
           Pour chaque aliment de saison présenté, nous vous proposons une
           collection de recettes triées sur le volet, conçues pour en valoriser
@@ -30,36 +30,36 @@ const About = () => {
         </p>
       </section>
       <section className={styles.thirdSection}>
-        <h2>Vos Favoris, Notre Priorité</h2>
+        <h2>Vos Favoris, notre priorité</h2>
         <p>
           Ajoutez facilement vos recettes préférées à votre liste de favoris et
           retrouvez-les en un instant pour votre prochaine aventure en cuisine.
         </p>
       </section>
       <section className={styles.fourthSection}>
-        <h2>Pourquoi Choisir &quot;4 Saisons&quot; ?</h2>
+        <h2>Pourquoi choisir &quot;4 Saisons&quot; ?</h2>
         <ul>
           <li>
-            <strong>Frais et de Qualité :</strong> Profitez des meilleurs
-            produits que la nature a à offrir.
-          </li>
-          <li>
-            <strong>Éco-responsable :</strong> Soutenez l&apos;agriculture
+            <strong>Éco-responsable :</strong> soutenez l&apos;agriculture
             durable et réduisez votre empreinte carbone.
           </li>
           <li>
-            <strong>Santé et Bien-être :</strong> Bénéficiez des bienfaits
+            <strong>Frais et de qualité :</strong> profitez des meilleurs
+            produits que la nature a à offrir.
+          </li>
+          <li>
+            <strong>Santé et bien-être :</strong> bénéficiez des bienfaits
             nutritionnels des fruits et légumes frais.
           </li>
           <li>
-            <strong>Découverte et Plaisir :</strong> Laissez-vous surprendre par
+            <strong>Découverte et plaisir :</strong> laissez-vous surprendre par
             la variété des saveurs et textures.
           </li>
         </ul>
       </section>
       <section className={styles.lastSection}>
         <p>
-          &quot;4 Saisons&quot; est plus qu&apos;un site ; c&apos;est une
+          &quot;4 Saisons&quot; est plus qu&apos;un site, c&apos;est une
           communauté de passionnés de cuisine et de nature.{" "}
           <strong>Rejoignez-nous</strong> et redécouvrez le plaisir de cuisiner
           avec des ingrédients qui racontent une histoire, celle des cycles
