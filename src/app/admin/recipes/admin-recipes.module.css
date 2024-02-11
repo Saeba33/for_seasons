@@ -96,13 +96,13 @@
 }
 
 .addButton {
-  background-color: #28a745;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 50px 0;
+  background: #24963e;
 }
 
 .editButton {
