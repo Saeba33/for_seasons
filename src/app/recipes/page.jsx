@@ -31,14 +31,17 @@ const Recipes = () => {
   }, [showFavorites, authToken]);
 
   return (
-    <div className={styles.recipes}>
-      <h1>Recettes</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Recettes</h1>
       {isLoggedIn ? (
-        <button onClick={() => setShowFavorites(!showFavorites)}>
+        <button
+          className={styles.favorites}
+          onClick={() => setShowFavorites(!showFavorites)}
+        >
           {showFavorites ? "Voir toutes les recettes" : "Voir mes favoris"}
         </button>
       ) : (
-        <p>Connectez-vous pour voir vos favoris</p>
+        <p>Connectez-vous pour voir vos recettes préférées</p>
       )}
       <div className={styles.recipeList}>
         {recipes.map((recipe, index) =>
@@ -56,12 +59,12 @@ const Recipes = () => {
                 </div>
                 <div className={styles.recipeDetails}>
                   <h2>{recipe.title}</h2>
-                  <p>Difficulté: {recipe.difficulty}</p>
-                  <p>Temps de préparation: {recipe.duration}</p>
-                  <p>Nombre de personnes: {recipe.number_persons}</p>
-                  <p>Instructions: {recipe.instructions}</p>
-                  <p>Ustensiles: {recipe.utensils}</p>
-                  <p>Information: {recipe.information}</p>
+                  <p>Difficulté : {recipe.difficulty}</p>
+                  <p>Temps de préparation : {recipe.duration}</p>
+                  <p>Nombre de personnes : {recipe.number_persons}</p>
+                  <p>Ustensiles : {recipe.utensils}</p>
+                  <p>Instructions : {recipe.instructions}</p>
+                  <p>Informations : {recipe.information}</p>
                 </div>
               </Link>
             </div>

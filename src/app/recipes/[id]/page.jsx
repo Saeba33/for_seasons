@@ -3,6 +3,9 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
+import styles from "./recipe-detail.module.css";
+import favorite from "/public/favorite.png";
+import unfavorite from "/public/not-favorite.png";
 
 const RecipeDetails = () => {
   const { isLoggedIn, authToken } = useContext(AuthContext);
@@ -16,7 +19,6 @@ const RecipeDetails = () => {
         setIsFavorite(false);
         return;
       }
-
       try {
         const response = await fetch(`/api/favorites/${recipeId}`, {
           headers: {
@@ -63,7 +65,6 @@ const RecipeDetails = () => {
 
       if (response.ok) {
         setIsFavorite(true);
-        alert("Recette ajoutée aux favoris!");
       } else {
         console.error("Failed to add favorite");
       }
@@ -81,10 +82,8 @@ const RecipeDetails = () => {
           Authorization: `Bearer ${authToken}`,
         },
       });
-
       if (response.ok) {
         setIsFavorite(false);
-        alert("Recette retirée des favoris!");
       } else {
         console.error("Failed to remove favorite");
       }
@@ -92,40 +91,61 @@ const RecipeDetails = () => {
       console.error("Error removing from favorites:", error);
     }
   };
-
   if (!recipe) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      {recipe.photo && (
+    <div className={styles.container}>
+      <div className={styles.picture}>
         <Image
           src={recipe.photo}
           alt={recipe.title}
-          width={500}
-          height={300}
+          width={200}
+          height={200}
           layout="responsive"
         />
-      )}
-      <h1>{recipe.title}</h1>
-      <p>Difficulté: {recipe.difficulty}</p>
-      <div>
-        <h2>Instructions</h2>
-        <p>{recipe.instructions}</p>
       </div>
-      {isLoggedIn && (
-        <button
-          onClick={isFavorite ? removeFavorite : addFavorite}
-          disabled={isLoadingFavorite}
-        >
-          {isLoadingFavorite
-            ? "Chargement..."
-            : isFavorite
-            ? "Retirer des favoris"
-            : "Ajouter aux favoris"}
-        </button>
-      )}
+      <div className={styles.content}>
+        <h2 className={styles.title}>{recipe.title}</h2>
+        <p className={styles.difficulty}>Difficulté : {recipe.difficulty}</p>
+        <p className={styles.duration}>
+          Temps de préparation : {recipe.duration}
+        </p>
+        <p className={styles.persons}>
+          Nombre de personnes : {recipe.number_persons}
+        </p>
+        <p className={styles.ustensils}>Ustensiles : {recipe.utensils}</p>
+        <p className={styles.instructions}>
+          Instructions : {recipe.instructions}
+        </p>
+        <p className={styles.informations}>
+          Informations : {recipe.information}
+        </p>
+
+        {isLoggedIn && (
+          <div className={styles.favoriteContainer}>
+            <button
+              className={styles.favorite}
+              onClick={isFavorite ? removeFavorite : addFavorite}
+              disabled={isLoadingFavorite}
+            >
+              {isLoadingFavorite ? (
+                "Chargement..."
+              ) : isFavorite ? (
+                <Image src={favorite} alt="Favorite" width={50} height={50} />
+              ) : (
+                <Image
+                  src={unfavorite}
+                  alt="Not Favorite"
+                  width={50}
+                  height={50}
+                />
+              )}
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

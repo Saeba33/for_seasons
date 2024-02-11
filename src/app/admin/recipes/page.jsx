@@ -224,12 +224,12 @@ const AdminRecipes = () => {
                   layout="responsive"
                 />
               )}
-              <p>Difficulté: {recipe.difficulty}</p>
-              <p>Durée: {recipe.duration}</p>
-              <p>Nombre de personnes: {recipe.number_persons}</p>
-              <p>Ustensiles: {recipe.utensils}</p>
-              <p>Instructions: {recipe.instructions}</p>
-              <p>Informations supplémentaires: {recipe.information}</p>
+              <p>Difficulté : {recipe.difficulty}</p>
+              <p>Durée : {recipe.duration}</p>
+              <p>Nombre de personnes : {recipe.number_persons}</p>
+              <p>Ustensiles : {recipe.utensils}</p>
+              <p>Instructions : {recipe.instructions}</p>
+              <p>Informations : {recipe.information}</p>
             </div>
             <div className={styles.buttons}>
               <button
