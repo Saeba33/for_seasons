@@ -1,18 +1,27 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./admin.module.css";
+import product from "/public/product.png";
+import recipe from "/public/recipe.png";
 
 const Admin = () => {
   return (
     <div className={styles.container}>
       <h1>Panel administrateur</h1>
-      <Link className={styles.link} href="/admin/products">
-        Gestion des produits
-      </Link>
-      <Link className={styles.link} href="/admin/recipes">
-        Gestion des recettes
-      </Link>
+      <div className={styles.product}>
+        <Link className={styles.link} href="/admin/products">
+          Gestion des produits
+        </Link>
+        <Image src={product} alt={product} width={50} height={50} />
+      </div>
+      <div className={styles.recipe}>
+        <Link className={styles.link} href="/admin/recipes">
+          Gestion des recettes
+        </Link>
+        <Image src={recipe} alt={recipe} width={50} height={50} />
+      </div>
     </div>
   );
 };

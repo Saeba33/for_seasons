@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./admin-products.module.css";
+import retour from "/public/return.png";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -127,7 +129,18 @@ const AdminProducts = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Gestion des produits</h1>
+      <div className={styles.return}>
+        <h1>Gestion des produits</h1>
+        <Link className={styles.link} href="/admin">
+          <Image
+            className={styles.link}
+            src={retour}
+            alt="retour"
+            width={50}
+            height={50}
+          />
+        </Link>
+      </div>
       <button
         onClick={() => setIsModalOpen(true)}
         className={`${styles.addButton} ${styles.buttons}`}

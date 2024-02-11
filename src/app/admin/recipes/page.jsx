@@ -2,8 +2,10 @@
 
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import styles from "./admin-recipes.module.css";
+import retour from "/public/return.png";
 
 const AdminRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -115,7 +117,12 @@ const AdminRecipes = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Gestion des recettes</h1>
+      <div className={styles.return}>
+        <h1>Gestion des recettes</h1>
+        <Link className={styles.link} href="/admin">
+          <Image src={retour} alt="retour" width={50} height={50} />
+        </Link>
+      </div>
       <button
         onClick={() => {
           setIsModalOpen(true);
