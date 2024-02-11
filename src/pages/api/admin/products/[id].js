@@ -2,7 +2,7 @@ import {
   deleteAdminProduct,
   readAdminProductById,
   updateAdminProduct,
-} from "@/managers/adminManager";
+} from "@/managers/adminProductsManager";
 
 export default async function handler(req, res) {
   const { id } = req.query;

@@ -1,4 +1,7 @@
-import { createAdminProduct, readAdminProducts } from "@/managers/adminManager";
+import {
+  createAdminProduct,
+  readAdminProducts,
+} from "@/managers/adminProductsManager";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
