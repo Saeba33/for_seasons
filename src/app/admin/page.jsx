@@ -9,7 +9,7 @@ import recipe from "/public/recipe.png";
 const Admin = () => {
   return (
     <div className={styles.container}>
-      <h1>Panel administrateur</h1>
+      <h1 className={styles.title}> Admin Panel</h1>
       <div className={styles.product}>
         <Link className={styles.link} href="/admin/products">
           Gestion des produits

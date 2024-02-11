@@ -128,7 +128,7 @@ const AdminRecipes = () => {
           setIsModalOpen(true);
           resetForm();
         }}
-        className={`${styles.addButton} ${styles.buttons}`}
+        className={styles.addButton}
       >
         Ajouter une recette
       </button>

@@ -143,7 +143,7 @@ const AdminProducts = () => {
       </div>
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`${styles.addButton} ${styles.buttons}`}
+        className={styles.addButton}
       >
         Ajouter un produit
       </button>

@@ -1,17 +1,33 @@
 .container {
-  margin: 20px;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50px;
+  background: #f5f5f5;
+  box-shadow: 4px 4px 0px #c4c4c4, -3px -3px 0px #ffffff;
+  width: 50%;
+  height: 50svh;
+  top: 25%;
+  left: 25%;
+}
 
-  .link {
-    text-decoration: underline;
-  }
+.title {
+  color: var(--text);
+  margin-bottom: 50px;
+  font-size: xx-large;
 }
 
 .product,
 .recipe {
   display: flex;
   align-items: center;
+  font-size: 24px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px #ffffff;
+  padding: 15px;
 }
