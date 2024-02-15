@@ -4,14 +4,23 @@ import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import AdminIngredients from "../recipes/ingredients/page";
 import styles from "./admin-recipes.module.css";
+import {
+  fetchProducts,
+  fetchRecipes,
+  handleAddRecipe,
+  handleChangeRecipe,
+  handleDeleteRecipe,
+} from "./utils";
 import retour from "/public/return.png";
 
 const AdminRecipes = () => {
+  const { userId } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { userId } = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -25,14 +34,15 @@ const AdminRecipes = () => {
   });
 
   useEffect(() => {
-    fetchRecipes();
-  }, []);
+    const loadData = async () => {
+      const loadedRecipes = await fetchRecipes();
+      setRecipes(loadedRecipes);
+      const loadedProducts = await fetchProducts();
+      setProducts(loadedProducts);
+    };
 
-  const fetchRecipes = async () => {
-    const response = await fetch("/api/admin/recipes");
-    const data = await response.json();
-    setRecipes(data);
-  };
+    loadData();
+  }, []);
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
@@ -51,53 +61,38 @@ const AdminRecipes = () => {
       !formData.photo.startsWith("https://")
     ) {
       alert(
-        'L\'URL de l\'image doit commencer par "/" ou "http://" ou "https://"'
+        'L\'URL de l\'image doit commencer par "/", "http://" ou "https://"'
       );
       return;
     }
-    const recipeData = {
-      ...formData,
-      user_id: userId,
-    };
-    const method = selectedRecipe ? "PUT" : "POST";
-    const url = selectedRecipe
-      ? `/api/admin/recipes/${selectedRecipe}`
-      : "/api/admin/recipes";
+    const recipeData = { ...formData, user_id: userId };
     try {
-      const response = await fetch(url, {
-        method: method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recipeData),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (selectedRecipe) {
+        await handleChangeRecipe(selectedRecipe, recipeData);
+      } else {
+        await handleAddRecipe(recipeData);
       }
-      await response.json();
-      fetchRecipes();
-      resetForm();
+      await loadRecipes();
       setIsModalOpen(false);
+      resetForm();
     } catch (error) {
       console.error("Erreur lors de la soumission du formulaire:", error);
     }
   };
 
-  const handleEdit = (recipe) => {
+  const handleRecipeEdit = (recipe) => {
     setSelectedRecipe(recipe.recipe_id);
-    setFormData({ ...recipe });
+    setFormData(recipe);
     setIsModalOpen(true);
   };
 
-  const handleDelete = async (recipeId) => {
+  const handleRecipeDelete = async (recipeId) => {
     const confirmDelete = window.confirm(
       "Êtes-vous sûr de vouloir supprimer cette recette ?"
     );
     if (confirmDelete) {
-      await fetch(`/api/admin/recipes/${recipeId}`, {
-        method: "DELETE",
-      });
-      fetchRecipes();
+      await handleDeleteRecipe(recipeId);
+      await loadRecipes();
     }
   };
 
@@ -115,11 +110,16 @@ const AdminRecipes = () => {
     });
   };
 
+  const loadRecipes = async () => {
+    const loadedRecipes = await fetchRecipes();
+    setRecipes(loadedRecipes);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.return}>
         <h1>Gestion des recettes</h1>
-        <Link className={styles.link} href="/admin">
+        <Link href="/admin">
           <Image src={retour} alt="retour" width={50} height={50} />
         </Link>
       </div>
@@ -132,6 +132,7 @@ const AdminRecipes = () => {
       >
         Ajouter une recette
       </button>
+
       {isModalOpen && (
         <>
           <div
@@ -144,7 +145,7 @@ const AdminRecipes = () => {
               name="title"
               value={formData.title}
               onChange={handleFormChange}
-              placeholder="Titre"
+              placeholder="Titre de la recette"
               required
             />
             <input
@@ -160,7 +161,7 @@ const AdminRecipes = () => {
               onChange={handleFormChange}
               required
             >
-              <option value="">Sélectionnez un niveau de difficulté</option>
+              <option value="">Sélectionnez le niveau de difficulté</option>
               <option value="easy">Facile</option>
               <option value="medium">Intermédiaire</option>
               <option value="hard">Difficile</option>
@@ -170,7 +171,7 @@ const AdminRecipes = () => {
               name="duration"
               value={formData.duration}
               onChange={handleFormChange}
-              placeholder="Durée"
+              placeholder="Durée (ex: 30 minutes)"
               required
             />
             <input
@@ -181,20 +182,18 @@ const AdminRecipes = () => {
               placeholder="Nombre de personnes"
               required
             />
-            <input
-              type="text"
-              name="utensils"
-              value={formData.utensils}
-              onChange={handleFormChange}
-              placeholder="Ustensiles"
-              required
-            />
             <textarea
               name="instructions"
               value={formData.instructions}
               onChange={handleFormChange}
-              placeholder="Instructions"
+              placeholder="Instructions de préparation"
               required
+            />
+            <textarea
+              name="utensils"
+              value={formData.utensils}
+              onChange={handleFormChange}
+              placeholder="Ustensiles nécessaires"
             />
             <textarea
               name="information"
@@ -202,45 +201,51 @@ const AdminRecipes = () => {
               onChange={handleFormChange}
               placeholder="Informations supplémentaires"
             />
-            <button type="submit">
-              {selectedRecipe ? "Mettre à jour la recette" : "Créer la recette"}
+            {selectedRecipe && (
+              <AdminIngredients selectedRecipeId={selectedRecipe} />
+            )}
+            <button type="submit" className={styles.submitButton}>
+              {selectedRecipe
+                ? "Mettre à jour la recette"
+                : "Ajouter la recette"}
             </button>
           </form>
         </>
       )}
-      <div className={styles.cards}>
+
+      <div className={styles.recipesList}>
         {recipes.map((recipe) => (
-          <div key={recipe.recipe_id} className={styles.card}>
-            <div className={styles.header}>
+          <div key={recipe.recipe_id} className={styles.recipeCard}>
+            <div className={styles.recipeHeader}>
               <h3>{recipe.title}</h3>
-            </div>
-            <div className={styles.content}>
               {recipe.photo && (
                 <Image
                   src={recipe.photo}
                   alt={recipe.title}
-                  width={200}
-                  height={200}
+                  width={100}
+                  height={100}
                   layout="responsive"
                 />
               )}
-              <p>Difficulté : {recipe.difficulty}</p>
-              <p>Durée : {recipe.duration}</p>
-              <p>Nombre de personnes : {recipe.number_persons}</p>
-              <p>Ustensiles : {recipe.utensils}</p>
-              <p>Instructions : {recipe.instructions}</p>
-              <p>Informations : {recipe.information}</p>
             </div>
-            <div className={styles.buttons}>
+            <div className={styles.recipeDetails}>
+              <p>Difficulté: {recipe.difficulty}</p>
+              <p>Durée: {recipe.duration}</p>
+              <p>Pour {recipe.number_persons} personne(s)</p>
+              <p>Ustensiles: {recipe.utensils}</p>
+              <p>Instructions: {recipe.instructions}</p>
+              <p>Informations supplémentaires: {recipe.information}</p>
+            </div>
+            <div className={styles.recipeActions}>
               <button
-                className={`${styles.editButton}`}
-                onClick={() => handleEdit(recipe)}
+                onClick={() => handleRecipeEdit(recipe)}
+                className={styles.editButton}
               >
                 Modifier
               </button>
               <button
-                className={`${styles.deleteButton}`}
-                onClick={() => handleDelete(recipe.recipe_id)}
+                onClick={() => handleRecipeDelete(recipe.recipe_id)}
+                className={styles.deleteButton}
               >
                 Supprimer
               </button>

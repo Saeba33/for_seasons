@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import styles from "./carousel.module.css";
 import leftArrow from "/public/left_arrow.png";
@@ -37,22 +38,24 @@ const Carousel = ({ items }) => {
     }
 
     return (
-      <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
-        <Image
-          src={item.picture}
-          alt={item.name}
-          className={styles.picture}
-          width={500}
-          height={500}
-          layout="responsive"
-        />
-        {isMainCard && (
-          <div>
-            <h5 className={styles.name}>{item.name}</h5>
-            <p className={styles.description}>{item.description}</p>
-          </div>
-        )}
-      </div>
+      <Link href={`/recipes/${encodeURIComponent(item.name)}`}>
+        <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
+          <Image
+            src={item.picture}
+            alt={item.name}
+            className={styles.picture}
+            width={500}
+            height={500}
+            layout="responsive"
+          />
+          {isMainCard && (
+            <div>
+              <h5 className={styles.name}>{item.name}</h5>
+              <p className={styles.description}>{item.description}</p>
+            </div>
+          )}
+        </div>
+      </Link>
     );
   };
 

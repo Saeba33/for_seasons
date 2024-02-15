@@ -1,6 +1,7 @@
 import {
   deleteRecipeById,
   readRecipeById,
+  readRecipesByProduct,
   updateRecipeById,
 } from "@/managers/recipesManager";
 
@@ -10,13 +11,18 @@ export default async function handler(req, res) {
 
   try {
     if (method === "GET") {
-      const recipe = await readRecipeById(id);
-      if (!recipe) {
-        return res
-          .status(404)
-          .json({ message: `No recipe found with ID: ${id}.` });
+      if (id.match(/^\d+$/)) {
+        const recipe = await readRecipeById(id);
+        if (!recipe) {
+          return res
+            .status(404)
+            .json({ message: `No recipe found with ID: ${id}.` });
+        }
+        res.status(200).json(recipe);
+      } else {
+        const recipes = await readRecipesByProduct(id);
+        res.status(200).json(recipes);
       }
-      res.status(200).json(recipe);
     } else if (method === "PUT") {
       const updatePayload = req.body;
       const updatedRecipe = await updateRecipeById({ id, ...updatePayload });

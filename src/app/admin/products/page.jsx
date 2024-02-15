@@ -10,6 +10,7 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -127,6 +128,27 @@ const AdminProducts = () => {
     });
   };
 
+  const filteredProducts = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()) ||
+      product.category.toLowerCase().includes(search.toLowerCase()) ||
+      product.month.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase()) ||
+      product.featured
+        .toString()
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      product.product_id
+        .toString()
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      product.picture.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.return}>
@@ -141,12 +163,19 @@ const AdminProducts = () => {
           />
         </Link>
       </div>
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className={styles.addButton}
-      >
+      <button onClick={() => setIsModalOpen(true)} className={styles.addButton}>
         Ajouter un produit
       </button>
+
+      <div className={styles.search}>
+        <input
+          type="text"
+          placeholder="Rechercher un produit ..."
+          value={search}
+          onChange={handleSearch}
+        />
+      </div>
+
       {isModalOpen && (
         <>
           <div
@@ -213,42 +242,46 @@ const AdminProducts = () => {
         </>
       )}
       <div className={styles.cards}>
-        {products.map((product) => (
-          <div key={product.product_id} className={styles.card}>
-            <div className={styles.header}>
-              <p>ID: {product.product_id}</p>
-              <h3>{product.name}</h3>
+        {filteredProducts.length === 0 ? (
+          <p>Aucun résultat pour cette recherche 😢 </p>
+        ) : (
+          filteredProducts.map((product) => (
+            <div key={product.product_id} className={styles.card}>
+              <div className={styles.header}>
+                <p>ID: {product.product_id}</p>
+                <h3>{product.name}</h3>
+              </div>
+              <div className={styles.content}>
+                {product.picture && (
+                  <Image
+                    src={product.picture}
+                    alt={product.name}
+                    width={200}
+                    height={200}
+                  />
+                )}
+                <p>Catégorie: {product.category}</p>
+                <p>Mois: {product.month}</p>
+                <p>En vedette: {product.featured ? "Oui" : "Non"}</p>
+                <p>Description: {product.description}</p>
+              </div>
+              <div className={styles.buttons}>
+                <button
+                  className={`${styles.editButton}`}
+                  onClick={() => handleEdit(product)}
+                >
+                  Modifier
+                </button>
+                <button
+                  className={`${styles.deleteButton}`}
+                  onClick={() => handleDelete(product.product_id)}
+                >
+                  Supprimer
+                </button>
+              </div>
             </div>
-            <div className={styles.content}>
-              {product.picture && (
-                <Image
-                  src={product.picture}
-                  alt={product.name}
-                  width={200}
-                  height={200}
-                />
-              )}
-              <p>Catégorie: {product.category}</p>
-              <p>Mois: {product.month}</p>
-              <p>En vedette: {product.featured ? "Oui" : "Non"}</p>
-              <p>Description: {product.description}</p>
-            </div>
-            <div className={styles.buttons}>
-              <button
-                className={`${styles.editButton}`}
-                onClick={() => handleEdit(product)}
-              >
-                Modifier
-              </button>
-              <button
-                className={`${styles.deleteButton}`}
-                onClick={() => handleDelete(product.product_id)}
-              >
-                Supprimer
-              </button>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

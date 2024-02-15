@@ -25,7 +25,6 @@ const RecipeDetails = () => {
             Authorization: `Bearer ${authToken}`,
           },
         });
-
         setIsFavorite(response.ok);
       } catch (error) {
         console.error("Error checking favorite:", error);
