@@ -200,6 +200,7 @@ const AdminProducts = () => {
               <option value="">Sélectionnez une catégorie</option>
               <option value="fruits">Fruits</option>
               <option value="vegetables">Légumes</option>
+              <option value="other">Autres</option>
             </select>
             <input
               type="text"

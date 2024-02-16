@@ -119,8 +119,14 @@ const AdminRecipes = () => {
     <div className={styles.container}>
       <div className={styles.return}>
         <h1>Gestion des recettes</h1>
-        <Link href="/admin">
-          <Image src={retour} alt="retour" width={50} height={50} />
+        <Link className={styles.link} href="/admin">
+          <Image
+            className={styles.link}
+            src={retour}
+            alt="retour"
+            width={50}
+            height={50}
+          />
         </Link>
       </div>
       <button
@@ -213,10 +219,10 @@ const AdminRecipes = () => {
         </>
       )}
 
-      <div className={styles.recipesList}>
+      <div className={styles.cards}>
         {recipes.map((recipe) => (
-          <div key={recipe.recipe_id} className={styles.recipeCard}>
-            <div className={styles.recipeHeader}>
+          <div key={recipe.recipe_id} className={styles.card}>
+            <div className={styles.content}>
               <h3>{recipe.title}</h3>
               {recipe.photo && (
                 <Image
@@ -227,8 +233,6 @@ const AdminRecipes = () => {
                   layout="responsive"
                 />
               )}
-            </div>
-            <div className={styles.recipeDetails}>
               <p>Difficulté: {recipe.difficulty}</p>
               <p>Durée: {recipe.duration}</p>
               <p>Pour {recipe.number_persons} personne(s)</p>
@@ -236,7 +240,7 @@ const AdminRecipes = () => {
               <p>Instructions: {recipe.instructions}</p>
               <p>Informations supplémentaires: {recipe.information}</p>
             </div>
-            <div className={styles.recipeActions}>
+            <div className={styles.buttons}>
               <button
                 onClick={() => handleRecipeEdit(recipe)}
                 className={styles.editButton}
