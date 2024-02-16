@@ -21,6 +21,7 @@ const AdminRecipes = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -29,7 +30,7 @@ const AdminRecipes = () => {
     duration: "",
     number_persons: "",
     instructions: "",
-    utensils: "",
+    ustensils: "",
     information: "",
   });
 
@@ -105,9 +106,28 @@ const AdminRecipes = () => {
       duration: "",
       number_persons: "",
       instructions: "",
-      utensils: "",
+      ustensils: "",
       information: "",
     });
+  };
+
+  const filteredRecipes = recipes.filter(
+    (recipe) =>
+      recipe.title.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.photo.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.difficulty.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.duration.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.number_persons
+        .toString()
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      recipe.instructions.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.ustensils.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.information.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
   };
 
   const loadRecipes = async () => {
@@ -138,6 +158,15 @@ const AdminRecipes = () => {
       >
         Ajouter une recette
       </button>
+
+      <div className={styles.search}>
+        <input
+          type="text"
+          placeholder="Rechercher une recette ..."
+          value={search}
+          onChange={handleSearch}
+        />
+      </div>
 
       {isModalOpen && (
         <>
@@ -196,8 +225,8 @@ const AdminRecipes = () => {
               required
             />
             <textarea
-              name="utensils"
-              value={formData.utensils}
+              name="ustensils"
+              value={formData.ustensils}
               onChange={handleFormChange}
               placeholder="Ustensiles nécessaires"
             />
@@ -218,44 +247,47 @@ const AdminRecipes = () => {
           </form>
         </>
       )}
-
       <div className={styles.cards}>
-        {recipes.map((recipe) => (
-          <div key={recipe.recipe_id} className={styles.card}>
-            <div className={styles.content}>
-              <h3>{recipe.title}</h3>
-              {recipe.photo && (
-                <Image
-                  src={recipe.photo}
-                  alt={recipe.title}
-                  width={100}
-                  height={100}
-                  layout="responsive"
-                />
-              )}
-              <p>Difficulté: {recipe.difficulty}</p>
-              <p>Durée: {recipe.duration}</p>
-              <p>Pour {recipe.number_persons} personne(s)</p>
-              <p>Ustensiles: {recipe.utensils}</p>
-              <p>Instructions: {recipe.instructions}</p>
-              <p>Informations supplémentaires: {recipe.information}</p>
+        {filteredRecipes.length === 0 ? (
+          <p>Aucun résultat pour cette recherche 😢 </p>
+        ) : (
+          filteredRecipes.map((recipe) => (
+            <div key={recipe.recipe_id} className={styles.card}>
+              <div className={styles.content}>
+                <h3>{recipe.title}</h3>
+                {recipe.photo && (
+                  <Image
+                    src={recipe.photo}
+                    alt={recipe.title}
+                    width={100}
+                    height={100}
+                    layout="responsive"
+                  />
+                )}
+                <p>Difficulté: {recipe.difficulty}</p>
+                <p>Durée: {recipe.duration}</p>
+                <p>Pour {recipe.number_persons} personne(s)</p>
+                <p>Ustensiles: {recipe.ustensils}</p>
+                <p>Instructions: {recipe.instructions}</p>
+                <p>Informations supplémentaires: {recipe.information}</p>
+              </div>
+              <div className={styles.buttons}>
+                <button
+                  onClick={() => handleRecipeEdit(recipe)}
+                  className={styles.editButton}
+                >
+                  Modifier
+                </button>
+                <button
+                  onClick={() => handleRecipeDelete(recipe.recipe_id)}
+                  className={styles.deleteButton}
+                >
+                  Supprimer
+                </button>
+              </div>
             </div>
-            <div className={styles.buttons}>
-              <button
-                onClick={() => handleRecipeEdit(recipe)}
-                className={styles.editButton}
-              >
-                Modifier
-              </button>
-              <button
-                onClick={() => handleRecipeDelete(recipe.recipe_id)}
-                className={styles.deleteButton}
-              >
-                Supprimer
-              </button>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

@@ -114,7 +114,7 @@ const RecipeDetails = () => {
         <p className={styles.persons}>
           Nombre de personnes : {recipe.number_persons}
         </p>
-        <p className={styles.ustensils}>Ustensiles : {recipe.utensils}</p>
+        <p className={styles.ustensils}>Ustensiles : {recipe.ustensils}</p>
         <p className={styles.instructions}>
           Instructions : {recipe.instructions}
         </p>

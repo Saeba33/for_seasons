@@ -8,7 +8,7 @@ async function createAdminRecipe({
   duration,
   number_persons,
   instructions,
-  utensils,
+  ustensils,
   information = null,
   user_id,
 }) {
@@ -16,7 +16,7 @@ async function createAdminRecipe({
   try {
     await connection.beginTransaction();
     const [recipeResult] = await connection.query(
-      "INSERT INTO recipes (title, photo, difficulty, duration, number_persons, instructions, utensils, information, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO recipes (title, photo, difficulty, duration, number_persons, instructions, ustensils, information, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         title,
         photo,
@@ -24,7 +24,7 @@ async function createAdminRecipe({
         duration,
         number_persons,
         instructions,
-        utensils,
+        ustensils,
         information,
         user_id,
       ]
@@ -48,7 +48,7 @@ async function createAdminRecipe({
 async function readAdminRecipes() {
   try {
     const [rows] = await db.query(
-      "SELECT recipes.recipe_id, recipes.title, recipes.photo, recipes.difficulty, recipes.duration, recipes.number_persons, recipes.instructions, recipes.utensils, recipes.information, recipes.user_id FROM recipes"
+      "SELECT recipes.recipe_id, recipes.title, recipes.photo, recipes.difficulty, recipes.duration, recipes.number_persons, recipes.instructions, recipes.ustensils, recipes.information, recipes.user_id FROM recipes"
     );
     return rows;
   } catch (err) {
@@ -80,14 +80,14 @@ async function updateAdminRecipe({
   duration,
   number_persons,
   instructions,
-  utensils,
+  ustensils,
   information,
 }) {
   const connection = await connectToDb();
   try {
     await connection.beginTransaction();
     await connection.query(
-      "UPDATE recipes SET title = ?, photo = ?, difficulty = ?, duration = ?, number_persons = ?, instructions = ?, utensils = ?, information = ? WHERE recipe_id = ?",
+      "UPDATE recipes SET title = ?, photo = ?, difficulty = ?, duration = ?, number_persons = ?, instructions = ?, ustensils = ?, information = ? WHERE recipe_id = ?",
       [
         title,
         photo,
@@ -95,7 +95,7 @@ async function updateAdminRecipe({
         duration,
         number_persons,
         instructions,
-        utensils,
+        ustensils,
         information,
         recipe_id,
       ]

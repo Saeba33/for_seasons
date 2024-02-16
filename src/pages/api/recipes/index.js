@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         duration,
         numberPersons,
         instructions,
-        utensils,
+        ustensils,
         information,
       } = req.body;
       const userId = req.user.user_id;
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         duration,
         numberPersons,
         instructions,
-        utensils,
+        ustensils,
         information,
         userId,
       });

@@ -62,7 +62,7 @@ const Recipes = () => {
                   <p>Difficulté : {recipe.difficulty}</p>
                   <p>Temps de préparation : {recipe.duration}</p>
                   <p>Nombre de personnes : {recipe.number_persons}</p>
-                  <p>Ustensiles : {recipe.utensils}</p>
+                  <p>Ustensiles : {recipe.ustensils}</p>
                   <p>Instructions : {recipe.instructions}</p>
                   <p>Informations : {recipe.information}</p>
                 </div>

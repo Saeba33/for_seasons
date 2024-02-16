@@ -8,13 +8,13 @@ const createRecipe = async ({
   duration,
   numberPersons,
   instructions,
-  utensils,
+  ustensils,
   information,
   userId,
 }) => {
   try {
     const [rows] = await db.query(
-      "INSERT INTO recipes (title, photo, difficulty, duration, number_persons, instructions, utensils, information, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO recipes (title, photo, difficulty, duration, number_persons, instructions, ustensils, information, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         title,
         photo,
@@ -22,7 +22,7 @@ const createRecipe = async ({
         duration,
         numberPersons,
         instructions,
-        utensils,
+        ustensils,
         information,
         userId,
       ]
@@ -90,7 +90,7 @@ const updateRecipeById = async ({
   duration,
   numberPersons,
   instructions,
-  utensils,
+  ustensils,
   information,
   userId,
   id,
@@ -103,12 +103,12 @@ const updateRecipeById = async ({
     const updatedDuration = duration || existingRecipe.duration;
     const updatedNumberPersons = numberPersons || existingRecipe.number_persons;
     const updatedInstructions = instructions || existingRecipe.instructions;
-    const updatedUtensils = utensils || existingRecipe.utensils;
+    const updatedustensils = ustensils || existingRecipe.ustensils;
     const updatedInformation = information || existingRecipe.information;
     const updatedUserId = userId || existingRecipe.user_id;
 
     const [result] = await db.query(
-      "UPDATE recipes SET title = ?, photo = ?, difficulty = ?, duration = ?, number_persons = ?, instructions = ?, utensils = ?, information = ?, user_id = ? WHERE recipe_id = ?",
+      "UPDATE recipes SET title = ?, photo = ?, difficulty = ?, duration = ?, number_persons = ?, instructions = ?, ustensils = ?, information = ?, user_id = ? WHERE recipe_id = ?",
       [
         updatedTitle,
         updatedPhoto,
@@ -116,7 +116,7 @@ const updateRecipeById = async ({
         updatedDuration,
         updatedNumberPersons,
         updatedInstructions,
-        updatedUtensils,
+        updatedustensils,
         updatedInformation,
         updatedUserId,
         id,
