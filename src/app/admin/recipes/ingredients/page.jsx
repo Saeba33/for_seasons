@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
   fetchIngredients,
@@ -7,6 +8,11 @@ import {
   handleDeleteIngredient,
 } from "../utils";
 import styles from "./ingredients.module.css";
+import add from "/public/add.png";
+import cancel from "/public/cancel.png";
+import remove from "/public/delete.png";
+import edit from "/public/edit.png";
+import validate from "/public/validate.png";
 
 const AdminIngredients = ({ selectedRecipeId }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -47,35 +53,36 @@ const AdminIngredients = ({ selectedRecipeId }) => {
   };
 
   const handleAddNewIngredient = async () => {
-if (
-  ingredients.some(
-    (ingredient) => ingredient.product_id.toString() === newIngredient.productId
-  )
-) {
-  alert("Cet ingrédient est déjà ajouté à la recette.");
-  return;
-}
+    if (
+      ingredients.some(
+        (ingredient) =>
+          ingredient.product_id.toString() === newIngredient.productId
+      )
+    ) {
+      alert("Cet ingrédient est déjà ajouté à la recette.");
+      return;
+    }
 
-if (
-  newIngredient.quantity &&
-  newIngredient.productId &&
-  newIngredient.label &&
-  newIngredient.productId !== ""
-) {
-  await handleAddIngredient(selectedRecipeId, {
-    ...newIngredient,
-    productId: parseInt(newIngredient.productId),
-  });
-  const updatedIngredients = await fetchIngredients(selectedRecipeId);
-  setIngredients(updatedIngredients);
-  setNewIngredient({
-    quantity: "",
-    productId: "",
-    label: "",
-  });
-} else {
-  alert("Veuillez remplir tous les champs et sélectionner un produit.");
-}
+    if (
+      newIngredient.quantity &&
+      newIngredient.productId &&
+      newIngredient.label &&
+      newIngredient.productId !== ""
+    ) {
+      await handleAddIngredient(selectedRecipeId, {
+        ...newIngredient,
+        productId: parseInt(newIngredient.productId),
+      });
+      const updatedIngredients = await fetchIngredients(selectedRecipeId);
+      setIngredients(updatedIngredients);
+      setNewIngredient({
+        quantity: "",
+        productId: "",
+        label: "",
+      });
+    } else {
+      alert("Veuillez remplir tous les champs et sélectionner un produit.");
+    }
   };
 
   const startEditing = (ingredient) => {
@@ -104,7 +111,6 @@ if (
       editingIngredient.label &&
       editingIngredient.productId !== ""
     ) {
-
       await handleChangeIngredient(editingIngredientId, {
         recipe_id: selectedRecipeId,
         quantity: editingIngredient.quantity,
@@ -130,37 +136,10 @@ if (
   return (
     <div className={styles.container}>
       <h2>Ingrédients</h2>
-      <div>
-        <select
-          value={newIngredient.productId}
-          onChange={(e) => updateNewIngredient("productId", e.target.value)}
-        >
-          <option value="">Veuillez sélectionner un produit</option>
-          {products.map((product) => (
-            <option key={product.product_id} value={product.product_id}>
-              {product.name}
-            </option>
-          ))}
-        </select>
-        <input
-          type="text"
-          value={newIngredient.quantity}
-          onChange={(e) => updateNewIngredient("quantity", e.target.value)}
-          placeholder="Quantité"
-        />
-        <input
-          type="text"
-          value={newIngredient.label}
-          onChange={(e) => updateNewIngredient("label", e.target.value)}
-          placeholder="Label"
-        />
-        <button onClick={handleAddNewIngredient}>Ajouter un ingrédient</button>
-      </div>
-
       {ingredients.map((ingredient, index) => (
-        <div key={index} className={styles.ingredient}>
+        <div key={index} className={styles.toto}>
           {editingIngredientId === ingredient.ingredient_id ? (
-            <div>
+            <div className={styles.editIngredient}>
               <select
                 value={editingIngredient.productId}
                 onChange={(e) =>
@@ -178,6 +157,7 @@ if (
                 ))}
               </select>
               <input
+                className={styles.input}
                 type="text"
                 value={editingIngredient.quantity}
                 onChange={(e) =>
@@ -197,35 +177,86 @@ if (
                     label: e.target.value,
                   }))
                 }
-                placeholder="Label"
+                placeholder="Unité"
               />
-              <button onClick={handleUpdateIngredient}>Confirmer</button>
-              <button onClick={() => setEditingIngredientId(null)}>
-                Annuler
-              </button>
+                <Image
+                  className={styles.buttons}
+                  id={styles.validate}
+                  src={validate}
+                  alt="confirmer"
+                  onClick={handleUpdateIngredient}
+                />
             </div>
           ) : (
-            <div>
-              <span>
-                {ingredient.label} - {ingredient.quantity} -{" "}
-                {
-                  products.find(
-                    (p) =>
-                      p.product_id.toString() ===
-                      ingredient.product_id.toString()
-                  )?.name
-                }
-              </span>
-              <button onClick={() => startEditing(ingredient)}>Modifier</button>
-              <button
-                onClick={() => handleRemoveIngredient(ingredient.ingredient_id)}
-              >
-                Supprimer
-              </button>
+            <div className={styles.listIngredients}>
+              <div className={styles.description}>
+                <span>
+                  {ingredient.quantity} {ingredient.label}{" "}
+                  {
+                    products.find(
+                      (p) =>
+                        p.product_id.toString() ===
+                        ingredient.product_id.toString()
+                    )?.name
+                  }
+                </span>
+              </div>
+              <div className={styles.actions}>
+                <Image
+                  className={styles.buttons}
+                  id={styles.edit}
+                  src={edit}
+                  alt="éditer"
+                  onClick={() => startEditing(ingredient)}
+                />
+                <Image
+                  className={styles.buttons}
+                  id={styles.remove}
+                  src={remove}
+                  alt="supprimer"
+                  onClick={() =>
+                    handleRemoveIngredient(ingredient.ingredient_id)
+                  }
+                />
+              </div>
             </div>
           )}
         </div>
       ))}
+      <div className={styles.newIngredient}>
+        <select
+          value={newIngredient.productId}
+          onChange={(e) => updateNewIngredient("productId", e.target.value)}
+        >
+          <option value="">Veuillez sélectionner un produit</option>
+          {products.map((product) => (
+            <option key={product.product_id} value={product.product_id}>
+              {product.name}
+            </option>
+          ))}
+        </select>
+        <input
+          className={styles.input}
+          type="text"
+          value={newIngredient.quantity}
+          onChange={(e) => updateNewIngredient("quantity", e.target.value)}
+          placeholder="Quantité"
+        />
+        <input
+          className={styles.input}
+          type="text"
+          value={newIngredient.label}
+          onChange={(e) => updateNewIngredient("label", e.target.value)}
+          placeholder="Unité"
+        />
+        <Image
+          className={styles.buttons}
+          id={styles.add}
+          src={add}
+          alt="ajouter"
+          onClick={handleAddNewIngredient}
+        />
+      </div>
     </div>
   );
 };
