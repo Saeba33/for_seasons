@@ -27,7 +27,6 @@ const Contact = () => {
     });
 
     if (response.ok) {
-      console.log("Email envoyé avec succès");
     } else {
       console.error("Erreur lors de l'envoi de l'email");
     }

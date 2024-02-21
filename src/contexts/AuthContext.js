@@ -6,6 +6,7 @@ export const AuthContext = createContext({
   authToken: null,
   userId: null,
   userProfile: null,
+  isAdmin: false,
   selectedProduct: null,
   login: () => {},
   logout: () => {},
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [authToken, setAuthToken] = useState(null);
   const [userId, setUserId] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ export const AuthProvider = ({ children }) => {
         setAuthToken(token);
         setUserId(decodedToken.userId);
         setUserProfile(decodedToken.profile);
+        setIsAdmin(decodedToken.profile === "administrator");
       }
     }
   }, []);
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(token);
     setUserId(decodedToken.userId);
     setUserProfile(profile);
+    setIsAdmin(profile === "administrator");
     window.location.href = "/";
   };
 
@@ -51,6 +55,7 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUserId(null);
     setUserProfile(null);
+    setIsAdmin(false);
     clearSelectedProduct();
     window.location.href = "/login";
   };
@@ -66,6 +71,7 @@ export const AuthProvider = ({ children }) => {
         authToken,
         userId,
         userProfile,
+        isAdmin,
         selectedProduct,
         login,
         logout,
