@@ -12,18 +12,18 @@ import recipe from "/public/recipe.png";
 const Admin = () => {
   const { userProfile, isLoggedIn } = useContext(AuthContext);
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true); // Ajoutez un état pour gérer le chargement
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!isLoggedIn || userProfile !== "administrator") {
-      router.push("/login");
+      router.push("/");
     } else {
-      setIsLoading(false); // L'utilisateur est connecté et est admin, on enlève l'état de chargement
+      setIsLoading(false);
     }
   }, [isLoggedIn, userProfile, router]);
 
   if (isLoading) {
-    return <div>Chargement...</div>; // Ou un composant de chargement plus élaboré
+    return <div>Chargement...</div>;
   }
 
   return (

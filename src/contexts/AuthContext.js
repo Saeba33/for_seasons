@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import { createContext, useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("token");
     if (token) {
       const decodedToken = jwt.decode(token);
       if (decodedToken) {
@@ -37,8 +38,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (token, profile) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("userProfile", JSON.stringify(profile));
+    Cookies.set("token", token, { expires: 1 / 24, httpOnly: true });
+    Cookies.set("userProfile", JSON.stringify(profile), {
+      expires: 1 / 24,
+      httpOnly: true,
+    });
     const decodedToken = jwt.decode(token);
     setIsLoggedIn(true);
     setAuthToken(token);
@@ -49,8 +53,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userProfile");
+    Cookies.remove("token");
+    Cookies.remove("userProfile");
     setIsLoggedIn(false);
     setAuthToken(null);
     setUserId(null);
