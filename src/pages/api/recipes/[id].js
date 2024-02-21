@@ -1,17 +1,16 @@
 import {
   deleteRecipeById,
   readRecipeById,
-  readRecipesByProduct,
   updateRecipeById,
 } from "@/managers/recipesManager";
 
 export default async function handler(req, res) {
-  const { method } = req;
-  const { id } = req.query;
+  const { method, body, query } = req;
+  const { id, type } = query;
 
   try {
     if (method === "GET") {
-      if (id.match(/^\d+$/)) {
+      if (type === "type1") {
         const recipe = await readRecipeById(id);
         if (!recipe) {
           return res
@@ -20,11 +19,13 @@ export default async function handler(req, res) {
         }
         res.status(200).json(recipe);
       } else {
-        const recipes = await readRecipesByProduct(id);
-        res.status(200).json(recipes);
+        res.status(400).json({
+          message: "Invalid request. Please specify a valid 'type' parameter.",
+          s,
+        });
       }
     } else if (method === "PUT") {
-      const updatePayload = req.body;
+      const updatePayload = body;
       const updatedRecipe = await updateRecipeById({ id, ...updatePayload });
 
       if (!updatedRecipe.affectedRows || updatedRecipe.affectedRows === 0) {

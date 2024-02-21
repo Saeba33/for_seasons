@@ -1,16 +1,23 @@
+import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./carousel.module.css";
 import leftArrow from "/public/left_arrow.png";
-import rightArrow from "/public/right_arrow.png";
 import leftArrowHover from "/public/left_arrow_hover.png";
+import rightArrow from "/public/right_arrow.png";
 import rightArrowHover from "/public/right_arrow_hover.png";
 
 const Carousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
   const [isRightArrowHovered, setIsRightArrowHovered] = useState(false);
+
+  const { setSelectedProduct } = useContext(AuthContext);
+
+  const handleProductClick = (productId) => {
+    setSelectedProduct(productId);
+  };
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -38,7 +45,7 @@ const Carousel = ({ items }) => {
     }
 
     return (
-      <Link href={`/recipes/${encodeURIComponent(item.name)}`}>
+      <Link href={`/recipes/products/${item.id}/?type=type2`} passHref>
         <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
           <Image
             src={item.picture}
@@ -47,6 +54,7 @@ const Carousel = ({ items }) => {
             width={500}
             height={500}
             layout="responsive"
+            onClick={() => item.id && handleProductClick(item.id)}
           />
           {isMainCard && (
             <div>

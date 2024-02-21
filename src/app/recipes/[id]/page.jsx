@@ -38,7 +38,7 @@ const RecipeDetails = () => {
     const fetchRecipeAndCheckFavorite = async () => {
       const recipeId = window.location.pathname.split("/").pop();
       try {
-        const response = await fetch(`/api/recipes/${recipeId}`);
+        const response = await fetch(`/api/recipes/${recipeId}/?type=type1`);
         const data = await response.json();
         setRecipe(data);
       } catch (error) {

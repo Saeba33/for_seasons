@@ -58,25 +58,19 @@ const readRecipeById = async (id) => {
   }
 };
 
-const readRecipesByProduct = async (productName) => {
+const readRecipesByProduct = async (productId) => {
   try {
     const [rows] = await db.query(
       `SELECT DISTINCT recipes.* 
        FROM recipes
        JOIN ingredients ON recipes.recipe_id = ingredients.recipe_id
-       JOIN products ON ingredients.product_id = products.product_id
-       WHERE LOWER(products.name) = LOWER(?)
-       AND (LOWER(recipes.instructions) LIKE ? OR LOWER(recipes.information) LIKE ?)`,
-      [
-        productName,
-        `%${productName.toLowerCase()}%`,
-        `%${productName.toLowerCase()}%`,
-      ]
+       WHERE ingredients.product_id = ?`,
+      [productId]
     );
     return rows;
   } catch (err) {
     console.error(
-      `Failed to retrieve recipes containing product ${productName}. ${err.message}`
+      `Failed to retrieve recipes containing product ${err.message}`
     );
     return [];
   }

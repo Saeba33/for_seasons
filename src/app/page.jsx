@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Carousel from "@/components/carousel/Carousel";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const getCurrentMonth = () => {
@@ -44,7 +44,9 @@ const Home = () => {
     <div className={styles.container}>
       <h1>Fruits et légumes de saison</h1>
       <div className={styles.month}>
-        <label className={styles.selectMonth} htmlFor="month-selected">Choisissez un mois:</label>
+        <label className={styles.selectMonth} htmlFor="month-selected">
+          Choisissez un mois:
+        </label>
         <select
           className={styles.selectedMonth}
           value={selectedMonth}
@@ -67,11 +69,18 @@ const Home = () => {
       <div className={styles.sections}>
         <section className={styles.vegetables}>
           <h3>Légumes</h3>
-          <Carousel items={vegetables} />
+          <Carousel
+            items={vegetables.map((vegetable) => ({
+              ...vegetable,
+              id: vegetable.product_id,
+            }))}
+          />
         </section>
         <section className={styles.fruits}>
           <h3>Fruits</h3>
-          <Carousel items={fruits} />
+          <Carousel
+            items={fruits.map((fruit) => ({ ...fruit, id: fruit.product_id }))}
+          />
         </section>
       </div>
     </div>

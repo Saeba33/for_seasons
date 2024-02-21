@@ -6,8 +6,11 @@ export const AuthContext = createContext({
   authToken: null,
   userId: null,
   userProfile: null,
+  selectedProduct: null,
   login: () => {},
   logout: () => {},
+  setSelectedProduct: () => {},
+  clearSelectedProduct: () => {},
 });
 
 export const AuthProvider = ({ children }) => {
@@ -15,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [authToken, setAuthToken] = useState(null);
   const [userId, setUserId] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -47,12 +51,27 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUserId(null);
     setUserProfile(null);
+    clearSelectedProduct();
     window.location.href = "/login";
+  };
+
+  const clearSelectedProduct = () => {
+    setSelectedProduct(null);
   };
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, authToken, userId, userProfile, login, logout }}
+      value={{
+        isLoggedIn,
+        authToken,
+        userId,
+        userProfile,
+        selectedProduct,
+        login,
+        logout,
+        setSelectedProduct,
+        clearSelectedProduct,
+      }}
     >
       {children}
     </AuthContext.Provider>
