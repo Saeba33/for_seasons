@@ -29,6 +29,7 @@
 
 .form textarea {
   resize: none;
+  font-family: "Biryani", sans-serif;
 }
 
 .form button {
