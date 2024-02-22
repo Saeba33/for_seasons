@@ -1,9 +1,10 @@
 "use client";
 
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext, useAdminAccess } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import NotFound from "../../not-found";
 import AdminIngredients from "../recipes/ingredients/page";
 import styles from "./admin-recipes.module.css";
 import {
@@ -44,6 +45,11 @@ const AdminRecipes = () => {
 
     loadData();
   }, []);
+
+  const isAdmin = useAdminAccess();
+  if (!isAdmin) {
+    return <NotFound />;
+  }
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;

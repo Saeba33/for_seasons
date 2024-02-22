@@ -1,8 +1,10 @@
 "use client";
 
+import { useAdminAccess } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import NotFound from "../../not-found";
 import styles from "./admin-products.module.css";
 import retour from "/public/return.png";
 
@@ -44,6 +46,11 @@ const AdminProducts = () => {
     const data = await response.json();
     setProducts(data);
   };
+
+  const isAdmin = useAdminAccess();
+  if (!isAdmin) {
+    return <NotFound />;
+  }
 
   const handleFormChange = (e) => {
     const { name, value, type, checked } = e.target;

@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import { useRouter } from "next/navigation";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext({
   isLoggedIn: false,
@@ -15,6 +15,11 @@ export const AuthContext = createContext({
   setSelectedProduct: () => {},
   clearSelectedProduct: () => {},
 });
+
+export const useAdminAccess = () => {
+  const { isAdmin } = useContext(AuthContext);
+  return isAdmin;
+};
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -83,6 +88,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         setSelectedProduct,
         clearSelectedProduct,
+        useAdminAccess,
       }}
     >
       {children}

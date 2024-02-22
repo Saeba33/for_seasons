@@ -1,33 +1,18 @@
 "use client";
 
-import { AuthContext } from "@/contexts/AuthContext";
+import { useAdminAccess } from "@/contexts/AuthContext";
+import NotFound from "../not-found";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
 import styles from "./admin.module.css";
 import product from "/public/product.png";
 import recipe from "/public/recipe.png";
 
 const Admin = () => {
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  const { userProfile, isLoggedIn } = useContext(AuthContext);
-
-  const router = useRouter();
-
-
-  useEffect(() => {
-    if (!isLoggedIn || userProfile !== "administrator") {
-      router.push("/");
-    } else {
-      setIsLoading(false);
-    }
-  }, [isLoggedIn, userProfile, router]);
-  if (isLoading) {
-    return <div>Chargement...</div>;
-  }
+const isAdmin = useAdminAccess();
+if (!isAdmin) {
+  return <NotFound />;
+}
 
   return (
     <div className={styles.container}>
