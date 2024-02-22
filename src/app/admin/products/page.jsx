@@ -11,7 +11,6 @@ const AdminProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
-
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -20,6 +19,10 @@ const AdminProducts = () => {
     month: "",
     featured: false,
   });
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const months = [
     "Janvier",
@@ -35,10 +38,6 @@ const AdminProducts = () => {
     "Novembre",
     "Décembre",
   ];
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   const fetchProducts = async () => {
     const response = await fetch("/api/admin/products");
@@ -166,7 +165,6 @@ const AdminProducts = () => {
       <button onClick={() => setIsModalOpen(true)} className={styles.addButton}>
         Ajouter un produit
       </button>
-
       <div className={styles.search}>
         <input
           type="text"
@@ -175,7 +173,6 @@ const AdminProducts = () => {
           onChange={handleSearch}
         />
       </div>
-
       {isModalOpen && (
         <>
           <div

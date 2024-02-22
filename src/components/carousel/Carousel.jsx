@@ -9,6 +9,7 @@ import rightArrow from "/public/right_arrow.png";
 import rightArrowHover from "/public/right_arrow_hover.png";
 
 const Carousel = ({ items }) => {
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
   const [isRightArrowHovered, setIsRightArrowHovered] = useState(false);
@@ -43,9 +44,8 @@ const Carousel = ({ items }) => {
     if (!item || !item.picture) {
       return null;
     }
-
     return (
-      <Link href={`/recipes/products/${item.id}/?type=type2`} passHref>
+      <Link href={`/recipes/products/${item.id}/?type=type2`}>
         <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
           <Image
             src={item.picture}

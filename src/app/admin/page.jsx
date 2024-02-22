@@ -10,9 +10,13 @@ import product from "/public/product.png";
 import recipe from "/public/recipe.png";
 
 const Admin = () => {
-  const { userProfile, isLoggedIn } = useContext(AuthContext);
-  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(true);
+
+  const { userProfile, isLoggedIn } = useContext(AuthContext);
+
+  const router = useRouter();
+
 
   useEffect(() => {
     if (!isLoggedIn || userProfile !== "administrator") {
@@ -21,7 +25,6 @@ const Admin = () => {
       setIsLoading(false);
     }
   }, [isLoggedIn, userProfile, router]);
-
   if (isLoading) {
     return <div>Chargement...</div>;
   }

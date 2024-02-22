@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import styles from "./login.module.css";
 
 const LoginPage = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +15,6 @@ const LoginPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await fetch("/api/login", {
         method: "POST",
@@ -23,13 +23,11 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
       if (!response.ok) {
         const errorData = await response.json();
         setError(errorData.message || "Identifiants invalides");
         return;
       }
-
       const data = await response.json();
       const { token, profile } = data;
       login(token, profile);

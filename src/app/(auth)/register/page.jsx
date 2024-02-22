@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "./register.module.css";
 
 const RegisterPage = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,11 +20,10 @@ const RegisterPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password !== confirmPassword) {
+        if (password !== confirmPassword) {
       alert("Les mots de passe ne correspondent pas");
       return;
     }
-
     try {
       const response = await fetch("/api/register", {
         method: "POST",
@@ -32,11 +32,9 @@ const RegisterPage = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const data = await response.json();
       if (data.success) {
         setSuccess(true);

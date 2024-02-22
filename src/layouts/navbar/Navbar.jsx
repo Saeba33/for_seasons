@@ -7,7 +7,9 @@ import styles from "./navbar.module.css";
 import logo from "/public/logo.webp";
 
 const Navbar = () => {
+
   const { isLoggedIn, userProfile, logout } = useContext(AuthContext);
+  
   const router = useRouter();
 
   const handleLogout = () => {
