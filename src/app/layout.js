@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
     <AuthProvider>
       <html lang="fr">
         <head>
-          <title>4 seasons</title>
+          <title>4 Seasons</title>
           <meta
             name="description"
             content="A website about seasonal fruits and vegetables"
