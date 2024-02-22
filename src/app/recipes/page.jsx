@@ -41,14 +41,14 @@ const Recipes = () => {
           {showFavorites ? "Voir toutes les recettes" : "Voir mes favoris"}
         </button>
       ) : (
-        <p>Connectez-vous pour voir vos recettes préférées</p>
+        <p className={styles.noRecipe}>Connectez-vous pour voir vos recettes préférées</p>
       )}
       <div className={styles.recipeList}>
         {recipes.map((recipe, index) =>
           recipe ? (
             <div key={recipe.recipe_id || index} className={styles.recipeCard}>
               <Link href={`/recipes/${recipe.recipe_id}`}>
-                <div className="recipe-image">
+                <div className={styles.image}>
                   <Image
                     src={recipe.photo || "/placeholder.jpg"}
                     alt={recipe.title}

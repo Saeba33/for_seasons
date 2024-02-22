@@ -45,7 +45,7 @@ const ProductsRecipes = () => {
           {recipes.map((recipe, index) => (
             <div key={recipe.recipe_id || index} className={styles.recipeCard}>
               <Link href={`/recipes/${recipe.recipe_id}`}>
-                <div className="recipe-image">
+                <div className={styles.image}>
                   <Image
                     src={recipe.photo || "/placeholder.jpg"}
                     alt={recipe.title}
