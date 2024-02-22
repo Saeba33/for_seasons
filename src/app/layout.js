@@ -5,6 +5,14 @@ import Footer from "@/layouts/footer/Footer";
 import Navbar from "@/layouts/navbar/Navbar";
 import "./globals.css";
 
+const metadata = {
+  title: "4 Seasons",
+  openGraph: {
+    title: "4 Seasons",
+    description: "A website about seasonal fruits and vegetables",
+  },
+};
+
 const Layout = ({ children }) => {
   return (
     <AuthProvider>

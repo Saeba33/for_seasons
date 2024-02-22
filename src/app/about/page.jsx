@@ -1,5 +1,9 @@
 import styles from "./about.module.css";
 
+const metadata = {
+  title: "About",
+};
+
 const About = () => {
   return (
     <div className={styles.container}>

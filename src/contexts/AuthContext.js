@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
+import { useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext({
@@ -22,6 +23,7 @@ export const AuthProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -49,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     setUserId(decodedToken.userId);
     setUserProfile(profile);
     setIsAdmin(profile === "administrator");
-    window.location.href = "/";
+    router.push("/");
   };
 
   const logout = () => {
@@ -61,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     setUserProfile(null);
     setIsAdmin(false);
     clearSelectedProduct();
-    window.location.href = "/login";
+    router.push("/login");
   };
 
   const clearSelectedProduct = () => {

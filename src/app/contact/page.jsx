@@ -3,6 +3,10 @@
 import { useState } from "react";
 import styles from "./contact.module.css";
 
+const metadata = {
+  title: "Contact",
+};
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./register.module.css";
 
@@ -8,12 +9,13 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (success) {
-      window.location.href = "/login";
+      router.push("/login");
     }
-  }, [success]);
+  }, [router, success]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -4,6 +4,10 @@ import Carousel from "@/components/carousel/Carousel";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
+const metadata = {
+  title: "Home",
+};
+
 const getCurrentMonth = () => {
   const monthNames = [
     "january",
@@ -52,6 +56,8 @@ const Home = () => {
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(e.target.value)}
         >
+          {" "}
+          Le mois
           <option value="january">Janvier</option>
           <option value="february">Février</option>
           <option value="march">Mars</option>

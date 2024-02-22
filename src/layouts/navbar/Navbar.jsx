@@ -1,16 +1,18 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import logo from "/public/logo.webp";
 import Links from "./links/Links";
 import styles from "./navbar.module.css";
+import logo from "/public/logo.webp";
 
 const Navbar = () => {
   const { isLoggedIn, userProfile, logout } = useContext(AuthContext);
+  const router = useRouter();
 
   const handleLogout = () => {
     logout();
-    window.location.href = "/login";
+    router.push("/login");
   };
 
   return (
