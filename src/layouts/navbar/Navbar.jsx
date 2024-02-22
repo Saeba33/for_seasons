@@ -7,9 +7,8 @@ import styles from "./navbar.module.css";
 import logo from "/public/logo.webp";
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
-  const { isLoggedIn, userProfile, logout } = useContext(AuthContext);
-  
   const router = useRouter();
 
   const handleLogout = () => {
@@ -20,11 +19,7 @@ const Navbar = () => {
   return (
     <nav className={styles.container}>
       <Image src={logo} alt="Logo" className={styles.logo} />
-      <Links
-        isLoggedIn={isLoggedIn}
-        userProfile={userProfile}
-        handleLogout={handleLogout}
-      />
+      <Links isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
     </nav>
   );
 };

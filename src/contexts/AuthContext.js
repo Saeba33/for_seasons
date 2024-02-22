@@ -7,7 +7,6 @@ export const AuthContext = createContext({
   isLoggedIn: false,
   authToken: null,
   userId: null,
-  userProfile: null,
   isAdmin: false,
   selectedProduct: null,
   login: () => {},
@@ -25,7 +24,6 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authToken, setAuthToken] = useState(null);
   const [userId, setUserId] = useState(null);
-  const [userProfile, setUserProfile] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const router = useRouter();
@@ -38,7 +36,6 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true);
         setAuthToken(token);
         setUserId(decodedToken.userId);
-        setUserProfile(decodedToken.profile);
         setIsAdmin(decodedToken.profile === "administrator");
       }
     }
@@ -46,26 +43,19 @@ export const AuthProvider = ({ children }) => {
 
   const login = (token, profile) => {
     Cookies.set("token", token, { expires: 1 / 24, httpOnly: true });
-    Cookies.set("userProfile", JSON.stringify(profile), {
-      expires: 1 / 24,
-      httpOnly: true,
-    });
     const decodedToken = jwt.decode(token);
     setIsLoggedIn(true);
     setAuthToken(token);
     setUserId(decodedToken.userId);
-    setUserProfile(profile);
     setIsAdmin(profile === "administrator");
     router.push("/");
   };
 
   const logout = () => {
     Cookies.remove("token");
-    Cookies.remove("userProfile");
     setIsLoggedIn(false);
     setAuthToken(null);
     setUserId(null);
-    setUserProfile(null);
     setIsAdmin(false);
     clearSelectedProduct();
     router.push("/login");
@@ -81,7 +71,6 @@ export const AuthProvider = ({ children }) => {
         isLoggedIn,
         authToken,
         userId,
-        userProfile,
         isAdmin,
         selectedProduct,
         login,

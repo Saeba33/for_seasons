@@ -14,16 +14,13 @@ const links = [
 
 const Links = ({ handleLogout }) => {
   const [open, setOpen] = useState(false);
-  const { isLoggedIn, userProfile } = useContext(AuthContext);
+  const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
       <div className={styles.links}>
         {links.map((link) => {
-          if (
-            !link.requireAdmin ||
-            (link.requireAdmin && userProfile === "administrator")
-          ) {
+          if (!link.requireAdmin || (link.requireAdmin && isAdmin)) {
             return <NavLink item={link} key={link.title} />;
           }
           return null;
@@ -50,7 +47,7 @@ const Links = ({ handleLogout }) => {
           {links.map((link) => {
             if (
               !link.requireAdmin ||
-              (link.requireAdmin && userProfile === "administrator")
+              (link.requireAdmin && isAdmin)
             ) {
               return <NavLink item={link} key={link.title} />;
             }
