@@ -11,7 +11,10 @@ const Layout = ({ children }) => {
       <html lang="fr">
         <head>
           <title>4 seasons</title>
-          <meta name="description" content="A website about seasonal fruits and vegetables" />
+          <meta
+            name="description"
+            content="A website about seasonal fruits and vegetables"
+          />
         </head>
         <body>
           <div className="container">
