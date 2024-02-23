@@ -32,11 +32,9 @@ const LoginPage = () => {
       const { token, profile } = data;
       login(token, profile);
     } catch (error) {
-      console.error(
-        "A problem occurred when trying to reach the server:",
-        error
+      setError(
+        "Un problème est survenu lors de la connexion au serveur."
       );
-      setError("A network error occurred");
     }
   };
 
@@ -60,7 +58,8 @@ const LoginPage = () => {
         <button type="submit">Se connecter</button>
         {error && <div>{error}</div>}
         <Link href="/register">
-          {"Pas de compte ?"} <span className={styles.register}>S&apos;enregistrer</span>
+          {"Pas de compte ?"}{" "}
+          <span className={styles.register}>S&apos;enregistrer</span>
         </Link>
       </form>
     </div>

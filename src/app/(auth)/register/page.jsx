@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import styles from "./register.module.css";
 
 const RegisterPage = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -20,8 +20,8 @@ const RegisterPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-        if (password !== confirmPassword) {
-      alert("Les mots de passe ne correspondent pas");
+    if (password !== confirmPassword) {
+      setError("Les mots de passe ne correspondent pas.");
       return;
     }
     try {
@@ -39,12 +39,11 @@ const RegisterPage = () => {
       if (data.success) {
         setSuccess(true);
       } else {
-        alert("Enregistrement échoué");
+        setError("Enregistrement échoué.");
       }
     } catch (error) {
-      console.error(
-        "A problem occurred when trying to reach the server:",
-        error
+      setError(
+        "Un problème est survenu lors de la connexion au serveur."
       );
     }
   };
@@ -74,6 +73,7 @@ const RegisterPage = () => {
           required
         />
         <button type="submit">S&apos;enregistrer</button>
+        {error && <div className={styles.error}>{error}</div>}
       </form>
     </div>
   );
