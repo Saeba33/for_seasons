@@ -39,13 +39,12 @@ const ProductsRecipes = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Recettes</h1>
+      <h1>Recettes</h1>
       {recipes.length > 0 ? (
-        <div className={styles.recipeList}>
+        <div className={styles.cards}>
           {recipes.map((recipe, index) => (
-            <div key={recipe.recipe_id || index} className={styles.recipeCard}>
+            <div key={recipe.recipe_id || index} className={styles.card}>
               <Link href={`/recipes/${recipe.recipe_id}`}>
-                <div className={styles.image}>
                   <Image
                     src={recipe.photo || "/placeholder.jpg"}
                     alt={recipe.title}
@@ -53,9 +52,8 @@ const ProductsRecipes = () => {
                     height={500}
                     layout="responsive"
                   />
-                </div>
-                <div className={styles.recipeDetails}>
-                  <h2>{recipe.title}</h2>
+                <h3>{recipe.title}</h3>
+                <div className={styles.content}>
                   <p>Difficulté : {recipe.difficulty}</p>
                   <p>Temps de préparation : {recipe.duration}</p>
                   <p>Nombre de personnes : {recipe.number_persons}</p>
@@ -68,7 +66,7 @@ const ProductsRecipes = () => {
           ))}
         </div>
       ) : (
-        <p>Aucune recette associée à ce produit pour le moment.</p>
+        <p className={styles.noRecipe}>Aucune recette associée à ce produit pour le moment.</p>
       )}
     </div>
   );

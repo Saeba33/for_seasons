@@ -142,8 +142,8 @@ const AdminRecipes = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.return}>
+    <>
+      <div className={styles.title}>
         <h1>Gestion des recettes</h1>
         <Link className={styles.link} href="/admin">
           <Image
@@ -155,111 +155,110 @@ const AdminRecipes = () => {
           />
         </Link>
       </div>
-      <button
-        onClick={() => {
-          setIsModalOpen(true);
-          resetForm();
-        }}
-        className={styles.addButton}
-      >
-        Ajouter une recette
-      </button>
+      <div className={styles.container}>
+        <div className={styles.search}>
+          <input
+            type="text"
+            placeholder="Rechercher une recette ..."
+            value={search}
+            onChange={handleSearch}
+          />
+        </div>
+        <button
+          onClick={() => {
+            setIsModalOpen(true);
+            resetForm();
+          }}
+          className={styles.addButton}
+        >
+          Ajouter une recette
+        </button>
 
-      <div className={styles.search}>
-        <input
-          type="text"
-          placeholder="Rechercher une recette ..."
-          value={search}
-          onChange={handleSearch}
-        />
-      </div>
-
-      {isModalOpen && (
-        <>
-          <div
-            className={styles.overlay}
-            onClick={() => setIsModalOpen(false)}
-          ></div>
-          <form className={styles.modal} onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleFormChange}
-              placeholder="Titre de la recette"
-              required
-            />
-            <input
-              type="text"
-              name="photo"
-              value={formData.photo}
-              onChange={handleFormChange}
-              placeholder="Lien de la photo"
-            />
-            <select
-              name="difficulty"
-              value={formData.difficulty}
-              onChange={handleFormChange}
-              required
-            >
-              <option value="">Sélectionnez le niveau de difficulté</option>
-              <option value="easy">Facile</option>
-              <option value="medium">Intermédiaire</option>
-              <option value="hard">Difficile</option>
-            </select>
-            <input
-              type="text"
-              name="duration"
-              value={formData.duration}
-              onChange={handleFormChange}
-              placeholder="Durée (ex: 30 minutes)"
-              required
-            />
-            <input
-              type="number"
-              name="number_persons"
-              value={formData.number_persons}
-              onChange={handleFormChange}
-              placeholder="Nombre de personnes"
-              required
-            />
-            <textarea
-              name="instructions"
-              value={formData.instructions}
-              onChange={handleFormChange}
-              placeholder="Instructions de préparation"
-              required
-            />
-            <textarea
-              name="ustensils"
-              value={formData.ustensils}
-              onChange={handleFormChange}
-              placeholder="Ustensiles nécessaires"
-            />
-            <textarea
-              name="information"
-              value={formData.information}
-              onChange={handleFormChange}
-              placeholder="Informations supplémentaires"
-            />
-            {selectedRecipe && (
-              <AdminIngredients selectedRecipeId={selectedRecipe} />
-            )}
-            <button type="submit" className={styles.submitButton}>
-              {selectedRecipe
-                ? "Mettre à jour la recette"
-                : "Ajouter la recette"}
-            </button>
-          </form>
-        </>
-      )}
-      <div className={styles.cards}>
-        {filteredRecipes.length === 0 ? (
-          <p>Aucun résultat pour cette recherche 😢 </p>
-        ) : (
-          filteredRecipes.map((recipe) => (
-            <div key={recipe.recipe_id} className={styles.card}>
-              <div className={styles.content}>
+        {isModalOpen && (
+          <>
+            <div
+              className={styles.overlay}
+              onClick={() => setIsModalOpen(false)}
+            ></div>
+            <form className={styles.modal} onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleFormChange}
+                placeholder="Titre de la recette"
+                required
+              />
+              <input
+                type="text"
+                name="photo"
+                value={formData.photo}
+                onChange={handleFormChange}
+                placeholder="Lien de la photo"
+              />
+              <select
+                name="difficulty"
+                value={formData.difficulty}
+                onChange={handleFormChange}
+                required
+              >
+                <option value="">Sélectionnez le niveau de difficulté</option>
+                <option value="easy">Facile</option>
+                <option value="medium">Intermédiaire</option>
+                <option value="hard">Difficile</option>
+              </select>
+              <input
+                type="text"
+                name="duration"
+                value={formData.duration}
+                onChange={handleFormChange}
+                placeholder="Durée (ex: 30 minutes)"
+                required
+              />
+              <input
+                type="number"
+                name="number_persons"
+                value={formData.number_persons}
+                onChange={handleFormChange}
+                placeholder="Nombre de personnes"
+                required
+              />
+              <textarea
+                name="instructions"
+                value={formData.instructions}
+                onChange={handleFormChange}
+                placeholder="Instructions de préparation"
+                required
+              />
+              <textarea
+                name="ustensils"
+                value={formData.ustensils}
+                onChange={handleFormChange}
+                placeholder="Ustensiles nécessaires"
+              />
+              <textarea
+                name="information"
+                value={formData.information}
+                onChange={handleFormChange}
+                placeholder="Informations supplémentaires"
+              />
+              {selectedRecipe && (
+                <AdminIngredients selectedRecipeId={selectedRecipe} />
+              )}
+              <button type="submit" className={styles.submitButton}>
+                {selectedRecipe
+                  ? "Mettre à jour la recette"
+                  : "Ajouter la recette"}
+              </button>
+            </form>
+          </>
+        )}
+        <div className={styles.cards}>
+          {filteredRecipes.length === 0 ? (
+            <p>Aucun résultat pour cette recherche 😢 </p>
+          ) : (
+            filteredRecipes.map((recipe) => (
+              <div key={recipe.recipe_id} className={styles.card}>
                 <h3>{recipe.title}</h3>
                 {recipe.photo && (
                   <Image
@@ -270,32 +269,34 @@ const AdminRecipes = () => {
                     layout="responsive"
                   />
                 )}
-                <p>Difficulté: {recipe.difficulty}</p>
-                <p>Durée: {recipe.duration}</p>
-                <p>Pour {recipe.number_persons} personne(s)</p>
-                <p>Ustensiles: {recipe.ustensils}</p>
-                <p>Instructions: {recipe.instructions}</p>
-                <p>Informations supplémentaires: {recipe.information}</p>
+                <div className={styles.content}>
+                  <p>Difficulté: {recipe.difficulty}</p>
+                  <p>Durée: {recipe.duration}</p>
+                  <p>Pour {recipe.number_persons} personne(s)</p>
+                  <p>Ustensiles: {recipe.ustensils}</p>
+                  <p>Instructions: {recipe.instructions}</p>
+                  <p>Informations supplémentaires: {recipe.information}</p>
+                </div>
+                <div className={styles.buttons}>
+                  <button
+                    onClick={() => handleRecipeEdit(recipe)}
+                    className={styles.editButton}
+                  >
+                    Modifier
+                  </button>
+                  <button
+                    onClick={() => handleRecipeDelete(recipe.recipe_id)}
+                    className={styles.deleteButton}
+                  >
+                    Supprimer
+                  </button>
+                </div>
               </div>
-              <div className={styles.buttons}>
-                <button
-                  onClick={() => handleRecipeEdit(recipe)}
-                  className={styles.editButton}
-                >
-                  Modifier
-                </button>
-                <button
-                  onClick={() => handleRecipeDelete(recipe.recipe_id)}
-                  className={styles.deleteButton}
-                >
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

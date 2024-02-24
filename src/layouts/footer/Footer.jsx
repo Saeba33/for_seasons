@@ -5,8 +5,8 @@ const Footer = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>Charles Proust</div>
-      <div className={styles.text}>4 Seasons © {currentYear}</div>
+      <p className={styles.author}>Charles Proust</p>
+      <p className={styles.credits}>4 Seasons © {currentYear}</p>
     </div>
   );
 };

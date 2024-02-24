@@ -1,24 +1,16 @@
-.container {
-  position: absolute;
+.title {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-  align-content: center;
   justify-content: center;
-  border-radius: 50px;
-  background: #f5f5f5;
-  box-shadow: 4px 4px 0px #c4c4c4, -3px -3px 0px #ffffff;
-  width: 50%;
-  height: 50svh;
-  top: 25%;
-  left: 25%;
 }
 
-.title {
-  color: var(--text);
-  margin-bottom: 50px;
-  font-size: xx-large;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 100px auto auto auto;
+  gap: 32px;
 }
 
 .product,
@@ -27,7 +19,6 @@
   align-items: center;
   font-size: 24px;
   border-radius: 10px;
-  background: #f5f5f5;
   box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px #ffffff;
   padding: 15px;
 }

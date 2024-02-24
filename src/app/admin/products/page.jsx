@@ -156,8 +156,8 @@ const AdminProducts = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.return}>
+    <>
+      <div className={styles.title}>
         <h1>Gestion des produits</h1>
         <Link className={styles.link} href="/admin">
           <Image
@@ -169,94 +169,98 @@ const AdminProducts = () => {
           />
         </Link>
       </div>
-      <button onClick={() => setIsModalOpen(true)} className={styles.addButton}>
-        Ajouter un produit
-      </button>
-      <div className={styles.search}>
-        <input
-          type="text"
-          placeholder="Rechercher un produit ..."
-          value={search}
-          onChange={handleSearch}
-        />
-      </div>
-      {isModalOpen && (
-        <>
-          <div
-            className={styles.overlay}
-            onClick={() => setIsModalOpen(false)}
-          ></div>
-          <form className={styles.modal} onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleFormChange}
-              placeholder="Nom du produit"
-              required
-            />
-            <select
-              name="category"
-              value={formData.category}
-              onChange={handleFormChange}
-              required
-            >
-              <option value="">Sélectionnez une catégorie</option>
-              <option value="fruits">Fruits</option>
-              <option value="vegetables">Légumes</option>
-              <option value="other">Autres</option>
-            </select>
-            <input
-              type="text"
-              name="picture"
-              value={formData.picture}
-              onChange={handleFormChange}
-              placeholder="Lien de l'image"
-            />
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleFormChange}
-              placeholder="Description"
-            />
-            <select
-              name="month"
-              value={formData.month}
-              onChange={handleFormChange}
-            >
-              <option value="">Sélectionnez un mois</option>
-              {months.map((month, index) => (
-                <option key={index} value={month}>
-                  {month}
-                </option>
-              ))}
-            </select>
-            <div className={styles.checkbox}>
-              <label>En vedette :</label>
+      <div className={styles.container}>
+        <div className={styles.search}>
+          <input
+            type="text"
+            placeholder="Rechercher un produit ..."
+            value={search}
+            onChange={handleSearch}
+          />
+        </div>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className={styles.addButton}
+        >
+          Ajouter un produit
+        </button>
+
+        {isModalOpen && (
+          <>
+            <div
+              className={styles.overlay}
+              onClick={() => setIsModalOpen(false)}
+            ></div>
+            <form className={styles.modal} onSubmit={handleSubmit}>
               <input
-                type="checkbox"
-                name="featured"
-                checked={formData.featured}
+                type="text"
+                name="name"
+                value={formData.name}
                 onChange={handleFormChange}
+                placeholder="Nom du produit"
+                required
               />
-            </div>
-            <button type="submit">
-              {selectedProduct ? "Mettre à jour" : "Créer"}
-            </button>
-          </form>
-        </>
-      )}
-      <div className={styles.cards}>
-        {filteredProducts.length === 0 ? (
-          <p>Aucun résultat pour cette recherche 😢 </p>
-        ) : (
-          filteredProducts.map((product) => (
-            <div key={product.product_id} className={styles.card}>
-              <div className={styles.header}>
-                <p>ID: {product.product_id}</p>
-                <h3>{product.name}</h3>
+              <input
+                type="text"
+                name="picture"
+                value={formData.picture}
+                onChange={handleFormChange}
+                placeholder="Lien de l'image"
+              />
+              <select
+                name="category"
+                value={formData.category}
+                onChange={handleFormChange}
+                required
+              >
+                <option value="">Sélectionnez une catégorie</option>
+                <option value="fruits">Fruit</option>
+                <option value="vegetables">Légume</option>
+                <option value="other">Autre</option>
+              </select>
+              <select
+                name="month"
+                value={formData.month}
+                onChange={handleFormChange}
+              >
+                <option value="">Sélectionnez un mois</option>
+                {months.map((month, index) => (
+                  <option key={index} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleFormChange}
+                placeholder="Description"
+              />
+              <div className={styles.checkbox}>
+                <label>En vedette :</label>
+                <input
+                  type="checkbox"
+                  name="featured"
+                  checked={formData.featured}
+                  onChange={handleFormChange}
+                />
               </div>
-              <div className={styles.content}>
+              <button type="submit">
+                {selectedProduct ? "Mettre à jour" : "Créer"}
+              </button>
+            </form>
+          </>
+        )}
+        <div className={styles.cards}>
+          {filteredProducts.length === 0 ? (
+            <p>Aucun résultat pour cette recherche 😢 </p>
+          ) : (
+            filteredProducts.map((product) => (
+              <div key={product.product_id} className={styles.card}>
+                <div className={styles.header}>
+                  <p>ID: {product.product_id}</p>
+                  <h3>{product.name}</h3>
+                </div>
                 {product.picture && (
                   <Image
                     src={product.picture}
@@ -265,30 +269,32 @@ const AdminProducts = () => {
                     height={200}
                   />
                 )}
-                <p>Catégorie: {product.category}</p>
-                <p>Mois: {product.month}</p>
-                <p>En vedette: {product.featured ? "Oui" : "Non"}</p>
-                <p>Description: {product.description}</p>
+                <div className={styles.content}>
+                  <p>Catégorie : {product.category}</p>
+                  <p>Mois : {product.month}</p>
+                  <p>En vedette : {product.featured ? "Oui" : "Non"}</p>
+                  <p>Description : {product.description}</p>
+                </div>
+                <div className={styles.buttons}>
+                  <button
+                    className={`${styles.editButton}`}
+                    onClick={() => handleEdit(product)}
+                  >
+                    Modifier
+                  </button>
+                  <button
+                    className={`${styles.deleteButton}`}
+                    onClick={() => handleDelete(product.product_id)}
+                  >
+                    Supprimer
+                  </button>
+                </div>
               </div>
-              <div className={styles.buttons}>
-                <button
-                  className={`${styles.editButton}`}
-                  onClick={() => handleEdit(product)}
-                >
-                  Modifier
-                </button>
-                <button
-                  className={`${styles.deleteButton}`}
-                  onClick={() => handleDelete(product.product_id)}
-                >
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

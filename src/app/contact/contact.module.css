@@ -1,26 +1,24 @@
+.title {
+  display: flex;
+justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 100px;
-  font-size: x-large;
-}
-
-.formContainer {
-  flex: 1;
-  width: 60%;
+  width: 80%;
+  margin: auto;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  gap: 20px;
+  gap: 24px;
 }
 
 .form input,
 .form textarea {
-  padding: 20px;
+  padding: 16px;
   border-radius: 5px;
   border: none;
   outline: none;
@@ -28,23 +26,12 @@
   color: var(--textSoft);
 }
 
-.form textarea {
-  resize: none;
-  font-family: "Biryani", sans-serif;
-}
-
 .form button {
-  padding: 20px;
+  padding: 16px;
   background-color: var(--btn);
   color: var(--textSoft);
   font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
 }

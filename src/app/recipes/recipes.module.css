@@ -1,79 +1,75 @@
-.container {
-  text-align: center;
-  padding: 20px;
-}
-
 .title {
-  font-size: xx-large;
-  color: var(--text);
-  margin-bottom: 20px;
+  display: flex;
+justify-content: center;
 }
 
-.recipeList {
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
-.recipeCard {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+.card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
   width: 300px;
-  text-align: left;
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.recipeCard:hover {
+.card:hover {
   transform: translateY(-5px);
 }
 
-.recipeImage {
-  position: relative;
-  overflow: hidden;
-}
-
-.recipeImage img {
+.card img {
+  grid-row: 1;
   width: 100%;
   height: auto;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.recipeDetails {
-  padding: 20px;
-}
 
-.recipeDetails h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+.card h3 {
+  font-size: 24px;
   text-align: center;
 }
 
-.recipeDetails p {
-  font-size: 1rem;
-  margin: 5px 0;
+.content {
+  grid-row: 2;
+  padding: 12px 20px;
 }
 
-.recipeDetails p:first-child {
-  margin-top: 10px;
-}
-
-.recipeDetails p:last-child {
-  margin-bottom: 0;
+.content p {
+  line-height: 1.5;
+  word-spacing: 2px;
 }
 
 .favorites {
   background: orange;
   color: white;
-  border: none;
-  border-radius: 10px;
   padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  margin: 50px 0;
+  margin: 50px auto;
+  width: 200px;
+}
+
+.favorites:hover {
+  opacity: 0.8;
 }
 
 .noRecipe {
   margin: 50px;
+  text-align: center;
 }

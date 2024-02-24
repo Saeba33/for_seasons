@@ -35,25 +35,22 @@ const Recipes = () => {
   }, [showFavorites, authToken, isLoggedIn]);
 
   return (
-    <div className={styles.container}>
+    <>
       <h1 className={styles.title}>Recettes</h1>
-      {isLoggedIn ? (
-        <>
-          <button
-            className={styles.favorites}
-            onClick={() => setShowFavorites(!showFavorites)}
-          >
-            {showFavorites ? "Voir toutes les recettes" : "Voir mes favoris"}
-          </button>
-          <div className={styles.recipeList}>
-            {recipes.map((recipe, index) =>
-              recipe ? (
-                <div
-                  key={recipe.recipe_id || index}
-                  className={styles.recipeCard}
-                >
-                  <Link href={`/recipes/${recipe.recipe_id}`}>
-                    <div className={styles.image}>
+      <div className={styles.container}>
+        {isLoggedIn ? (
+          <>
+            <button
+              className={styles.favorites}
+              onClick={() => setShowFavorites(!showFavorites)}
+            >
+              {showFavorites ? "Voir toutes les recettes" : "Voir mes favoris"}
+            </button>
+            <div className={styles.cards}>
+              {recipes.map((recipe, index) =>
+                recipe ? (
+                  <div key={recipe.recipe_id || index} className={styles.card}>
+                    <Link href={`/recipes/${recipe.recipe_id}`}>
                       <Image
                         src={recipe.photo || "/placeholder.jpg"}
                         alt={recipe.title}
@@ -61,28 +58,28 @@ const Recipes = () => {
                         height={500}
                         layout="responsive"
                       />
-                    </div>
-                    <div className={styles.recipeDetails}>
-                      <h2>{recipe.title}</h2>
-                      <p>Difficulté : {recipe.difficulty}</p>
-                      <p>Temps de préparation : {recipe.duration}</p>
-                      <p>Nombre de personnes : {recipe.number_persons}</p>
-                      <p>Ustensiles : {recipe.ustensils}</p>
-                      <p>Instructions : {recipe.instructions}</p>
-                      <p>Informations : {recipe.information}</p>
-                    </div>
-                  </Link>
-                </div>
-              ) : null
-            )}
-          </div>
-        </>
-      ) : (
-        <p className={styles.noRecipe}>
-          Connectez-vous pour accéder à vos recettes préférées !
-        </p>
-      )}
-    </div>
+                      <h3>{recipe.title}</h3>
+                      <div className={styles.content}>
+                        <p>Difficulté : {recipe.difficulty}</p>
+                        <p>Temps de préparation : {recipe.duration}</p>
+                        <p>Nombre de personnes : {recipe.number_persons}</p>
+                        <p>Ustensiles : {recipe.ustensils}</p>
+                        <p>Instructions : {recipe.instructions}</p>
+                        <p>Informations : {recipe.information}</p>
+                      </div>
+                    </Link>
+                  </div>
+                ) : null
+              )}
+            </div>
+          </>
+        ) : (
+          <p className={styles.noRecipe}>
+            Connectez-vous pour accéder à vos recettes préférées !
+          </p>
+        )}
+      </div>
+    </>
   );
 };
 

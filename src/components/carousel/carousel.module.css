@@ -1,44 +1,48 @@
 .container {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin: auto;
 }
 
 .cards {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 .card {
   opacity: 0.4;
-  scale: 0.75;
-  align-self: center;
+  scale: 0.8;
 }
 
 .mainCard {
   opacity: 1;
   scale: 1;
-  z-index: 2;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  display: block;
+  grid-template-rows: auto 1fr;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .picture {
-    width: 500px;
-    height: 500px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
   }
 
-  .name {
-    padding-top: 20px;
+  .title {
+    grid-row: 2;
     font-size: 18px;
+    text-align: center;
   }
 
-  .description {
-    font-size: 16px;
-    padding: 20px;
+  .content {
+    grid-row: 3;
+    padding: 8px;
+    line-height: 1.5;
+    word-spacing: 2px;
   }
 }
 

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  border-right: 5px solid #ccc;
+  padding: 20px;
+}
+
+.noResult {
+  text-align: center;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.noResult img {
+  margin-inline: 20px;
+}
+
+.noResult img:last-child {
+  transform: scaleX(-1);
+}

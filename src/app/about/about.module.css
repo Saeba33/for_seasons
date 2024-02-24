@@ -1,27 +1,21 @@
+.title {
+  display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 80%;
   margin: auto;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-size: xx-large;
-  margin-bottom: 50px;
-  gap: 10px;
+.intro {
+  margin: auto;
 }
 
-.firstSection,
-.secondSection,
-.thirdSection,
-.fourthSection,
-.lastSection {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 50px;
-  font-size: larger;
+.section {
+  margin-top: 32px;
 }

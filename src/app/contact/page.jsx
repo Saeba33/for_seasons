@@ -32,40 +32,43 @@ const Contact = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Nom"
-        />
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-        <input
-          type="text"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          placeholder="Objet"
-        />
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          cols="30"
-          rows="10"
-          placeholder="Votre message"
-        ></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
+    <>
+      <h1 className={styles.title}>Contact</h1>
+      <div className={styles.container}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Nom"
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+          <input
+            type="text"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            placeholder="Objet"
+          />
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            cols="30"
+            rows="10"
+            placeholder="Votre message"
+          ></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </>
   );
 };
 

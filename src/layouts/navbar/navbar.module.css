@@ -1,11 +1,12 @@
 .container {
-  height: 250px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  width: 200px;
+  width: 150px;
   height: auto;
+  rotate: 45deg;
 }

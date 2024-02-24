@@ -23,7 +23,6 @@ const getCurrentMonth = () => {
 };
 
 const Home = () => {
-
   const [vegetables, setVegetables] = useState([]);
   const [fruits, setFruits] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(getCurrentMonth());
@@ -42,11 +41,11 @@ const Home = () => {
   }, [selectedMonth]);
 
   return (
-    <div className={styles.container}>
-      <h1>Fruits et légumes de saison</h1>
-      <div className={styles.month}>
+    <>
+      <h1 className={styles.title}>Fruits et légumes de saison</h1>
+      <div className={`${styles.month} ${styles.title}`}>
         <label className={styles.selectMonth} htmlFor="month-selected">
-          Choisissez un mois:
+          Choisissez un mois : {""}
         </label>
         <select
           className={styles.selectedMonth}
@@ -67,24 +66,29 @@ const Home = () => {
           <option value="december">Décembre</option>
         </select>
       </div>
-      <div className={styles.sections}>
-        <section className={styles.vegetables}>
-          <h3>Légumes</h3>
-          <Carousel
-            items={vegetables.map((vegetable) => ({
-              ...vegetable,
-              id: vegetable.product_id,
-            }))}
-          />
-        </section>
-        <section className={styles.fruits}>
-          <h3>Fruits</h3>
-          <Carousel
-            items={fruits.map((fruit) => ({ ...fruit, id: fruit.product_id }))}
-          />
-        </section>
+      <div className={styles.container}>
+        <div className={styles.sections}>
+          <section className={styles.fruits}>
+            <h3>Fruits</h3>
+            <Carousel
+              items={fruits.map((fruit) => ({
+                ...fruit,
+                id: fruit.product_id,
+              }))}
+            />
+          </section>
+          <section className={styles.vegetables}>
+            <h3>Légumes</h3>
+            <Carousel
+              items={vegetables.map((vegetable) => ({
+                ...vegetable,
+                id: vegetable.product_id,
+              }))}
+            />
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

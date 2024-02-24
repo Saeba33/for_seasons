@@ -1,25 +1,36 @@
 :root {
-  --bg: #E8F5E9;
+  --bg: whitesmoke;
   --bgSoft: #2d2b42;
   --text: #2d2b42;
-  --textSoft: #e5e5e5;
+  --textSoft: whitesmoke;
   --btn: #3673fd;
+  --fs: 16px;
+  --fsh: 32px;
+  --fsh1: 56px;
+  --radius: 12px;
+  --padding: 8px;
+  --nested-radius: calc(var(--radius) - var(--padding));
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 2;
+  word-spacing: 4px;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   background-color: var(--bg);
-  font-family: "Biryani", sans-serif;
   color: var(--text);
+  font-size: var(--fs);
 }
 
 h1 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Noto";
+  font-size: var(--fsh1);
+  text-align: center;
 }
 
 h2,
@@ -27,7 +38,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Catamaran", sans-serif;
+  font-family: "Biryani", sans-serif;
+  font-size: var(--fsh);
 }
 
 a {
@@ -35,11 +47,13 @@ a {
   color: inherit;
 }
 
+textarea {
+resize: none;
+}
+
 .container {
-  padding-left: 50px;
-  padding-right: 50px;
-  min-height: 100vh;
+  padding-inline: 50px;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }

@@ -1,5 +1,6 @@
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import Links from "./links/Links";
@@ -18,7 +19,10 @@ const Navbar = () => {
 
   return (
     <nav className={styles.container}>
-      <Image src={logo} alt="Logo" className={styles.logo} />
+      <Link href="/">
+        <Image src={logo} alt="Logo" className={styles.logo} />
+      </Link>
+
       <Links isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
     </nav>
   );

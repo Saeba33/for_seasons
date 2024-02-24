@@ -1,9 +1,110 @@
+.title {
+  display: flex;
+  justify-content: center;
+
+  .link {
+    margin-left: 20px;
+  }
+}
+
 .container {
   margin: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
+}
+
+
+
+.search {
+  margin: 50px 0;
+}
+
+.search input {
+  padding: 5px;
+  width: 250px;
+  font-style: italic;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 18px;
+}
+
+.header {
+  grid-row: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card img {
+  grid-row: 2;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  grid-row: 3;
+  padding: 12px 0;
+}
+
+.content p {
+  line-height: 1.5;
+  word-spacing: 2px;
+}
+
+.buttons {
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.buttons button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
+}
+
+.editButton {
+  background-color: #ffc107;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+}
+
+.addButton {
+  background: #24963e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 50px;
 }
 
 .modal {
@@ -27,13 +128,6 @@
 .modal button {
   padding: 10px;
   width: 50%;
-  font-family: "Biryani", sans-serif;
-}
-
-.checkbox {
-  display: flex;
-  justify-content: flex-start;
-  width: 50%;
 }
 
 .modal button {
@@ -52,93 +146,8 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.cards {
+.checkbox {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: calc(20% - 20px);
-  min-width: 250px;
-}
-
-.card img {
-  display: block;
-  margin: 0 auto 20px;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.content {
-  padding-bottom: 20px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.buttons button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.addButton {
-  background: #24963e;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 50px 0;
-}
-
-.editButton {
-  background-color: #ffc107;
-  color: white;
-}
-
-.deleteButton {
-  background-color: #dc3545;
-  color: white;
-}
-
-.buttons button:hover {
-  opacity: 0.8;
-}
-
-.return {
-  display: flex;
-  align-items: center;
-
-  .link {
-    margin-left: 20px;
-  }
-}
-
-.search {
-  margin-bottom: 50px;
-}
-
-.search input {
-  padding: 5px;
-  width: 250px;
-  font-style: italic;
+  justify-content: flex-start;
+  width: 50%;
 }
