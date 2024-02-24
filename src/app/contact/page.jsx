@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Toaster, toast } from "sonner";
 import styles from "./contact.module.css";
 
 const Contact = () => {
@@ -18,6 +19,17 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.subject ||
+      !formData.message
+    ) {
+      toast.warning("Veuillez remplir tous les champs du formulaire.");
+      return;
+    }
+
     const response = await fetch("/api/email", {
       method: "POST",
       headers: {
@@ -26,8 +38,15 @@ const Contact = () => {
       body: JSON.stringify(formData),
     });
     if (response.ok) {
+      toast.success("Email envoyé avec succès !");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } else {
-      console.error("Erreur lors de l'envoi de l'email");
+      toast.error("Erreur lors de l'envoi du mail.");
     }
   };
 
@@ -67,6 +86,7 @@ const Contact = () => {
           ></textarea>
           <button type="submit">Envoyer</button>
         </form>
+        <Toaster richColors position="top-center" />
       </div>
     </>
   );
