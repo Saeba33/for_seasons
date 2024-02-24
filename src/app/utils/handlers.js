@@ -1,31 +1,3 @@
-export const fetchProducts = async () => {
-  try {
-    const response = await fetch("/api/products");
-    if (!response.ok) {
-      throw new Error("Failed to fetch products");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching products:", error.message);
-    throw error;
-  }
-};
-
-export const fetchRecipes = async () => {
-  try {
-    const response = await fetch("/api/admin/recipes");
-    if (!response.ok) {
-      throw new Error("Failed to fetch recipes");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching recipes:", error.message);
-    throw error;
-  }
-};
-
 export const handleAddRecipe = async (recipe) => {
   try {
     const response = await fetch(`/api/admin/recipes`, {
@@ -75,20 +47,6 @@ export const handleDeleteRecipe = async (recipeId) => {
   }
 };
 
-export const fetchIngredients = async (recipeId) => {
-  try {
-    const response = await fetch(`/api/admin/recipes/ingredients/${recipeId}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch ingredients");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching recipe ingredients:", error.message);
-    throw error;
-  }
-};
-
 export const handleAddIngredient = async (recipeId, ingredient) => {
   try {
     const response = await fetch(`/api/admin/recipes/ingredients`, {
@@ -127,7 +85,6 @@ export const handleChangeIngredient = async (ingredientId, ingredient) => {
   }
 };
 
-
 export const handleDeleteIngredient = async (ingredientId) => {
   try {
     const response = await fetch(`/api/admin/recipes/ingredients/${ingredientId}`, {
@@ -139,6 +96,48 @@ export const handleDeleteIngredient = async (ingredientId) => {
     return true;
   } catch (error) {
     console.error("Error deleting ingredient:", error);
+    throw error;
+  }
+};
+
+export const fetchIngredients = async (recipeId) => {
+  try {
+    const response = await fetch(`/api/admin/recipes/ingredients/${recipeId}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch ingredients");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching recipe ingredients:", error.message);
+    throw error;
+  }
+};
+
+export const fetchProducts = async () => {
+  try {
+    const response = await fetch("/api/products");
+    if (!response.ok) {
+      throw new Error("Failed to fetch products");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching products:", error.message);
+    throw error;
+  }
+};
+
+export const fetchRecipes = async () => {
+  try {
+    const response = await fetch("/api/admin/recipes");
+    if (!response.ok) {
+      throw new Error("Failed to fetch recipes");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching recipes:", error.message);
     throw error;
   }
 };

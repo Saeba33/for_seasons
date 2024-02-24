@@ -1,5 +1,6 @@
 "use client";
 
+import { frenchDifficulty } from "@/app/utils/translations";
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,16 +46,16 @@ const ProductsRecipes = () => {
           {recipes.map((recipe, index) => (
             <div key={recipe.recipe_id || index} className={styles.card}>
               <Link href={`/recipes/${recipe.recipe_id}`}>
-                  <Image
-                    src={recipe.photo || "/placeholder.jpg"}
-                    alt={recipe.title}
-                    width={500}
-                    height={500}
-                    layout="responsive"
-                  />
+                <Image
+                  src={recipe.photo || "/placeholder.jpg"}
+                  alt={recipe.title}
+                  width={500}
+                  height={500}
+                  layout="responsive"
+                />
                 <h3>{recipe.title}</h3>
                 <div className={styles.content}>
-                  <p>Difficulté : {recipe.difficulty}</p>
+                  <p>Difficulté : {frenchDifficulty(recipe.difficulty)}</p>
                   <p>Temps de préparation : {recipe.duration}</p>
                   <p>Nombre de personnes : {recipe.number_persons}</p>
                   <p>Ustensiles : {recipe.ustensils}</p>
@@ -66,7 +67,9 @@ const ProductsRecipes = () => {
           ))}
         </div>
       ) : (
-        <p className={styles.noRecipe}>Aucune recette associée à ce produit pour le moment.</p>
+        <p className={styles.noRecipe}>
+          Aucune recette associée à ce produit pour le moment.
+        </p>
       )}
     </div>
   );

@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  width: 80%;
   margin: auto;
   align-items: center;
   justify-content: center;
@@ -8,12 +7,12 @@
 
 .error {
   border-right: 5px solid #ccc;
-  padding: 20px;
+  padding: 0 50px 0 0;
 }
 
 .noResult {
   text-align: center;
-  padding-left: 20px;
+  padding-left: 50px;
   font-size: 18px;
 }
 

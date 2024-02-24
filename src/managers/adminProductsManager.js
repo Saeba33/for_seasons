@@ -1,20 +1,5 @@
 import { connectToDb, db } from "@/database/connection";
 
-const monthConversion = {
-  Janvier: "january",
-  Février: "february",
-  Mars: "march",
-  Avril: "april",
-  Mai: "may",
-  Juin: "june",
-  Juillet: "july",
-  Août: "august",
-  Septembre: "september",
-  Octobre: "october",
-  Novembre: "november",
-  Décembre: "december",
-};
-
 //C
 async function createAdminProduct({
   name,
@@ -34,10 +19,9 @@ async function createAdminProduct({
     const productId = productResult.insertId;
 
     if (month) {
-      const monthInEnglish = monthConversion[month] || "";
       await connection.query(
         "INSERT INTO products_of_month (product_id, month, featured) VALUES (?, ?, ?)",
-        [productId, monthInEnglish, featured]
+        [productId, month, featured]
       );
     }
     await connection.commit();
@@ -109,11 +93,10 @@ async function updateAdminProduct({
     if (current.length === 0) {
       throw new Error(`Product with ID: ${product_id} not found.`);
     }
-    const monthInEnglish = monthConversion[month] || "";
     if (month !== undefined && month !== current[0].month) {
       await connection.query(
         "UPDATE products_of_month SET month = ? WHERE product_id = ?",
-        [monthInEnglish, product_id]
+        [month, product_id]
       );
     }
     if (featured !== undefined && featured !== current[0].featured) {

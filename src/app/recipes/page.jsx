@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthContext } from "@/contexts/AuthContext";
+import { frenchDifficulty } from "../utils/translations";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
@@ -60,7 +61,7 @@ const Recipes = () => {
                       />
                       <h3>{recipe.title}</h3>
                       <div className={styles.content}>
-                        <p>Difficulté : {recipe.difficulty}</p>
+                        <p>Difficulté : {frenchDifficulty(recipe.difficulty)}</p>
                         <p>Temps de préparation : {recipe.duration}</p>
                         <p>Nombre de personnes : {recipe.number_persons}</p>
                         <p>Ustensiles : {recipe.ustensils}</p>

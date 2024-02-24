@@ -1,5 +1,6 @@
 "use client";
 
+import { frenchDifficulty } from "@/app/utils/translations";
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
@@ -107,7 +108,9 @@ const RecipeDetails = () => {
       </div>
       <div className={styles.content}>
         <h2 className={styles.title}>{recipe.title}</h2>
-        <p className={styles.difficulty}>Difficulté : {recipe.difficulty}</p>
+        <p className={styles.difficulty}>
+          Difficulté : {frenchDifficulty(recipe.difficulty)}
+        </p>
         <p className={styles.duration}>
           Temps de préparation : {recipe.duration}
         </p>

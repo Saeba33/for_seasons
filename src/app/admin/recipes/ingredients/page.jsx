@@ -6,10 +6,9 @@ import {
   handleAddIngredient,
   handleChangeIngredient,
   handleDeleteIngredient,
-} from "../utils";
+} from "../../../utils/handlers";
 import styles from "./ingredients.module.css";
 import add from "/public/add.png";
-import cancel from "/public/cancel.png";
 import remove from "/public/delete.png";
 import edit from "/public/edit.png";
 import validate from "/public/validate.png";
@@ -179,13 +178,13 @@ const AdminIngredients = ({ selectedRecipeId }) => {
                 }
                 placeholder="Unité"
               />
-                <Image
-                  className={styles.buttons}
-                  id={styles.validate}
-                  src={validate}
-                  alt="confirmer"
-                  onClick={handleUpdateIngredient}
-                />
+              <Image
+                className={styles.buttons}
+                id={styles.validate}
+                src={validate}
+                alt="confirmer"
+                onClick={handleUpdateIngredient}
+              />
             </div>
           ) : (
             <div className={styles.listIngredients}>

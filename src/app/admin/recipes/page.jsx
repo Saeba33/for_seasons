@@ -1,19 +1,20 @@
 "use client";
 
 import { AuthContext, useAdminAccess } from "@/contexts/AuthContext";
+import { frenchDifficulty } from "../../utils/translations";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import NotFound from "../../not-found";
-import AdminIngredients from "../recipes/ingredients/page";
-import styles from "./admin-recipes.module.css";
 import {
   fetchProducts,
   fetchRecipes,
   handleAddRecipe,
   handleChangeRecipe,
   handleDeleteRecipe,
-} from "./utils";
+} from "../../utils/handlers";
+import AdminIngredients from "../recipes/ingredients/page";
+import styles from "./admin-recipes.module.css";
 import retour from "/public/return.png";
 
 const AdminRecipes = () => {
@@ -270,7 +271,7 @@ const AdminRecipes = () => {
                   />
                 )}
                 <div className={styles.content}>
-                  <p>Difficulté: {recipe.difficulty}</p>
+                  <p>Difficulté: {frenchDifficulty(recipe.difficulty)}</p>
                   <p>Durée: {recipe.duration}</p>
                   <p>Pour {recipe.number_persons} personne(s)</p>
                   <p>Ustensiles: {recipe.ustensils}</p>

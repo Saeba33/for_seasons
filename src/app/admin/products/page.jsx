@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import NotFound from "../../not-found";
 import styles from "./admin-products.module.css";
 import retour from "/public/return.png";
+import { frenchMonth, frenchCategory } from "../../utils/translations";
+
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -27,18 +29,18 @@ const AdminProducts = () => {
   }, []);
 
   const months = [
-    "Janvier",
-    "Février",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juillet",
-    "Août",
-    "Septembre",
-    "Octobre",
-    "Novembre",
-    "Décembre",
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
   ];
 
   const fetchProducts = async () => {
@@ -224,9 +226,9 @@ const AdminProducts = () => {
                 onChange={handleFormChange}
               >
                 <option value="">Sélectionnez un mois</option>
-                {months.map((month, index) => (
-                  <option key={index} value={month}>
-                    {month}
+                {months.map((months, index) => (
+                  <option key={index} value={months}>
+                    {frenchMonth(months)}
                   </option>
                 ))}
               </select>
@@ -270,8 +272,8 @@ const AdminProducts = () => {
                   />
                 )}
                 <div className={styles.content}>
-                  <p>Catégorie : {product.category}</p>
-                  <p>Mois : {product.month}</p>
+                  <p>Catégorie : {frenchCategory(product.category)}</p>
+                  <p>Mois : {frenchMonth(product.month)}</p>
                   <p>En vedette : {product.featured ? "Oui" : "Non"}</p>
                   <p>Description : {product.description}</p>
                 </div>
