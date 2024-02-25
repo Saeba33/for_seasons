@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Toaster, toast } from "sonner";
 import { useEffect, useState } from "react";
 import {
   fetchIngredients,
@@ -58,7 +59,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
           ingredient.product_id.toString() === newIngredient.productId
       )
     ) {
-      alert("Cet ingrédient est déjà ajouté à la recette.");
+      toast.warning("Cet ingrédient est déjà ajouté à la recette.");
       return;
     }
 
@@ -80,7 +81,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
         label: "",
       });
     } else {
-      alert("Veuillez remplir tous les champs et sélectionner un produit.");
+      toast.warning("Veuillez remplir tous les champs et sélectionner un produit.");
     }
   };
 
@@ -101,7 +102,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
           ingredient.ingredient_id !== editingIngredientId
       )
     ) {
-      alert("Un autre ingrédient avec ce produit existe déjà dans la recette.");
+      toast.warning("Un autre ingrédient avec ce produit existe déjà dans la recette.");
       return;
     }
     if (
@@ -122,7 +123,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
       setEditingIngredientId(null);
       setEditingIngredient({ quantity: "", productId: "", label: "" });
     } else {
-      alert("Veuillez remplir tous les champs et sélectionner un produit.");
+      toast.warning("Veuillez remplir tous les champs et sélectionner un produit.");
     }
   };
 
@@ -256,6 +257,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
           onClick={handleAddNewIngredient}
         />
       </div>
+      <Toaster richColors position="top-center" />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthContext, useAdminAccess } from "@/contexts/AuthContext";
+import { Toaster, toast } from "sonner";
 import { frenchDifficulty } from "../../utils/translations";
 import Image from "next/image";
 import Link from "next/link";
@@ -68,7 +69,7 @@ const AdminRecipes = () => {
       !formData.photo.startsWith("http://") &&
       !formData.photo.startsWith("https://")
     ) {
-      alert(
+      toast.warning(
         'L\'URL de l\'image doit commencer par "/", "http://" ou "https://"'
       );
       return;
@@ -296,6 +297,7 @@ const AdminRecipes = () => {
             ))
           )}
         </div>
+        <Toaster richColors position="top-center" />
       </div>
     </>
   );
