@@ -1,11 +1,10 @@
 .container {
-  margin-top: 20px;
   width: 100%;
 }
+
 .container h2 {
   text-align: center;
   margin: 20px auto;
-  width: 80%;
 }
 
 .buttons {
@@ -15,7 +14,7 @@
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  flex: 2;
   gap: 10px;
 }
 
@@ -26,43 +25,57 @@
 }
 
 .listIngredients {
-  width: 80%;
-  margin: 10px 6%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  flex: 1;
 }
 
 .newIngredient {
   display: flex;
-  margin: 20px 10px;
+  margin: 20px 0;
   gap: 10px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
 }
+
 .newIngredient :first-child {
-  width: 50%;
+  width: 60%;
+  height: 50px;
 }
 .newIngredient :nth-child(2) {
-  width: 18%;
+  width: calc(20% - 50px);
+  height: 50px;
 }
 .newIngredient :nth-child(3) {
-  width: 12%;
+  width: calc(20% - 50px);
+  height: 50px;
 }
 
 .editIngredient {
   display: flex;
-  margin: 20px 10px;
+  margin: 20px 0;
   gap: 10px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
 }
 .editIngredient :first-child {
-  width: 50%;
+  width: 60%;
+  height: 50px;
 }
 .editIngredient :nth-child(2) {
-  width: 18%;
+  width: calc(20% - 50px);
+  height: 50px;
 }
 .editIngredient :nth-child(3) {
-  width: 12%;
+  width: calc(20% - 50px);
+  height: 50px;
 }

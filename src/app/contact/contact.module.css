@@ -6,7 +6,7 @@
 .description {
   width: 60%;
   align-self: center;
-  margin: 48px auto;
+  margin: 0 auto 48px auto;
 }
 
 .container {

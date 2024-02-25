@@ -1,9 +1,18 @@
 .container {
-  padding: 8px 16px;
   border-radius: 24px;
+  font-size: var(--fsNav);
+  align-items: center;
+  display: flex;
+  padding-inline: 12px;
 }
 
 .active {
   background-color: var(--bgNav);
   color: var(--textSoft);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    font-size: var(--fs);
+  }
 }

@@ -14,6 +14,9 @@
   opacity: 0.4;
   scale: 0.8;
 }
+.card:hover {
+  transform: translateY(-5px);
+}
 
 .mainCard {
   opacity: 1;
@@ -34,8 +37,9 @@
 
   .title {
     grid-row: 2;
-    font-size: 18px;
     text-align: center;
+    font-weight: bold;
+        font-size: var(--fsNav);
   }
 
   .content {
@@ -43,6 +47,7 @@
     padding: 8px;
     line-height: 1.5;
     word-spacing: 2px;
+    font-size: var(--fsNav);
   }
 }
 

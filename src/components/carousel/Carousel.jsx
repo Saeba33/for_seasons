@@ -58,7 +58,7 @@ const Carousel = ({ items }) => {
           />
           {isMainCard && (
             <div>
-              <h3 className={styles.title}>{item.name}</h3>
+              <p className={styles.title}>{item.name}</p>
               <p className={styles.content}>{item.description}</p>
             </div>
           )}

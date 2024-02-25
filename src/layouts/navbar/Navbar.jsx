@@ -22,7 +22,6 @@ const Navbar = () => {
       <Link href="/">
         <Image src={logo} alt="Logo" className={styles.logo} />
       </Link>
-
       <Links isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
     </nav>
   );

@@ -7,6 +7,7 @@
   padding: 8px;
   cursor: pointer;
   font-weight: bold;
+  font-size: var(--fsNav);
 }
 
 .menuButton,

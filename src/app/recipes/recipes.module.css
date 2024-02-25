@@ -14,6 +14,7 @@
   flex-direction: column;
   width: 80%;
   margin: auto;
+  font-size: var(--fsNav);
 }
 
 .cards {
@@ -45,13 +46,14 @@
 }
 
 .card h3 {
-  font-size: 24px;
   text-align: center;
+  font-size: var(--fs);
 }
 
 .content {
   grid-row: 2;
   padding: 12px 20px;
+  word-break: break-all;
 }
 
 .content p {
@@ -67,7 +69,7 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 50px auto;
-  width: 200px;
+  font-size: var(--fsNav);
 }
 
 .favorites:hover {
@@ -76,7 +78,6 @@
 
 .noRecipe {
   width: 60%;
-  font-size: 20px;
   font-weight: bold;
   align-self: center;
 }

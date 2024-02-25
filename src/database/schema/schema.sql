@@ -1,11 +1,11 @@
 CREATE TABLE users (
   user_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  profile VARCHAR(255) DEFAULT 'user',
+  profile ENUM('administrator', 'user') DEFAULT 'user',
   email VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  date_of_birth DATETIME,
+  password VARCHAR(1000) NOT NULL,
+  date_of_birth DATE,
   address VARCHAR(255),
-  zip_code VARCHAR(255),
+  zip_code VARCHAR(10),
   city VARCHAR(255),
   profile_picture BLOB,
   confirmation_link BOOLEAN,
@@ -17,14 +17,14 @@ CREATE TABLE users (
 CREATE TABLE products (
   product_id INTEGER PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL, 
-  category VARCHAR(255) NOT NULL,
+  category ENUM('fruits', 'vegetables', 'other') NOT NULL,
   picture TEXT,
-  description VARCHAR(255)
+  description TEXT
 );
 
 CREATE TABLE products_of_month (
   product_of_month_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  month VARCHAR(255) NOT NULL,
+ month ENUM('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december') NOT NULL,
   product_id INTEGER NOT NULL,
   featured BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (product_id) REFERENCES products(product_id) ON UPDATE CASCADE ON DELETE CASCADE
@@ -34,11 +34,11 @@ CREATE TABLE products_of_month (
 CREATE TABLE recipes (
   recipe_id INTEGER PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
-  photo VARCHAR(255),
-  difficulty VARCHAR(255),
-  duration VARCHAR(255),
+  photo TEXT,
+  difficulty ENUM('easy', 'medium', 'hard'),
+  duration VARCHAR(50),
   number_persons INTEGER NOT NULL, 
-  instructions VARCHAR(255) NOT NULL,
+  instructions TEXT NOT NULL,
   ustensils VARCHAR(255),
   information VARCHAR(255),
   user_id INTEGER NOT NULL,
