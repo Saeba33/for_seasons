@@ -97,56 +97,59 @@ const RecipeDetails = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.picture}>
-        <Image
-          src={recipe.photo}
-          alt={recipe.title}
-          width={200}
-          height={200}
-          layout="responsive"
-        />
-      </div>
-      <div className={styles.content}>
-        <h2 className={styles.title}>{recipe.title}</h2>
-        <p className={styles.difficulty}>
-          Difficulté : {frenchDifficulty(recipe.difficulty)}
-        </p>
-        <p className={styles.duration}>
-          Temps de préparation : {recipe.duration}
-        </p>
-        <p className={styles.persons}>
-          Nombre de personnes : {recipe.number_persons}
-        </p>
-        <p className={styles.ustensils}>Ustensiles : {recipe.ustensils}</p>
-        <p className={styles.instructions}>
-          Instructions : {recipe.instructions}
-        </p>
-        <p className={styles.informations}>
-          Informations : {recipe.information}
-        </p>
+      <div
+        className={styles.card}>
+        <div className={styles.picture}>
+          <Image
+            src={recipe.photo}
+            alt={recipe.title}
+            width={200}
+            height={200}
+            layout="responsive"
+          />
+        </div>
+        <div className={styles.content}>
+          <h2 className={styles.title}>{recipe.title}</h2>
+          <p className={styles.difficulty}>
+            Difficulté : {frenchDifficulty(recipe.difficulty)}
+          </p>
+          <p className={styles.duration}>
+            Temps de préparation : {recipe.duration}
+          </p>
+          <p className={styles.persons}>
+            Nombre de personnes : {recipe.number_persons}
+          </p>
+          <p className={styles.ustensils}>Ustensiles : {recipe.ustensils}</p>
+          <p className={styles.instructions}>
+            Instructions : {recipe.instructions}
+          </p>
+          <p className={styles.informations}>
+            Informations : {recipe.information}
+          </p>
 
-        {isLoggedIn && (
-          <div className={styles.favoriteContainer}>
-            <button
-              className={styles.favorite}
-              onClick={isFavorite ? removeFavorite : addFavorite}
-              disabled={isLoadingFavorite}
-            >
-              {isLoadingFavorite ? (
-                "Chargement..."
-              ) : isFavorite ? (
-                <Image src={favorite} alt="Favorite" width={50} height={50} />
-              ) : (
-                <Image
-                  src={unfavorite}
-                  alt="Not Favorite"
-                  width={50}
-                  height={50}
-                />
-              )}
-            </button>
-          </div>
-        )}
+          {isLoggedIn && (
+            <div className={styles.favoriteContainer}>
+              <button
+                className={styles.favorite}
+                onClick={isFavorite ? removeFavorite : addFavorite}
+                disabled={isLoadingFavorite}
+              >
+                {isLoadingFavorite ? (
+                  "Chargement..."
+                ) : isFavorite ? (
+                  <Image src={favorite} alt="Favorite" width={50} height={50} />
+                ) : (
+                  <Image
+                    src={unfavorite}
+                    alt="Not Favorite"
+                    width={50}
+                    height={50}
+                  />
+                )}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

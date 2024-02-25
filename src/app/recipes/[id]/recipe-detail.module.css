@@ -1,4 +1,8 @@
 .container {
+  margin: auto 0;
+}
+
+.card {
   position: relative;
   display: flex;
   border-radius: 10px;
