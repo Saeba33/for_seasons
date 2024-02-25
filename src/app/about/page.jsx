@@ -7,7 +7,7 @@ const About = () => {
       <section className={styles.title}>
         <h1>Bienvenue sur &quot;4 Seasons&quot;</h1>
         <p className={styles.description}>
-          Votre guide ultime pour découvrir et cuisiner avec les fruits et
+          Votre guide pour découvrir et cuisiner avec les fruits et
           légumes de saison.
         </p>
       </section>

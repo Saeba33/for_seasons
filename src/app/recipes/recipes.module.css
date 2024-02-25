@@ -1,6 +1,12 @@
 .title {
   display: flex;
-justify-content: center;
+  justify-content: center;
+}
+
+.description {
+  width: 60%;
+  align-self: center;
+  margin: 32px;
 }
 
 .container {
@@ -38,7 +44,6 @@ justify-content: center;
   border-top-right-radius: 12px;
 }
 
-
 .card h3 {
   font-size: 24px;
   text-align: center;
@@ -70,6 +75,12 @@ justify-content: center;
 }
 
 .noRecipe {
-  margin: 50px;
-  text-align: center;
+  width: 60%;
+  font-size: 20px;
+  font-weight: bold;
+  align-self: center;
+}
+
+.noRecipe a {
+  color: var(--bgNav);
 }

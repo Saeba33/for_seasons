@@ -6,14 +6,13 @@
 .description {
   width: 60%;
   align-self: center;
-  margin-bottom: 48px;
+  margin: 48px auto;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
   margin: auto;
 }
 
@@ -42,4 +41,11 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .description,
+  .form {
+    width: 80%;
+  }
 }
