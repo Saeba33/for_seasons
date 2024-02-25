@@ -4,12 +4,12 @@
   justify-content: center;
   width: 80%;
   margin: auto;
-  color: var(--textSoft);
 }
 
 .form {
   width: 500px;
-  background-color: var(--bgSoft);
+  border: 3px solid var(--bgNav);
+  background-color: #2ac3a2;
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 
 .form input {
   padding: 20px;
-  background-color: var(--bg);
+  border: 1px solid var(--bgNav);
   border: none;
   border-radius: 5px;
 }
@@ -28,7 +28,7 @@
 .form button {
   padding: 20px;
   cursor: pointer;
-  background-color: var(--btn);
+  background-color: var(--bgNav);
   color: var(--textSoft);
   font-weight: bold;
   border: none;

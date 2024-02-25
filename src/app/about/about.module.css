@@ -1,8 +1,17 @@
 .title {
   display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.description {
+  font-size: 24px;
+  font-style: italic;
+  align-self: center;
+  margin: auto auto 48px auto ;
 }
 
 .container {
@@ -18,4 +27,8 @@ align-items: center;
 
 .section {
   margin-top: 32px;
+}
+
+.link {
+  text-decoration: underline;
 }

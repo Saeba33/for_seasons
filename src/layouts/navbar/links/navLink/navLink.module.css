@@ -4,6 +4,6 @@
 }
 
 .active {
-  background-color: var(--text);
-  color: var(--bg);
+  background-color: var(--bgNav);
+  color: var(--textSoft);
 }

@@ -1,4 +1,5 @@
 import styles from "./about.module.css";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -42,19 +43,19 @@ const About = () => {
           <h2>Pourquoi choisir &quot;4 Seasons&quot; ?</h2>
           <ul>
             <li>
-              <strong>Éco-responsable :</strong> soutenez l&apos;agriculture
+              <strong> - Éco-responsable :</strong> soutenez l&apos;agriculture
               durable et réduisez votre empreinte carbone.
             </li>
             <li>
-              <strong>Frais et de qualité :</strong> profitez des meilleurs
+              <strong> - Frais et de qualité :</strong> profitez des meilleurs
               produits que la nature a à offrir.
             </li>
             <li>
-              <strong>Santé et bien-être :</strong> bénéficiez des bienfaits
+              <strong> - Santé et bien-être :</strong> bénéficiez des bienfaits
               nutritionnels des fruits et légumes frais.
             </li>
             <li>
-              <strong>Découverte et plaisir :</strong> laissez-vous surprendre
+              <strong> - Découverte et plaisir :</strong> laissez-vous surprendre
               par la variété des saveurs et textures.
             </li>
           </ul>
@@ -63,9 +64,12 @@ const About = () => {
           <p>
             &quot;4 Seasons&quot; est plus qu&apos;un site, c&apos;est une
             communauté de passionnés de cuisine et de nature.{" "}
-            <strong>Rejoignez-nous</strong> et redécouvrez le plaisir de
-            cuisiner avec des ingrédients qui racontent une histoire, celle des
-            cycles naturels et de la terre nourricière.
+            <Link href="/login" className={styles.link}>
+              <strong>Rejoignez-nous</strong>
+            </Link>{" "}
+            et redécouvrez le plaisir de cuisiner avec des ingrédients qui
+            racontent une histoire, celle des cycles naturels et de la terre
+            nourricière.
           </p>
         </section>
       </div>

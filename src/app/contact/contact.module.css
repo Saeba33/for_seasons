@@ -3,6 +3,12 @@
   justify-content: center;
 }
 
+.description {
+  width: 60%;
+  align-self: center;
+  margin-bottom: 48px;
+}
+
 .container {
   display: flex;
   flex-direction: column;

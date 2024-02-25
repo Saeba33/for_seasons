@@ -54,6 +54,12 @@ const Contact = () => {
     <>
       <h1 className={styles.title}>Contact</h1>
       <div className={styles.container}>
+        <p className={styles.description}>
+          Nous sommes toujours ravis d&apos;avoir vos retours. Que vous ayez une
+          question, une suggestion, ou que vous souhaitiez simplement partager
+          votre expérience avec nous, n&apos;hésitez pas à nous contacter. Notre
+          équipe s&apos;engage à vous fournir une réponse rapide et adaptée.
+        </p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="text"

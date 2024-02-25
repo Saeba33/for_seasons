@@ -1,6 +1,7 @@
 :root {
   --bg: whitesmoke;
-  --bgSoft: #2d2b42;
+  --bgSoft: #9c27b0;
+  --bgNav: #8bc34a;
   --text: #2d2b42;
   --textSoft: whitesmoke;
   --btn: #3673fd;
@@ -25,7 +26,7 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-size: var(--fs);
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 h1 {
@@ -49,7 +50,12 @@ a {
 }
 
 textarea {
-resize: none;
+  resize: none;
+}
+
+ul,
+li {
+  list-style: none;
 }
 
 .container {

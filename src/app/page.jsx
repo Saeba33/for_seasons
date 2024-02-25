@@ -43,10 +43,12 @@ const Home = () => {
   return (
     <>
       <h1 className={styles.title}>Fruits et légumes de saison</h1>
-      <div className={`${styles.month} ${styles.title}`}>
-        <label className={styles.selectMonth} htmlFor="month-selected">
-          Choisissez un mois : {""}
-        </label>
+      <p className={styles.description}>
+        Sélectionnez un mois à partir du menu déroulant pour découvrir les
+        produits de saison correspondants. En cliquant sur l&apos;un d&apos;entre eux,
+        vous serez redirigé vers les recettes utilisant cet ingrédient.
+      </p>
+      <div className={styles.month}>
         <select
           className={styles.selectedMonth}
           value={selectedMonth}
