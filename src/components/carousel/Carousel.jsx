@@ -9,7 +9,6 @@ import rightArrow from "/public/right_arrow.png";
 import rightArrowHover from "/public/right_arrow_hover.png";
 
 const Carousel = ({ items }) => {
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
   const [isRightArrowHovered, setIsRightArrowHovered] = useState(false);
@@ -57,7 +56,7 @@ const Carousel = ({ items }) => {
             onClick={() => item.id && handleProductClick(item.id)}
           />
           {isMainCard && (
-            <div>
+            <div className={styles.description}>
               <p className={styles.title}>{item.name}</p>
               <p className={styles.content}>{item.description}</p>
             </div>
@@ -78,8 +77,8 @@ const Carousel = ({ items }) => {
         <Image
           src={isLeftArrowHovered ? leftArrowHover : leftArrow}
           alt="Left Arrow"
-          width={32}
-          height={32}
+          width={50}
+          height={50}
         />
       </button>
       <div className={styles.cards}>
@@ -96,8 +95,8 @@ const Carousel = ({ items }) => {
         <Image
           src={isRightArrowHovered ? rightArrowHover : rightArrow}
           alt="Right Arrow"
-          width={32}
-          height={32}
+          width={50}
+          height={50}
         />
       </button>
     </div>

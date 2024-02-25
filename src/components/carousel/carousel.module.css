@@ -7,13 +7,17 @@
 
 .cards {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
 }
 
 .card {
   opacity: 0.4;
-  scale: 0.8;
+  scale: 0.7;
+  transition: transform 0.3s ease;
 }
+
 .card:hover {
   transform: translateY(-5px);
 }
@@ -21,34 +25,34 @@
 .mainCard {
   opacity: 1;
   scale: 1;
-  display: block;
-  grid-template-rows: auto 1fr;
+  width: 20vw;
   border: 1px solid #ccc;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .picture {
-    grid-row: 1;
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
+.mainCard img {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 
-  .title {
-    grid-row: 2;
-    text-align: center;
-    font-weight: bold;
-        font-size: var(--fsNav);
-  }
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--fs);
+  text-align: left;
+}
 
-  .content {
-    grid-row: 3;
-    padding: 8px;
-    line-height: 1.5;
-    word-spacing: 2px;
+.title {
+  font-weight: bold;
+}
+
+.content {
+  padding: 12px;
     font-size: var(--fsNav);
-  }
+  line-height: 1.5;
+  word-spacing: 2px;
 }
 
 .arrow {
@@ -60,4 +64,11 @@
 
 .arrow:hover {
   transform: scale(1.2);
+}
+
+@media (max-width: 1024px) {
+  .arrow img {
+    width: calc(30px + 1vw);
+    height: calc(30px + 1vw);
+}
 }

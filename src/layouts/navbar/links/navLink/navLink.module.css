@@ -3,7 +3,7 @@
   font-size: var(--fsNav);
   align-items: center;
   display: flex;
-  padding-inline: 12px;
+  padding: 6px 12px;
 }
 
 .active {

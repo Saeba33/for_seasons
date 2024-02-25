@@ -257,7 +257,7 @@ const AdminRecipes = () => {
         )}
         <div className={styles.cards}>
           {filteredRecipes.length === 0 ? (
-            <p>Aucun résultat pour cette recherche 😢 </p>
+            <p className={styles.noResult}>Aucun résultat pour cette recherche 😢 </p>
           ) : (
             filteredRecipes.map((recipe) => (
               <div key={recipe.recipe_id} className={styles.card}>
