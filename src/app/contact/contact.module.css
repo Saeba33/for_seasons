@@ -7,6 +7,7 @@
   width: 60%;
   align-self: center;
   margin: 0 auto 48px auto;
+  font-size: var(--fsSub);
 }
 
 .container {
@@ -47,5 +48,9 @@
   .description,
   .form {
     width: 80%;
+  }
+
+  .description {
+    margin-bottom: 24px;
   }
 }

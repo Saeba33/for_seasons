@@ -7,6 +7,7 @@
   width: 60%;
   align-self: center;
   margin: 32px;
+  font-size: var(--fsSub);
 }
 
 .container {
@@ -84,4 +85,10 @@
 
 .noRecipe a {
   color: var(--bgNav);
+}
+
+@media (max-width: 1024px) {
+  .description, .noRecipe {
+    width: 80%;
+  }
 }

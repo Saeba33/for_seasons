@@ -1,20 +1,20 @@
 .container {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .cards {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 }
 
 .card {
   opacity: 0.4;
-  scale: 0.7;
+  scale: 0.5;
   transition: transform 0.3s ease;
 }
 
@@ -50,7 +50,7 @@
 
 .content {
   padding: 12px;
-    font-size: var(--fsNav);
+  font-size: var(--fsNav);
   line-height: 1.5;
   word-spacing: 2px;
 }
@@ -70,5 +70,5 @@
   .arrow img {
     width: calc(30px + 1vw);
     height: calc(30px + 1vw);
-}
+  }
 }
