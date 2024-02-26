@@ -87,7 +87,7 @@ const Contact = () => {
             value={formData.message}
             onChange={handleChange}
             cols="30"
-            rows="10"
+            rows="7"
             placeholder="Votre message"
           ></textarea>
           <button type="submit">Envoyer</button>
