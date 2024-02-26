@@ -1,18 +1,11 @@
-.title {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-}
-
 .description {
-  font-style: italic;
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 80%;
-  margin: auto auto 2vw auto ;
+  margin: auto auto 2vw auto;
+  font-size: var(--fsSub);
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .container {
@@ -23,12 +16,13 @@
   font-size: var(--fsSub);
 }
 
-.intro {
-  margin: auto;
+.section {
+  margin-top: 48px;
 }
 
-.section {
-  margin-top: 32px;
+.section h2 {
+  font-size: var(--fsh);
+  line-height: 1.5;
 }
 
 .link {
