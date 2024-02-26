@@ -5,33 +5,29 @@
   width: 80%;
   margin: auto;
   color: var(--textSoft);
-  
 }
 
 .form {
-  width: 500px;
-  background-color: var(--bgSoft);
-  padding: 50px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 30px;
+  width: 500px;
+  padding: 50px;
+  gap: 32px;
   border-radius: 5px;
+  background-color: var(--bgSoft);
+  border: 3px solid var(--bgNav);
 }
 
 .form input {
-  padding: 20px;
-  background-color: var(--bg);
+  padding: 16px;
   border: none;
   border-radius: 5px;
 }
 
 .form button {
-  padding: 20px;
-  cursor: pointer;
-  background-color: var(--btn);
+  padding: 16px;
+  background-color: var(--bgNav);
   color: var(--textSoft);
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
 }

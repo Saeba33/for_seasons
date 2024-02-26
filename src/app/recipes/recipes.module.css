@@ -15,7 +15,6 @@
   flex-direction: column;
   width: 80%;
   margin: auto;
-  font-size: var(--fsNav);
 }
 
 .cards {
@@ -70,7 +69,6 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 50px auto;
-  font-size: var(--fsNav);
 }
 
 .favorites:hover {

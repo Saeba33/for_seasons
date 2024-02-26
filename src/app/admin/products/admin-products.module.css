@@ -139,7 +139,6 @@
   padding: 10px;
   width: calc(100% - 20px);
   min-height: 50px;
-  font-size: var(--fsNav);
   border: 1px solid #ccc;
   box-sizing: border-box;
   margin: 0 auto;
@@ -169,7 +168,6 @@
   justify-content: flex-start;
   width: calc(100% - 20px);
   margin: auto;
-  font-size: var(--fsNav);
 }
 
 .checkbox label {

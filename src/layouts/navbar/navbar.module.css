@@ -14,7 +14,6 @@
 .container {
   padding: 5px 16px;
   border-radius: 24px;
-  font-size: var(--fsNav);
 }
 
 .active {

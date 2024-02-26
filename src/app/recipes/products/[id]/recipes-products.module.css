@@ -8,7 +8,6 @@
   flex-direction: column;
   width: 80%;
   margin: auto;
-  font-size: var(--fsNav);
 }
 
 .cards {
@@ -67,3 +66,5 @@
   width: calc(50px + 2vw);
   height: auto;
 }
+
+

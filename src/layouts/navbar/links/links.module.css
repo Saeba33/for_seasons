@@ -6,7 +6,6 @@
 .logout {
   padding: 8px;
   cursor: pointer;
-  font-size: var(--fsNav);
 }
 
 .menuButton,
