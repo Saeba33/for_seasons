@@ -14,7 +14,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 16px;
 }
 
 .search {
@@ -24,8 +23,8 @@
 .search input {
   padding: 5px;
   font-style: italic;
-  font-size: 16px;
   min-width: 300px;
+  border: 1px solid #ccc;
 }
 
 .cards {
@@ -38,11 +37,15 @@
 .card {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
+  width: 300px;
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 12px;
-  padding: 20px;
-  width: 300px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 18px;
 }
 
 .card img {
@@ -51,19 +54,15 @@
   height: auto;
 }
 
-.card h3 {
-  font-size: 18px;
-}
-
 .content {
   grid-row: 3;
   padding: 12px 0;
-  word-break: break-all;
 }
 
 .content p {
   line-height: 1.5;
   word-spacing: 2px;
+  word-break: break-all;
 }
 
 .buttons {
@@ -75,35 +74,20 @@
 
 .buttons button {
   padding: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-}
-
-.buttons button:hover {
-  opacity: 0.8;
 }
 
 .editButton {
   background-color: #ffc107;
-  font-size: 16px;
 }
 
 .deleteButton {
   background-color: #dc3545;
-  font-size: 16px;
 }
 
 .addButton {
   background: #24963e;
-  color: white;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   margin-bottom: 50px;
-  font-size: 16px;
 }
 
 .modal {
@@ -111,17 +95,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 50px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   width: 50%;
-  max-height: calc(100vh - 20px);
-  overflow: auto;
+  padding: 50px;
+  gap: 20px;
   box-sizing: border-box;
+  max-height: calc(100vh - 20px);
+  background-color: white;
+  border-radius: 5px;
+  overflow: auto;
 }
 
 .modal input,
@@ -135,22 +119,14 @@
   box-sizing: border-box;
   margin: 0 auto;
   display: block;
-  border-radius: 4px;
 }
 
 .modal button {
   background-color: var(--btn);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .overlay {
   position: fixed;
-  padding: 10px;
   top: 0;
   left: 0;
   right: 0;

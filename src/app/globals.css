@@ -53,12 +53,17 @@ button,
 select {
   resize: none;
   font-size: var(--fs);
+  border-radius: 5px;
 }
 
 button {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  color: white;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 ul,

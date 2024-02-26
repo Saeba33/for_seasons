@@ -50,10 +50,12 @@
   width: 60%;
   height: 50px;
 }
+
 .newIngredient :nth-child(2) {
   width: calc(20% - 50px);
   height: 50px;
 }
+
 .newIngredient :nth-child(3) {
   width: calc(20% - 50px);
   height: 50px;
@@ -67,14 +69,17 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .editIngredient :first-child {
   width: 60%;
   height: 50px;
 }
+
 .editIngredient :nth-child(2) {
   width: calc(20% - 50px);
   height: 50px;
 }
+
 .editIngredient :nth-child(3) {
   width: calc(20% - 50px);
   height: 50px;
