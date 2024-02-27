@@ -22,11 +22,12 @@
 .card {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  width: 300px;
+  width: 320px;
   border: 1px solid #ccc;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  background-color: var(--bgImg);
 }
 
 .card:hover {
@@ -54,13 +55,19 @@
 .content p {
   line-height: 1.5;
   word-spacing: 2px;
-  word-break: break-all;
 }
 
 .favorites {
   background: orange;
   padding: 10px 20px;
   margin: 50px auto;
+}
+
+.showRecipe {
+  display: flex;
+  padding-top: 12px;
+  padding-bottom: 32px;
+  text-decoration: underline;
 }
 
 .noRecipe {
@@ -78,5 +85,8 @@
   .description,
   .noRecipe {
     width: 80%;
+  }
+  .showRecipe{
+    padding-bottom: 20px;
   }
 }

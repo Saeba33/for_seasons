@@ -97,51 +97,55 @@ const RecipeDetails = () => {
 
   return (
     <div className={styles.container}>
+      <h2 className={styles.mainTitle}>{recipe.title}</h2>
       <div className={styles.card}>
-        <Image
-          src={recipe.photo}
-          alt={recipe.title}
-          width={200}
-          height={200}
-          layout="responsive"
-        />
-        {isLoggedIn && (
-          <div className={styles.favoriteContainer}>
-            <button
-              className={styles.favorite}
-              onClick={isFavorite ? removeFavorite : addFavorite}
-              disabled={isLoadingFavorite}
-            >
-              {isLoadingFavorite ? (
-                "Chargement..."
-              ) : isFavorite ? (
-                <Image src={favorite} alt="Favorite" width={50} height={50} />
-              ) : (
-                <Image
-                  src={unfavorite}
-                  alt="Not Favorite"
-                  width={50}
-                  height={50}
-                />
-              )}
-            </button>
-          </div>
-        )}
+        <div className={styles.imageContainer}>
+          <Image
+            src={recipe.photo}
+            alt={recipe.title}
+            width={500}
+            height={500}
+          />
+          {isLoggedIn && (
+            <div className={styles.favoriteContainer}>
+              <button
+                className={styles.favorite}
+                onClick={isFavorite ? removeFavorite : addFavorite}
+                disabled={isLoadingFavorite}
+              >
+                {isLoadingFavorite ? (
+                  "Chargement..."
+                ) : isFavorite ? (
+                  <Image src={favorite} alt="Favorite" width={50} height={50} />
+                ) : (
+                  <Image
+                    src={unfavorite}
+                    alt="Not Favorite"
+                    width={50}
+                    height={50}
+                  />
+                )}
+              </button>
+            </div>
+          )}
+        </div>
 
         <div className={styles.content}>
           <h2 className={styles.title}>{recipe.title}</h2>
           <p className={styles.difficulty}>
-            Difficulté : {frenchDifficulty(recipe.difficulty)}
+            Difficulté : <strong>{frenchDifficulty(recipe.difficulty)}</strong>
           </p>
           <p className={styles.duration}>
-            Temps de préparation : {recipe.duration}
+            Temps de préparation : <strong>{recipe.duration}</strong>
           </p>
           <p className={styles.persons}>
-            Nombre de personnes : {recipe.number_persons}
+            Nombre de personnes : <strong>{recipe.number_persons}</strong>
           </p>
-          <p className={styles.ustensils}>Ustensiles : {recipe.ustensils}</p>
+          <p className={styles.ustensils}>
+            Ustensiles : <strong>{recipe.ustensils}</strong>
+          </p>
           <p className={styles.informations}>
-            Informations : {recipe.information}
+            Informations : <strong>{recipe.information}</strong>
           </p>
         </div>
         <p className={styles.instructions}>
