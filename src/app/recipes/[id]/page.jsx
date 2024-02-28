@@ -7,7 +7,6 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import styles from "./recipe-detail.module.css";
 import favorite from "/public/favorite.png";
 import unfavorite from "/public/not-favorite.png";
-import difficulty from "/public/difficulty.webp";
 import product from "/public/product.png";
 
 const RecipeDetails = () => {

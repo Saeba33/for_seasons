@@ -25,6 +25,15 @@
   font-style: italic;
   min-width: 300px;
   border: 1px solid #ccc;
+  outline: none;
+}
+
+.search:focus,
+.search input:hover {
+  outline: none;
+  border-color: var(--bgNav);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(139, 195, 74, 0.3);
 }
 
 .cards {
@@ -71,7 +80,6 @@
 .content p {
   line-height: 1.5;
   word-spacing: 2px;
-  word-break: break-all;
 }
 
 .buttons {

@@ -7,6 +7,7 @@ import Link from "next/link";
 import chaudron from "/public/chaudron.png";
 import { useContext, useEffect, useState } from "react";
 import styles from "./recipes-products.module.css";
+import product from "/public/product.png";
 
 const ProductsRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -39,6 +40,23 @@ const ProductsRecipes = () => {
       });
   }, [authToken, selectedProduct]);
 
+    const DifficultyImages = ({ level }) => {
+      return (
+        <div className={styles.difficultyImagesContainer}>
+          {Array.from({ length: level }, (_, i) => (
+            <Image
+              key={i}
+              src={product}
+              alt="Niveau de difficulté"
+              width={30}
+              height={30}
+              className={styles.difficultyImage}
+            />
+          ))}
+        </div>
+      );
+    };
+
   return (
     <>
       <h1 className={styles.title}>Recettes</h1>
@@ -63,12 +81,15 @@ const ProductsRecipes = () => {
                   />
                   <h3>{recipe.title}</h3>
                   <div className={styles.content}>
-                    <p>Difficulté : {frenchDifficulty(recipe.difficulty)}</p>
+                    <p>
+                      Difficulté :
+                      <DifficultyImages
+                        level={frenchDifficulty(recipe.difficulty)}
+                      />
+                    </p>
                     <p>Temps de préparation : {recipe.duration}</p>
                     <p>Nombre de personnes : {recipe.number_persons}</p>
-                    <p>Ustensiles : {recipe.ustensils}</p>
-                    <p>Instructions : {recipe.instructions}</p>
-                    <p>Informations : {recipe.information}</p>
+                    <span className={styles.showRecipe}>Voir la recette</span>
                   </div>
                 </Link>
               </div>

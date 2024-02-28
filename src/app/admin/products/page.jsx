@@ -175,7 +175,7 @@ const AdminProducts = () => {
       <div className={styles.container}>
         <div className={styles.search}>
           <input
-            type="text"
+            type="search"
             placeholder="Rechercher un produit ..."
             value={search}
             onChange={handleSearch}

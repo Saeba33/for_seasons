@@ -29,8 +29,6 @@
 
 .card img {
   grid-row: 1;
-  width: 100%;
-  height: auto;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -43,12 +41,30 @@
 .content {
   grid-row: 2;
   padding: 12px 20px;
-  word-break: break-all;
 }
 
 .content p {
-  line-height: 1.5;
   word-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.difficultyImagesContainer {
+  display: flex;
+  align-items: center;
+}
+
+.difficultyImage img {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+.showRecipe {
+  display: flex;
+  padding-top: 12px;
+  padding-bottom: 32px;
+  text-decoration: underline;
 }
 
 .noRecipe {
@@ -63,4 +79,13 @@
   width: calc(50px + 2vw);
   height: auto;
   margin: 50px 0;
+}
+
+@media (max-width: 1024px) {
+  .description {
+    width: 80%;
+  }
+  .showRecipe {
+    padding-bottom: 20px;
+  }
 }
