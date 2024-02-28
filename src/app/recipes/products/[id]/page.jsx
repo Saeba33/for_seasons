@@ -4,10 +4,10 @@ import { frenchDifficulty } from "@/app/utils/translations";
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
-import chaudron from "/public/chaudron.png";
 import { useContext, useEffect, useState } from "react";
 import styles from "./recipes-products.module.css";
-import product from "/public/product.png";
+import chaudron from "/public/chaudron.png";
+import difficulty from "/public/piment.png";
 
 const ProductsRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -40,22 +40,23 @@ const ProductsRecipes = () => {
       });
   }, [authToken, selectedProduct]);
 
-    const DifficultyImages = ({ level }) => {
-      return (
-        <div className={styles.difficultyImagesContainer}>
-          {Array.from({ length: level }, (_, i) => (
-            <Image
-              key={i}
-              src={product}
-              alt="Niveau de difficulté"
-              width={30}
-              height={30}
-              className={styles.difficultyImage}
-            />
-          ))}
-        </div>
-      );
-    };
+  const DifficultyImages = ({ level }) => {
+    return (
+      <div className={styles.difficultyImagesContainer}>
+        Difficulté :
+        {Array.from({ length: level }, (_, i) => (
+          <Image
+            key={i}
+            src={difficulty}
+            alt="Niveau de difficulté"
+            width={30}
+            height={30}
+            className={styles.difficultyImage}
+          />
+        ))}
+      </div>
+    );
+  };
 
   return (
     <>
@@ -81,12 +82,9 @@ const ProductsRecipes = () => {
                   />
                   <h3>{recipe.title}</h3>
                   <div className={styles.content}>
-                    <p>
-                      Difficulté :
-                      <DifficultyImages
-                        level={frenchDifficulty(recipe.difficulty)}
-                      />
-                    </p>
+                    <DifficultyImages
+                      level={frenchDifficulty(recipe.difficulty)}
+                    />
                     <p>Temps de préparation : {recipe.duration}</p>
                     <p>Nombre de personnes : {recipe.number_persons}</p>
                     <span className={styles.showRecipe}>Voir la recette</span>

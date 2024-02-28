@@ -56,6 +56,7 @@
   transform: scale(0.85);
 }
 
+
 .mainCard img {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -95,7 +96,7 @@
   gap: 15px;
 }
 
-.mainCard span:hover {
+.seeRecipe:hover, .seeProduct:hover {
   text-decoration: underline;
   opacity: 0.8;
   scale: 1.1;

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import styles from "./recipes.module.css";
-import product from "/public/product.png";
+import difficulty from "/public/piment.png";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -42,7 +42,7 @@ const Recipes = () => {
         {Array.from({ length: level }, (_, i) => (
           <Image
             key={i}
-            src={product}
+            src={difficulty}
             alt="Niveau de difficulté"
             width={30}
             height={30}

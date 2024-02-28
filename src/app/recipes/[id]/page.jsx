@@ -7,7 +7,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import styles from "./recipe-detail.module.css";
 import favorite from "/public/favorite.png";
 import unfavorite from "/public/not-favorite.png";
-import product from "/public/product.png";
+import difficulty from "/public/piment.png";
 
 const RecipeDetails = () => {
   const { isLoggedIn, authToken } = useContext(AuthContext);
@@ -102,7 +102,7 @@ const DifficultyImages = ({ level }) => {
       {Array.from({ length: level }, (_, i) => (
         <Image
           key={i}
-          src={product}
+          src={difficulty}
           alt="Niveau de difficulté"
           width={30}
           height={30}

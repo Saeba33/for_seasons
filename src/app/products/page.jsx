@@ -5,7 +5,6 @@ import abricot from "/public/products/abricot.webp";
 const Product = () => {
   return (
     <>
-      <div className={styles.container}>
         <div className={styles.card}>
           <Image
             className={styles.picture}
@@ -14,7 +13,7 @@ const Product = () => {
             width={200}
             height={200}
           />
-          <h1 className={styles.title}>L'abricot</h1>
+            <h1 className={styles.title}>L&apos;abricot</h1>
           <section className={styles.description}>
             <h5 className={styles.subtitle}>Description</h5>
             <p>
@@ -58,7 +57,6 @@ const Product = () => {
             </p>
           </section>
         </div>
-      </div>
     </>
   );
 };

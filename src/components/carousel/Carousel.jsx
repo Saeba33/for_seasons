@@ -17,6 +17,7 @@ const Carousel = ({ items }) => {
 
   const handleProductClick = (productId) => {
     setSelectedProduct(productId);
+    console.log("productId", productId);
   };
 
   const goToPrevious = () => {
@@ -44,7 +45,10 @@ const Carousel = ({ items }) => {
       return null;
     }
     return (
-      <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
+      <div
+        className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}
+        onClick={() => item.id && handleProductClick(item.id)}
+      >
         <Image
           src={item.picture}
           alt={item.name}
@@ -52,17 +56,19 @@ const Carousel = ({ items }) => {
           width={500}
           height={500}
           layout="responsive"
-          onClick={() => item.id && handleProductClick(item.id)}
         />
         <p className={styles.title}>{item.name}</p>
         {isMainCard && (
           <>
             <div className={styles.content}>
-              <Link href={`/recipes/products/${item.id}/?type=type2`}>
-                <span className={styles.seeRecipe}>
-                  Voir les recettes &#x2192;{" "}
-                </span>
+              <Link
+                className={styles.seeRecipe}
+                href={`/recipes/products/${item.id}/?type=type2`}
+              >
+                {" "}
+                Voir la recette &#x2192;{" "}
               </Link>
+
               <span className={styles.seeProduct}>
                 Voir la fiche produit &#x2192;{" "}
               </span>

@@ -1,53 +1,15 @@
-.container {
-  margin: auto;
-  width: 80%;
-}
-
 .card {
   display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: auto auto auto auto auto 1fr;
+  width: 80%;
+  max-width: 1600px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto;
   background-color: white;
   border-radius: 20px;
   box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px #ffffff;
-}
-
-.picture,
-.description,
-.title,
-.infos,
-.varieties,
-.other {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 50px;
-}
-
-
-.title {
-  display: flex;
-  justify-content: center;
-}
-
-.infos {
-  background-color: lightyellow;
+  gap: 20px;
   padding: 20px;
-}
-
-.varieties {
-  background-color: pink;
-  padding: 20px;
-}
-
-.description {
-  background-color: lightgreen;
-  padding: 20px;
-}
-
-.other {
-  background-color: lightblue;
-  padding: 20px;
+  margin: auto;
 }
 
 .picture {
@@ -55,11 +17,17 @@
   grid-row: 1;
   width: 100%;
   height: auto;
-  padding: 50px;
   margin: 0;
+  background-color: lightgray;
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: brown;
+  border: 3px solid brown;
+  font-size: 7vw;
   grid-column: 2;
   grid-row: 1;
   font-weight: bold;
@@ -68,81 +36,80 @@
 .infos {
   grid-column: 1;
   grid-row: 2;
+  background-color: lightyellow;
+  padding: 20px;
 }
 
 .varieties {
   grid-column: 1;
   grid-row: 3;
+  background-color: pink;
+  padding: 20px;
 }
 
 .description {
   grid-column: 2;
   grid-row: 2;
+  background-color: lightgreen;
+  padding: 20px;
 }
 
 .other {
   grid-column: 2;
   grid-row: 3;
+  background-color: lightblue;
+  padding: 20px;
 }
 
 @media screen and (max-width: 1024px) {
-  .container {
-    margin: auto;
-  }
-
   .card {
-      grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto;
     padding: 0;
     margin: 0;
-      box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px transparent;
-  }
-
-  .title,
-  .description,
-  .infos,
-  .varieties,
-  .other {
-    padding: 20px;
-    margin: 0;
+    box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px transparent;
+    margin: auto;
+    gap: 0;
   }
 
   .picture {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     padding: 0;
     width: 100%;
     height: auto;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-
   }
 
   .title {
     grid-column: 1;
-    grid-row: 2;
-    align-items: center;
-    justify-content: start;
+    grid-row: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: none;
+    color: brown;
   }
 
   .description {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
   }
 
   .infos {
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 3;
   }
 
   .varieties {
     grid-column: 1;
-    grid-row: 5;
+    grid-row: 4;
   }
 
   .other {
     grid-column: 1;
-    grid-row: 6;
+    grid-row: 5;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }

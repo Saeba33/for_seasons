@@ -19,7 +19,10 @@ CREATE TABLE products (
   name VARCHAR(255) NOT NULL, 
   category ENUM('fruits', 'vegetables', 'other') NOT NULL,
   picture TEXT,
-  description TEXT
+  description TEXT,
+  informations TEXT,
+  varieties VARCHAR(255),
+  other VARCHAR (255)
 );
 
 CREATE TABLE products_of_month (
