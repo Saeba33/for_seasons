@@ -7,6 +7,8 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import styles from "./recipe-detail.module.css";
 import favorite from "/public/favorite.png";
 import unfavorite from "/public/not-favorite.png";
+import difficulty from "/public/difficulty.webp";
+import product from "/public/product.png";
 
 const RecipeDetails = () => {
   const { isLoggedIn, authToken } = useContext(AuthContext);
@@ -95,9 +97,25 @@ const RecipeDetails = () => {
     return <div>Loading...</div>;
   }
 
+const DifficultyImages = ({ level }) => {
+  return (
+    <div className={styles.difficultyImagesContainer}>
+      {Array.from({ length: level }, (_, i) => (
+        <Image
+          key={i}
+          src={product}
+          alt="Niveau de difficulté"
+          width={30}
+          height={30}
+          className={styles.difficultyImage}
+        />
+      ))}
+    </div>
+  );
+};
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.mainTitle}>{recipe.title}</h2>
       <div className={styles.card}>
         <div className={styles.imageContainer}>
           <Image
@@ -129,23 +147,25 @@ const RecipeDetails = () => {
             </div>
           )}
         </div>
-
         <div className={styles.content}>
           <h2 className={styles.title}>{recipe.title}</h2>
           <p className={styles.difficulty}>
-            Difficulté : <strong>{frenchDifficulty(recipe.difficulty)}</strong>
+            Difficulté
+            <strong>
+              <DifficultyImages level={frenchDifficulty(recipe.difficulty)} />
+            </strong>
           </p>
           <p className={styles.duration}>
-            Temps de préparation : <strong>{recipe.duration}</strong>
+            Temps de préparation <strong>{recipe.duration}</strong>
           </p>
           <p className={styles.persons}>
-            Nombre de personnes : <strong>{recipe.number_persons}</strong>
+            Nombre de personnes <strong>{recipe.number_persons}</strong>
           </p>
           <p className={styles.ustensils}>
-            Ustensiles : <strong>{recipe.ustensils}</strong>
+            Ustensiles <strong>{recipe.ustensils}</strong> 
           </p>
           <p className={styles.informations}>
-            Informations : <strong>{recipe.information}</strong>
+            Informations <strong>{recipe.information}</strong>
           </p>
         </div>
         <p className={styles.instructions}>

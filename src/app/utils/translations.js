@@ -9,9 +9,9 @@ export const frenchCategory = (category) => {
 
 export const frenchDifficulty = (difficulty) => {
   const mapping = {
-    easy: "facile",
-    medium: "moyenne",
-    hard: "difficile",
+    easy: 1,
+    medium: 2,
+    hard: 3,
   };
   return mapping[difficulty];
 };

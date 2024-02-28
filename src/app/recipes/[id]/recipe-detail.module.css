@@ -30,8 +30,17 @@
 
 .card img {
   display: block;
-  width: 100%;
-  height: auto;
+}
+
+.difficultyImagesContainer {
+  display: flex;
+  align-items: center;
+}
+
+.difficultyImage img {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
 }
 
 .favoriteContainer {
@@ -46,17 +55,30 @@
 }
 
 .content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr auto;
   justify-content: space-around;
   background-color: white;
   font-size: var(--fsNav);
   font-weight: normal;
   margin-top: 50px;
-  padding: 50px;
+  padding: 30px 50px 20px 50px;
   border-right: 1px solid #e5e5e5;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   border-bottom: 1px solid #e5e5e5;
+}
+
+.difficulty,
+.duration,
+.persons,
+.ustensils,
+.informations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .difficulty,
@@ -137,6 +159,12 @@
   .ustensils,
   .informations {
     padding-left: 0;
+    border: none;
+  }
+
+  .difficultyImage img {
+    width: 25px;
+    height: 25px;
   }
 
   .mainTitle {
