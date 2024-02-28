@@ -44,25 +44,32 @@ const Carousel = ({ items }) => {
       return null;
     }
     return (
-      <Link href={`/recipes/products/${item.id}/?type=type2`}>
-        <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
-          <Image
-            src={item.picture}
-            alt={item.name}
-            className={styles.picture}
-            width={500}
-            height={500}
-            layout="responsive"
-            onClick={() => item.id && handleProductClick(item.id)}
-          />
-          {isMainCard && (
-            <div className={styles.description}>
-              <p className={styles.title}>{item.name}</p>
-              <p className={styles.content}>{item.description}</p>
+      <div className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}>
+        <Image
+          src={item.picture}
+          alt={item.name}
+          className={styles.picture}
+          width={500}
+          height={500}
+          layout="responsive"
+          onClick={() => item.id && handleProductClick(item.id)}
+        />
+        <p className={styles.title}>{item.name}</p>
+        {isMainCard && (
+          <>
+            <div className={styles.content}>
+              <Link href={`/recipes/products/${item.id}/?type=type2`}>
+                <span className={styles.seeRecipe}>
+                  Voir les recettes &#x2192;{" "}
+                </span>
+              </Link>
+              <span className={styles.seeProduct}>
+                Voir la fiche produit &#x2192;{" "}
+              </span>
             </div>
-          )}
-        </div>
-      </Link>
+          </>
+        )}
+      </div>
     );
   };
 
