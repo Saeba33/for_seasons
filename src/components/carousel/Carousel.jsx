@@ -17,7 +17,6 @@ const Carousel = ({ items }) => {
 
   const handleProductClick = (productId) => {
     setSelectedProduct(productId);
-    console.log("productId", productId);
   };
 
   const goToPrevious = () => {
@@ -66,12 +65,16 @@ const Carousel = ({ items }) => {
                 href={`/recipes/products/${item.id}/?type=type2`}
               >
                 {" "}
-                Voir la recette &#x2192;{" "}
+                Voir les recettes &#x2192;{" "}
               </Link>
 
-              <span className={styles.seeProduct}>
+              <Link
+                className={styles.seeProduct}
+                href={`/products/${item.id}/`}
+              >
+                {" "}
                 Voir la fiche produit &#x2192;{" "}
-              </span>
+              </Link>
             </div>
           </>
         )}
