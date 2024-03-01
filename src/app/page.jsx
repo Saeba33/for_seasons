@@ -47,9 +47,10 @@ const Home = () => {
         <label htmlFor="selectedMonth">
           {" "}
           Sélectionnez un mois à partir du menu déroulant pour découvrir les
-          produits de saison correspondants. En cliquant sur l&apos;un
-          d&apos;entre eux, vous serez redirigé vers les recettes utilisant cet
-          ingrédient. Les produits saisonnier en {""}
+          produits de saison correspondants. En passant votre souris sur
+          l&apos;un d&apos;entre eux, vous pourrez accéder aux recettes
+          utilisant cet ingrédient ou vous diriger vers sa fiche descriptive.
+          Les produits saisonnier en {""}
         </label>
         <select
           className={styles.month}

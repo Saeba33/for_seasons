@@ -29,8 +29,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: brown;
-  border: 3px solid brown;
+  color: #3D5F36;
+  border: 3px solid var(--bgNav);
   font-size: 7vw;
   grid-column: 2;
   grid-row: 1;
@@ -40,29 +40,52 @@
 .infos {
   grid-column: 1;
   grid-row: 2;
-  background-color: lightyellow;
+background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
   padding: 20px;
+    border-radius: 10px;
 }
+
+
 
 .varieties {
   grid-column: 1;
   grid-row: 3;
-  background-color: pink;
+background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
   padding: 20px;
+  border-radius: 10px;
 }
 
 .description {
   grid-column: 2;
   grid-row: 2;
-  background-color: lightgreen;
+background: rgb(224,235,222);
+background: -moz-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0ebde",endColorstr="#94bb8b",GradientType=1);
   padding: 20px;
+    border-radius: 10px;
 }
+
 
 .other {
   grid-column: 2;
   grid-row: 3;
-  background-color: lightblue;
+background: rgb(224,235,222);
+background: -moz-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0ebde",endColorstr="#94bb8b",GradientType=1);
   padding: 20px;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -94,28 +117,42 @@
     align-items: flex-start;
     justify-content: center;
     border: none;
-    color: brown;
+    color: white;
   }
 
   .description {
     grid-column: 1;
     grid-row: 2;
+    border-radius: 0;
+    background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
   }
 
   .infos {
     grid-column: 1;
     grid-row: 3;
+        border-radius: 0;
   }
 
   .varieties {
     grid-column: 1;
     grid-row: 4;
+        border-radius: 0;
   }
 
   .other {
     grid-column: 1;
     grid-row: 5;
+        border-radius: 0;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
   }
 }

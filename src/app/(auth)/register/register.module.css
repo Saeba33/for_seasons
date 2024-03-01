@@ -25,6 +25,10 @@
   border-radius: 5px;
 }
 
+.form input:focus {
+  outline: 2px solid var(--bgNav);
+}
+
 .form button {
   padding: 16px;
   background-color: var(--bgNav);

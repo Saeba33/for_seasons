@@ -58,7 +58,6 @@ const Recipes = () => {
     <>
       <h1 className={styles.title}>
         Recette{recipes.length > 1 ? "s" : ""}
-        {recipes.length > 1 ? ` (${recipes.length})` : ""}
       </h1>
       <p className={styles.description}>
         Sur cette page, plongez dans un univers de saveurs avec nos recettes qui
@@ -85,6 +84,10 @@ const Recipes = () => {
             >
               {showFavorites ? "Voir toutes les recettes" : "Voir mes favoris"}
             </button>
+            <p className={styles.numberRecipes}>
+              {" "}
+              Il y a actuellement {recipes.length} recettes.
+            </p>
             <div className={styles.cards}>
               {recipes.map((recipe, index) =>
                 recipe ? (

@@ -100,7 +100,8 @@ const RecipeDetails = () => {
   const DifficultyImages = ({ level }) => {
     return (
       <div className={styles.difficultyImagesContainer}>
-        Difficulté :
+        <div className={styles.difficultyLabel}>Difficulté</div>
+        <div className={styles.difficultyImages}>
         {Array.from({ length: level }, (_, i) => (
           <Image
             key={i}
@@ -112,12 +113,14 @@ const RecipeDetails = () => {
           />
         ))}
       </div>
+      </div>
     );
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
+        <h2 className={styles.title}>{recipe.title}</h2>
         <div className={styles.imageContainer}>
           <Image
             src={recipe.photo}
@@ -148,8 +151,8 @@ const RecipeDetails = () => {
             </div>
           )}
         </div>
+
         <div className={styles.content}>
-          <h2 className={styles.title}>{recipe.title}</h2>
           <DifficultyImages level={frenchDifficulty(recipe.difficulty)} />
           <p className={styles.duration}>
             Temps de préparation <strong>{recipe.duration}</strong>
@@ -157,16 +160,22 @@ const RecipeDetails = () => {
           <p className={styles.persons}>
             Nombre de personnes <strong>{recipe.number_persons}</strong>
           </p>
+
           <p className={styles.ustensils}>
-            Ustensiles <strong>{recipe.ustensils}</strong>
+            Ustensiles :
+            <br />
+            {recipe.ustensils}
           </p>
           <p className={styles.informations}>
-            Informations <strong>{recipe.information}</strong>
+            Informations :
+            <br />
+            {recipe.information}
           </p>
+          <div className={styles.instructions}>
+            <h3>La recette : </h3>
+            <p> {recipe.instructions}</p>
+          </div>
         </div>
-        <p className={styles.instructions}>
-          Instructions : {recipe.instructions}
-        </p>
       </div>
     </div>
   );

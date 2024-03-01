@@ -1,9 +1,9 @@
 :root {
   --bg: whitesmoke;
-  --bgSoft: #2ac3a2;
-  --bgNav: #8bc34a;
+  --bgSoft: #D1E2CD;
+  --bgNav: #679F5A;
   --bgImg: #F4F3EF;
-  --text: #2d2b42;
+  --text: #283319;
   --textSoft: whitesmoke;
   --btn: #3673fd;
   --fs: calc(12px + 0.3vw);
@@ -38,7 +38,7 @@ body::before {
   right: 0;
   bottom: 0;
   background-image: url("/bg.webp");
-  opacity: 0.2;
+  opacity: 0.1;
   z-index: -1;
 }
 

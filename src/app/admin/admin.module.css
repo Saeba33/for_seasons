@@ -16,7 +16,7 @@
   border-radius: 10px;
   box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px #ffffff;
   padding: 15px 10px 15px 15px;
-  background-color: var(--bgImg);
+  background-color: white;
 }
 
 .product img,

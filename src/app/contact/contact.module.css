@@ -25,11 +25,10 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: white;
-  color: brown;
-
 }
 
-.form input:focus,  .form textarea:focus {
+.form input:focus,
+.form textarea:focus {
   outline: 3px solid rgba(139, 195, 74, 0.3);
 }
 

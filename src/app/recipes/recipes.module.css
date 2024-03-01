@@ -91,6 +91,12 @@
   color: var(--bgNav);
 }
 
+.numberRecipes {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 50px;
+}
+
 @media (max-width: 1024px) {
   .description,
   .noRecipe {

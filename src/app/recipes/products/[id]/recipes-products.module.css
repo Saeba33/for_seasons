@@ -51,7 +51,7 @@
 
 .difficultyImagesContainer {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .difficultyImage img {

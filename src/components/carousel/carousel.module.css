@@ -42,7 +42,6 @@
 }
 
 .card:hover {
-  transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
 }
 
@@ -92,15 +91,20 @@
   gap: 15px;
 }
 
-.seeRecipe:hover, .seeProduct:hover {
-  text-decoration: underline;
+.content:hover {
   opacity: 0.8;
-  scale: 1.1;
+
+}
+
+.content a:hover {
+    scale: 1.1;
+    font-weight: bold;
 }
 
 .mainCard:hover .content {
   transform: rotateX(0deg);
   background-color: var(--bgNav);
+  color: white;
 }
 
 .arrow {
