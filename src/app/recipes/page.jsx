@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import styles from "./recipes.module.css";
-import difficulty from "/public/piment.png";
+import difficulty from "/public/difficulty.png";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -39,6 +39,7 @@ const Recipes = () => {
   const DifficultyImages = ({ level }) => {
     return (
       <div className={styles.difficultyImagesContainer}>
+        Difficulté :
         {Array.from({ length: level }, (_, i) => (
           <Image
             key={i}
@@ -55,7 +56,10 @@ const Recipes = () => {
 
   return (
     <>
-      <h1 className={styles.title}>Recettes</h1>
+      <h1 className={styles.title}>
+        Recette{recipes.length > 1 ? "s" : ""}
+        {recipes.length > 1 ? ` (${recipes.length})` : ""}
+      </h1>
       <p className={styles.description}>
         Sur cette page, plongez dans un univers de saveurs avec nos recettes qui
         célèbrent les fruits et légumes de saison. Chaque saison offre des
@@ -95,11 +99,9 @@ const Recipes = () => {
                       />
                       <h3>{recipe.title}</h3>
                       <div className={styles.content}>
-                        <p>
-                          Difficulté :<DifficultyImages
-                            level={frenchDifficulty(recipe.difficulty)}
-                          />
-                        </p>
+                        <DifficultyImages
+                          level={frenchDifficulty(recipe.difficulty)}
+                        />
                         <p>Temps de préparation : {recipe.duration}</p>
                         <p>Nombre de personnes : {recipe.number_persons}</p>
                         <span className={styles.showRecipe}>

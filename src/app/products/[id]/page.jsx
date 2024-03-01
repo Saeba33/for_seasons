@@ -1,9 +1,9 @@
 "use client";
 import { useContext, useState, useEffect } from "react";
+import Loading from "@/components/loading/Loading";
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import styles from "./products.module.css";
-import abricot from "/public/products/abricot.webp";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -30,42 +30,41 @@ const ProductDetails = () => {
     }
   }, [selectedProduct]);
 
+  if (!product) {
+    return <Loading/>;
+  }
+
   return (
-    <div className={styles.container}>
-      {product ? (
-        <div className={styles.card}>
-          <Image
-          className={styles.picture}
-            src={product.picture}
-            alt={product.name || "Product Image"}
-            width={200}
-            height={200}
-          />
-          <h1 className={styles.title}>{product?.name || "Product Name"}</h1>
-          <section className={styles.description}>
-            <h5 className={styles.subtitle}>Description</h5>
-            <p>{product?.description || "No description available"}</p>
-          </section>
+    <div className={styles.card}>
+      <Image
+      className={styles.picture}
+        src={product.picture || abricot}
+        alt={product.name || "Product Image"}
+        width={200}
+        height={200}
+      />
+      <h1 className={styles.title}>{product.name}</h1>
+      <section className={styles.description}>
+        <h5 className={styles.subtitle}>Description</h5>
+        <p>{product.description}</p>
+      </section>
 
-          <section className={styles.infos}>
-            <h5 className={styles.subtitle}>Infos utiles</h5>
-            <p>{product?.informations || "No information available"}</p>
-          </section>
+      <section className={styles.infos}>
+        <h5 className={styles.subtitle}>Infos utiles</h5>
+        <p>{product.informations}</p>
+      </section>
 
-          <section className={styles.varieties}>
-            <h5 className={styles.subtitle}>Variétés</h5>
-            <p>{product?.varieties || "No varieties available"}</p>
-          </section>
-          <section className={styles.other}>
-            <h5 className={styles.subtitle}>Autres</h5>
-            <p>{product?.other || "No additional information"}</p>
-          </section>
-        </div>
-      ) : (
-        <div>Chargement des détails du produit...</div>
-      )}
+      <section className={styles.varieties}>
+        <h5 className={styles.subtitle}>Variétés</h5>
+        <p>{product.varieties}</p>
+      </section>
+      <section className={styles.other}>
+        <h5 className={styles.subtitle}>Autres</h5>
+        <p>{product.other}</p>
+      </section>
     </div>
   );
 };
 
 export default ProductDetails;
+

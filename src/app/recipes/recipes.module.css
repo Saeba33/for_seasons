@@ -53,12 +53,12 @@
 .content p {
   word-spacing: 2px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .difficultyImagesContainer {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .difficultyImage img {

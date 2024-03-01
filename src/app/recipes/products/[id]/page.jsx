@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import styles from "./recipes-products.module.css";
 import chaudron from "/public/chaudron.png";
-import difficulty from "/public/piment.png";
+import difficulty from "/public/difficulty.png";
 
 const ProductsRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -60,7 +60,10 @@ const ProductsRecipes = () => {
 
   return (
     <>
-      <h1 className={styles.title}>Recettes</h1>
+      <h1 className={styles.title}>
+        Recette{recipes.length > 1 ? "s" : ""}
+        {recipes.length > 1 ? ` (${recipes.length})` : ""}
+      </h1>
       {recipes.length === 0 && (
         <div className={styles.noRecipe}>
           <p>Aucune recette associée à ce produit. Revenez plus tard.</p>

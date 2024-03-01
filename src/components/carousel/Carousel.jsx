@@ -1,7 +1,7 @@
-import { AuthContext } from "@/contexts/AuthContext";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { AuthContext } from "@/contexts/AuthContext";
 import styles from "./carousel.module.css";
 import leftArrow from "/public/left_arrow.png";
 import leftArrowHover from "/public/left_arrow_hover.png";
@@ -39,14 +39,19 @@ const Carousel = ({ items }) => {
     setIsRightArrowHovered(isHovered);
   };
 
-  const renderCard = (item, isMainCard) => {
-    if (!item || !item.picture) {
-      return null;
-    }
+  const handleCardClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const renderCard = (item, isMainCard, index) => {
+    if (!item || !item.picture) return null;
     return (
       <div
         className={`${styles.card} ${isMainCard ? styles.mainCard : ""}`}
-        onClick={() => item.id && handleProductClick(item.id)}
+        onClick={() => {
+          handleProductClick(item.id);
+          handleCardClick(index);
+        }}
       >
         <Image
           src={item.picture}
@@ -60,20 +65,11 @@ const Carousel = ({ items }) => {
         {isMainCard && (
           <>
             <div className={styles.content}>
-              <Link
-                className={styles.seeRecipe}
-                href={`/recipes/products/${item.id}/?type=type2`}
-              >
-                {" "}
-                Voir les recettes &#x2192;{" "}
+              <Link href={`/recipes/products/${item.id}/?type=type2`}>
+                Voir les recettes &#x2192;
               </Link>
-
-              <Link
-                className={styles.seeProduct}
-                href={`/products/${item.id}/`}
-              >
-                {" "}
-                Voir la fiche produit &#x2192;{" "}
+              <Link href={`/products/${item.id}/`}>
+                Voir la fiche produit &#x2192;
               </Link>
             </div>
           </>
@@ -84,37 +80,57 @@ const Carousel = ({ items }) => {
 
   return (
     <div className={styles.container}>
-      <button
-        onClick={goToPrevious}
-        className={styles.arrow}
-        onMouseEnter={() => handleLeftArrowHover(true)}
-        onMouseLeave={() => handleLeftArrowHover(false)}
-      >
-        <Image
-          src={isLeftArrowHovered ? leftArrowHover : leftArrow}
-          alt="Left Arrow"
-          width={50}
-          height={50}
-        />
-      </button>
+      {items.length > 2 && (
+        <button
+          onClick={goToPrevious}
+          className={styles.arrow}
+          onMouseEnter={() => handleLeftArrowHover(true)}
+          onMouseLeave={() => handleLeftArrowHover(false)}
+        >
+          <Image
+            src={isLeftArrowHovered ? leftArrowHover : leftArrow}
+            alt="Left Arrow"
+            width={50}
+            height={50}
+          />
+        </button>
+      )}
       <div className={styles.cards}>
-        {renderCard(items[(currentIndex + items.length - 1) % items.length])}
-        {renderCard(items[currentIndex], true)}
-        {renderCard(items[(currentIndex + 1) % items.length])}
+        {items.length === 2 ? (
+          items.map((item, index) =>
+            renderCard(item, index === currentIndex, index)
+          )
+        ) : (
+          <>
+            {renderCard(
+              items[(currentIndex + items.length - 1) % items.length],
+              false,
+              (currentIndex + items.length - 1) % items.length
+            )}
+            {renderCard(items[currentIndex], true, currentIndex)}
+            {renderCard(
+              items[(currentIndex + 1) % items.length],
+              false,
+              (currentIndex + 1) % items.length
+            )}
+          </>
+        )}
       </div>
-      <button
-        onClick={goToNext}
-        className={styles.arrow}
-        onMouseEnter={() => handleRightArrowHover(true)}
-        onMouseLeave={() => handleRightArrowHover(false)}
-      >
-        <Image
-          src={isRightArrowHovered ? rightArrowHover : rightArrow}
-          alt="Right Arrow"
-          width={50}
-          height={50}
-        />
-      </button>
+      {items.length > 2 && (
+        <button
+          onClick={goToNext}
+          className={styles.arrow}
+          onMouseEnter={() => handleRightArrowHover(true)}
+          onMouseLeave={() => handleRightArrowHover(false)}
+        >
+          <Image
+            src={isRightArrowHovered ? rightArrowHover : rightArrow}
+            alt="Right Arrow"
+            width={50}
+            height={50}
+          />
+        </button>
+      )}
     </div>
   );
 };

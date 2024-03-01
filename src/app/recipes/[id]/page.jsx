@@ -1,13 +1,14 @@
 "use client";
 
 import { frenchDifficulty } from "@/app/utils/translations";
+import Loading from "@/components/loading/Loading";
 import { AuthContext } from "@/contexts/AuthContext";
 import Image from "next/image";
 import { useCallback, useContext, useEffect, useState } from "react";
 import styles from "./recipe-detail.module.css";
+import difficulty from "/public/difficulty.png";
 import favorite from "/public/favorite.png";
 import unfavorite from "/public/not-favorite.png";
-import difficulty from "/public/piment.png";
 
 const RecipeDetails = () => {
   const { isLoggedIn, authToken } = useContext(AuthContext);
@@ -93,25 +94,26 @@ const RecipeDetails = () => {
     }
   };
   if (!recipe) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
-const DifficultyImages = ({ level }) => {
-  return (
-    <div className={styles.difficultyImagesContainer}>
-      {Array.from({ length: level }, (_, i) => (
-        <Image
-          key={i}
-          src={difficulty}
-          alt="Niveau de difficulté"
-          width={30}
-          height={30}
-          className={styles.difficultyImage}
-        />
-      ))}
-    </div>
-  );
-};
+  const DifficultyImages = ({ level }) => {
+    return (
+      <div className={styles.difficultyImagesContainer}>
+        Difficulté :
+        {Array.from({ length: level }, (_, i) => (
+          <Image
+            key={i}
+            src={difficulty}
+            alt="Niveau de difficulté"
+            width={30}
+            height={30}
+            className={styles.difficultyImage}
+          />
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className={styles.container}>
@@ -131,7 +133,7 @@ const DifficultyImages = ({ level }) => {
                 disabled={isLoadingFavorite}
               >
                 {isLoadingFavorite ? (
-                  "Chargement..."
+                  <Loading />
                 ) : isFavorite ? (
                   <Image src={favorite} alt="Favorite" width={50} height={50} />
                 ) : (
@@ -148,12 +150,7 @@ const DifficultyImages = ({ level }) => {
         </div>
         <div className={styles.content}>
           <h2 className={styles.title}>{recipe.title}</h2>
-          <p className={styles.difficulty}>
-            Difficulté
-            <strong>
-              <DifficultyImages level={frenchDifficulty(recipe.difficulty)} />
-            </strong>
-          </p>
+          <DifficultyImages level={frenchDifficulty(recipe.difficulty)} />
           <p className={styles.duration}>
             Temps de préparation <strong>{recipe.duration}</strong>
           </p>
@@ -161,7 +158,7 @@ const DifficultyImages = ({ level }) => {
             Nombre de personnes <strong>{recipe.number_persons}</strong>
           </p>
           <p className={styles.ustensils}>
-            Ustensiles <strong>{recipe.ustensils}</strong> 
+            Ustensiles <strong>{recipe.ustensils}</strong>
           </p>
           <p className={styles.informations}>
             Informations <strong>{recipe.information}</strong>

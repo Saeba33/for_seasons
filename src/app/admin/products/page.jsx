@@ -1,15 +1,14 @@
 "use client";
 
 import { useAdminAccess } from "@/contexts/AuthContext";
-import { Toaster, toast } from "sonner";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Toaster, toast } from "sonner";
 import NotFound from "../../not-found";
+import { frenchCategory, frenchMonth } from "../../utils/translations";
 import styles from "./admin-products.module.css";
 import retour from "/public/return.png";
-import { frenchMonth, frenchCategory } from "../../utils/translations";
-
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -21,6 +20,9 @@ const AdminProducts = () => {
     category: "",
     picture: "",
     description: "",
+    informations: "",
+    varieties: "",
+    other: "",
     month: "",
     featured: false,
   });
@@ -107,6 +109,9 @@ const AdminProducts = () => {
       category: product.category,
       picture: product.picture,
       description: product.description,
+      informations: product.informations,
+      varieties: product.varieties,
+      other: product.other,
       month: months.indexOf(product.month) + 1,
       featured: product.featured,
     });
@@ -132,6 +137,9 @@ const AdminProducts = () => {
       category: "",
       picture: "",
       description: "",
+      informations: "",
+      varieties: "",
+      other: "",
       month: "",
       featured: false,
     });
@@ -239,6 +247,25 @@ const AdminProducts = () => {
                 onChange={handleFormChange}
                 placeholder="Description"
               />
+              <textarea
+                name="informations"
+                value={formData.informations}
+                onChange={handleFormChange}
+                placeholder="Informations"
+              />
+              <textarea
+                name="varieties"
+                value={formData.varieties}
+                onChange={handleFormChange}
+                placeholder="Variétés"
+              />
+              <input
+                type="text"
+                name="other"
+                value={formData.other}
+                onChange={handleFormChange}
+                placeholder="Autre"
+              />
               <div className={styles.checkbox}>
                 <label>En vedette :</label>
                 <input
@@ -276,7 +303,6 @@ const AdminProducts = () => {
                   <p>Catégorie : {frenchCategory(product.category)}</p>
                   <p>Mois : {frenchMonth(product.month)}</p>
                   <p>En vedette : {product.featured ? "Oui" : "Non"}</p>
-                  <p>Description : {product.description}</p>
                 </div>
                 <div className={styles.buttons}>
                   <button

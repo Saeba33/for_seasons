@@ -17,6 +17,7 @@ import {
 import AdminIngredients from "../recipes/ingredients/page";
 import styles from "./admin-recipes.module.css";
 import retour from "/public/return.png";
+import difficulty from "/public/difficulty.png";
 
 const AdminRecipes = () => {
   const { userId } = useContext(AuthContext);
@@ -143,6 +144,24 @@ const AdminRecipes = () => {
     setRecipes(loadedRecipes);
   };
 
+  const DifficultyImages = ({ level }) => {
+    return (
+      <div className={styles.difficultyImagesContainer}>
+        Difficulté :
+        {Array.from({ length: level }, (_, i) => (
+          <Image
+            key={i}
+            src={difficulty}
+            alt="Niveau de difficulté"
+            width={30}
+            height={30}
+            className={styles.difficultyImage}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <>
       <div className={styles.title}>
@@ -257,7 +276,9 @@ const AdminRecipes = () => {
         )}
         <div className={styles.cards}>
           {filteredRecipes.length === 0 ? (
-            <p className={styles.noResult}>Aucun résultat pour cette recherche 😢 </p>
+            <p className={styles.noResult}>
+              Aucun résultat pour cette recherche 😢{" "}
+            </p>
           ) : (
             filteredRecipes.map((recipe) => (
               <div key={recipe.recipe_id} className={styles.card}>
@@ -272,12 +293,11 @@ const AdminRecipes = () => {
                   />
                 )}
                 <div className={styles.content}>
-                  <p>Difficulté: {frenchDifficulty(recipe.difficulty)}</p>
+                  <DifficultyImages
+                    level={frenchDifficulty(recipe.difficulty)}
+                  />
                   <p>Durée: {recipe.duration}</p>
                   <p>Pour {recipe.number_persons} personne(s)</p>
-                  <p>Ustensiles: {recipe.ustensils}</p>
-                  <p>Instructions: {recipe.instructions}</p>
-                  <p>Informations supplémentaires: {recipe.information}</p>
                 </div>
                 <div className={styles.buttons}>
                   <button

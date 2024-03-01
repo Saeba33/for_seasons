@@ -46,7 +46,7 @@
 .card {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  width: 300px;
+  width: 320px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 12px;
@@ -60,18 +60,31 @@
 
 .card img {
   grid-row: 2;
-  width: 100%;
   height: auto;
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   grid-row: 3;
   padding: 12px 0;
 }
 
 .content p {
-  line-height: 1.5;
   word-spacing: 2px;
+  display: flex;
+}
+
+.difficultyImagesContainer {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.difficultyImage img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 50px;
 }
 
 .buttons {

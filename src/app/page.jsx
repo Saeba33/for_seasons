@@ -73,7 +73,10 @@ const Home = () => {
       <div className={styles.container}>
         <div className={styles.sections}>
           <section className={styles.fruits}>
-            <h3>Fruits</h3>
+            <h3 className={styles.title}>
+              Fruit{fruits.length > 1 ? "s" : ""}
+              {fruits.length > 1 ? ` (${fruits.length})` : ""}
+            </h3>
             <Carousel
               items={fruits.map((fruit) => ({
                 ...fruit,
@@ -82,7 +85,10 @@ const Home = () => {
             />
           </section>
           <section className={styles.vegetables}>
-            <h3>Légumes</h3>
+            <h3 className={styles.title}>
+              Légume{vegetables.length > 1 ? "s" : ""}
+              {vegetables.length > 1 ? ` (${vegetables.length})` : ""}
+            </h3>
             <Carousel
               items={vegetables.map((vegetable) => ({
                 ...vegetable,

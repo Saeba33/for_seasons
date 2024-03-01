@@ -6,6 +6,9 @@ async function createAdminProduct({
   category,
   picture = null,
   description = null,
+  informations = null,
+  varieties = null,
+  other = null,
   month,
   featured = false,
 }) {
@@ -14,7 +17,7 @@ async function createAdminProduct({
     await connection.beginTransaction();
     const [productResult] = await connection.query(
       "INSERT INTO products (name, category, picture, description) VALUES (?, ?, ?, ?)",
-      [name, category, picture || "", description || ""]
+      [name, category, picture || "", description || "", informations || "", varieties || "", other || ""]
     );
     const productId = productResult.insertId;
 
@@ -44,7 +47,7 @@ async function createAdminProduct({
 async function readAdminProducts() {
   try {
     const [rows] = await db.query(
-      `SELECT products.product_id, products.name, products.category, products.picture, products.description, products_of_month.month, products_of_month.featured
+      `SELECT products.product_id, products.name, products.category, products.picture, products.description, products.informations, products.varieties, products.other, products_of_month.month, products_of_month.featured
        FROM products
        LEFT JOIN products_of_month ON products.product_id = products_of_month.product_id`
     );
@@ -57,7 +60,7 @@ async function readAdminProducts() {
 async function readAdminProductById(product_id) {
   try {
     const [rows] = await db.query(
-      `SELECT products.product_id, products.name, products.category, products.picture, products.description, products_of_month.month, products_of_month.featured
+      `SELECT products.product_id, products.name, products.category, products.picture, products.description, products.informations, products.varieties, products.other,products_of_month.month, products_of_month.featured
              FROM products
              LEFT JOIN products_of_month ON products.product_id = products_of_month.product_id
              WHERE products.product_id = ?`,
@@ -80,6 +83,9 @@ async function updateAdminProduct({
   category,
   picture,
   description,
+  informations,
+  varieties,
+  other,
   month,
   featured,
 }) {
@@ -106,12 +112,15 @@ async function updateAdminProduct({
       );
     }
     await connection.query(
-      "UPDATE products SET name = ?, category = ?, picture = ?, description = ? WHERE product_id = ?",
+      "UPDATE products SET name = ?, category = ?, picture = ?, description = ?, informations = ?, varieties = ?, other = ? WHERE product_id = ?",
       [
         name || current[0].name,
         category || current[0].category,
         picture || current[0].picture,
         description || current[0].description,
+        informations || current[0].informations,
+        varieties || current[0].varieties,
+        other || current[0].other,
         product_id,
       ]
     );
