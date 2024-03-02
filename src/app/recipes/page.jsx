@@ -57,7 +57,7 @@ const Recipes = () => {
   return (
     <>
       <h1 className={styles.title}>
-        Recettes{(recipes.length = 1 ? "" : "s")}
+        Recette{(recipes.length == 1 ? "" : "s")}
       </h1>
       <p className={styles.description}>
         Sur cette page, plongez dans un univers de saveurs avec nos recettes qui
