@@ -16,7 +16,7 @@
   gap: 32px;
   border-radius: 5px;
   background-color: var(--bgSoft);
-  border: 3px solid var(--bgNav);
+  border: 1px solid var(--bgNav);
 }
 
 .form input {

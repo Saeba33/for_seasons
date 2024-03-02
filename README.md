@@ -12,7 +12,7 @@ Bienvenue dans le README de "4 seasons". Cette application a été conçue pour 
 - Les endpoints frontend respectent la structure actuelle de NextJS (v.14) dans le dossier "**app**".
 - La structure de base commune est gérée depuis le fichier "Layout" (à la racine du dossier "app").
 - Le footer et la navbar sont stockés dans le dossier "**layouts**".
-- Pour une meilleure visibilité et une réutilisation potentielle, le carousel (de la page Home) est géré dans le dossier "**components**".
+- Pour une meilleure visibilité et une réutilisation potentielle, le carousel (de la page Home) est géré dans le dossier "**components**". Idem pour la page de chargement.
 - Les images des produits et des recettes présentent dans le dossier **public** ont été générées par intelligence artificielle, elles comportent quelques défauts visuels (pixelisation sur certains contourings).
 - Le dossier "**utils**" regroupent un gestionnaire pour les intéractions admin sur les recettes et les ingrédients (handlers.js) et un fichiers de traduction (translations.js) pour les composants en ayant besoin.
 
