@@ -62,7 +62,6 @@ const ProductsRecipes = () => {
     <>
       <h1 className={styles.title}>
         Recette{recipes.length > 1 ? "s" : ""}
-        {recipes.length > 1 ? ` (${recipes.length})` : ""}
       </h1>
       {recipes.length === 0 && (
         <div className={styles.noRecipe}>
@@ -90,7 +89,9 @@ const ProductsRecipes = () => {
                     />
                     <p>Temps de préparation : {recipe.duration}</p>
                     <p>Nombre de personnes : {recipe.number_persons}</p>
-                    <span className={styles.showRecipe}>Voir la recette</span>
+                    <span className={styles.showRecipe}>
+                      Voir la recette &#x2192;
+                    </span>
                   </div>
                 </Link>
               </div>

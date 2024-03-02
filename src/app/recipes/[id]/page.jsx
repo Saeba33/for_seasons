@@ -247,7 +247,7 @@ const RecipeDetails = () => {
           </p>
           <div className={styles.instructions}>
             <h3>La recette : </h3>
-            <p> {recipe.instructions}</p>
+            <p>{recipe.instructions}</p>
           </div>
         </div>
       </div>

@@ -77,7 +77,12 @@
   display: flex;
   padding-top: 12px;
   padding-bottom: 32px;
+
+}
+
+.showRecipe:hover {
   text-decoration: underline;
+    font-weight: bold;
 }
 
 .noRecipe {
