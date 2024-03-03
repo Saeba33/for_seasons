@@ -178,7 +178,7 @@ const RecipeDetails = () => {
         <h2 className={styles.title}>{recipe.title}</h2>
         <div className={styles.imageContainer}>
           <Image
-            src={recipe.photo}
+            src={recipe.photo || "/path/to/default/image.png"}
             alt={recipe.title}
             width={500}
             height={500}

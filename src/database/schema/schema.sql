@@ -43,7 +43,7 @@ CREATE TABLE recipes (
   number_persons INTEGER NOT NULL, 
   instructions TEXT NOT NULL,
   ustensils VARCHAR(255),
-  information VARCHAR(255),
+  information TEXT,
   user_id INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
