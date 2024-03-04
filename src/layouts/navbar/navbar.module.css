@@ -1,0 +1,23 @@
+.container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+   width: 150px;
+  height: auto;
+  rotate: 45deg;
+}
+
+.active {
+  background-color: var(--bgNav);
+  color: var(--textSoft);
+}
+
+@media (max-width: 1024px) {
+  .logo img {
+    align-self: center;
+  }
+}

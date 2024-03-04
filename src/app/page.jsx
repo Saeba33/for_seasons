@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import Carousel from "@/components/carousel/Carousel";
 import { useEffect, useState } from "react";
-import Carousel from "../components/carousel/Carousel";
 import styles from "./page.module.css";
 
 const getCurrentMonth = () => {
@@ -20,8 +19,7 @@ const getCurrentMonth = () => {
     "november",
     "december",
   ];
-  const currentMonthIndex = new Date().getMonth();
-  return monthNames[currentMonthIndex];
+  return monthNames[new Date().getMonth()];
 };
 
 const Home = () => {
@@ -33,7 +31,6 @@ const Home = () => {
     const fetchProductsByMonth = async (month) => {
       const response = await fetch(`/api/products?month=${month}`);
       const data = await response.json();
-
       setVegetables(
         data.filter((product) => product.category === "vegetables")
       );
@@ -44,12 +41,19 @@ const Home = () => {
   }, [selectedMonth]);
 
   return (
-    <div className={styles.container}>
-      <h1>Fruits et légumes de saison</h1>
-      <div>
-        <label htmlFor="month-selected">Choisissez un mois:</label>
+    <>
+      <h1 className={styles.title}>Fruits et légumes de saison</h1>
+      <div className={styles.description}>
+        <label htmlFor="selectedMonth">
+          {" "}
+          Sélectionnez un mois à partir du menu déroulant pour découvrir les
+          produits de saison correspondants. En passant votre souris sur
+          l&apos;un d&apos;entre eux, vous pourrez accéder aux recettes
+          utilisant cet ingrédient ou vous diriger vers sa fiche descriptive.
+          Les produits saisonnier en {""}
+        </label>
         <select
-          id="selectedMonth"
+          className={styles.month}
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(e.target.value)}
         >
@@ -67,79 +71,35 @@ const Home = () => {
           <option value="december">Décembre</option>
         </select>
       </div>
-      <div className={styles.sections}>
-        <section className={styles.vegetables}>
-          <h3>Légumes</h3>
-          <Carousel
-            items={[
-              ...vegetables
-                .filter((veg) => veg.featured === true)
-                .map((veg) => (
-                  <div key={veg.id} className={styles.card}>
-                    <Image
-                      src={veg.picture || "/placeholder.jpg"}
-                      alt={veg.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{veg.name}</h5>
-                    <p>{veg.description}</p>
-                  </div>
-                )),
-              ...vegetables
-                .filter((veg) => veg.featured !== true)
-                .map((veg) => (
-                  <div key={veg.id} className={styles.card}>
-                    <Image
-                      src={veg.picture || "/placeholder.jpg"}
-                      alt={veg.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{veg.name}</h5>
-                    <p>{veg.description}</p>
-                  </div>
-                )),
-            ]}
-          />
-        </section>
-        <section className={styles.fruits}>
-          <h3>Fruits</h3>
-          <Carousel
-            items={[
-              ...fruits
-                .filter((fruit) => fruit.featured === true)
-                .map((fruit) => (
-                  <div key={fruit.id} className={styles.card}>
-                    <Image
-                      src={fruit.picture || "/placeholder.jpg"}
-                      alt={fruit.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{fruit.name}</h5>
-                    <p>{fruit.description}</p>
-                  </div>
-                )),
-              ...fruits
-                .filter((fruit) => fruit.featured !== true)
-                .map((fruit) => (
-                  <div key={fruit.id} className={styles.card}>
-                    <Image
-                      src={fruit.picture || "/placeholder.jpg"}
-                      alt={fruit.name}
-                      width={500}
-                      height={500}
-                    />
-                    <h5>{fruit.name}</h5>
-                    <p>{fruit.description}</p>
-                  </div>
-                )),
-            ]}
-          />
-        </section>
+      <div className={styles.container}>
+        <div className={styles.sections}>
+          <section className={styles.fruits}>
+            <h3 className={styles.title}>
+              Fruit{fruits.length > 1 ? "s" : ""}
+              {fruits.length > 1 ? ` (${fruits.length})` : ""}
+            </h3>
+            <Carousel
+              items={fruits.map((fruit) => ({
+                ...fruit,
+                id: fruit.product_id,
+              }))}
+            />
+          </section>
+          <section className={styles.vegetables}>
+            <h3 className={styles.title}>
+              Légume{vegetables.length > 1 ? "s" : ""}
+              {vegetables.length > 1 ? ` (${vegetables.length})` : ""}
+            </h3>
+            <Carousel
+              items={vegetables.map((vegetable) => ({
+                ...vegetable,
+                id: vegetable.product_id,
+              }))}
+            />
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

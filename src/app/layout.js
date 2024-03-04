@@ -1,18 +1,22 @@
 "use client";
 
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
-import {AuthProvider} from "@/utils/AuthContext";
-import { Inter } from "next/font/google";
+import { AuthProvider } from "@/contexts/AuthContext";
+import Footer from "@/layouts/footer/Footer";
+import Navbar from "@/layouts/navbar/Navbar";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const Layout = ({ children }) => {
   return (
     <AuthProvider>
       <html lang="fr">
-        <body className={inter.className}>
+        <head>
+          <title>4 Seasons</title>
+          <meta
+            name="description"
+            content="A website about seasonal fruits and vegetables"
+          />
+        </head>
+        <body>
           <div className="container">
             <Navbar />
             {children}

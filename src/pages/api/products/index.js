@@ -2,7 +2,7 @@ import {
   createProduct,
   readAllProducts,
   readProductsByMonth,
-} from "@/lib/products";
+} from "@/managers/productsManager";
 
 export default async function handler(req, res) {
   const { method, query } = req;
@@ -13,12 +13,10 @@ export default async function handler(req, res) {
       let products;
       if (month) {
         products = await readProductsByMonth(month);
-        
       } else {
         products = await readAllProducts();
       }
       res.status(200).json(products);
-
     } else if (method === "POST") {
       const { name, category, picture, description } = req.body;
       const result = await createProduct({

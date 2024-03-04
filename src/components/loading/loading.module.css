@@ -1,0 +1,39 @@
+.container {
+    margin: auto;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.text {
+  font-size: 5vw;
+  color: var(--bgNav);
+  margin-bottom: 20px;
+  align-self: center;
+}
+
+.bar {
+  width: 50%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--bgNav);;
+  animation: loader-bar-animation 2s ease-in-out infinite;
+}
+
+@keyframes loader-bar-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,4 +1,4 @@
-import { createRecipe, readAllRecipes } from "@/lib/recipes";
+import { createRecipe, readAllRecipes } from "@/managers/recipesManager";
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         duration,
         numberPersons,
         instructions,
-        utensils,
+        ustensils,
         information,
       } = req.body;
       const userId = req.user.user_id;
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         duration,
         numberPersons,
         instructions,
-        utensils,
+        ustensils,
         information,
         userId,
       });
