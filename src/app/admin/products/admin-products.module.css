@@ -1,0 +1,174 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .link {
+    margin-left: 10px;
+    width: calc(50px + 1vw);
+    height: auto;
+  }
+}
+
+.container {
+  margin: auto 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search {
+  margin: 50px auto;
+}
+
+.search input {
+  padding: 5px;
+  font-style: italic;
+  min-width: 300px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search:focus,
+.search input:hover {
+  outline: none;
+  border-color: var(--bgNav);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(139, 195, 74, 0.3);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--bgImg);
+}
+
+.header {
+  grid-row: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card h3 {
+  text-align: center;
+  font-size: 18px;
+}
+
+.card img {
+  grid-row: 2;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  grid-row: 3;
+  padding: 12px 0;
+}
+
+.content p {
+  line-height: 1.5;
+  word-spacing: 2px;
+}
+
+.buttons {
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.buttons button {
+  padding: 5px;
+}
+
+.editButton {
+  background-color: #ffc107;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+}
+
+.addButton {
+  background: #24963e;
+  padding: 10px 20px;
+  margin-bottom: 50px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 50px;
+  gap: 20px;
+  box-sizing: border-box;
+  max-height: calc(100vh - 20px);
+  background-color: white;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.modal input,
+.modal textarea,
+.modal select,
+.modal button {
+  padding: 10px;
+  width: calc(100% - 20px);
+  min-height: 50px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
+}
+
+.modal button {
+  background-color: var(--btn);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(100% - 20px);
+  margin: auto;
+}
+
+.checkbox label {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin: auto 10px;
+}
+
+.checkbox input {
+  margin-left: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

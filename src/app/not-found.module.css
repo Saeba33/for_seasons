@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  border-right: 5px solid #ccc;
+  padding: 0 50px 0 0;
+}
+
+.noResult {
+  text-align: center;
+  padding-left: 50px;
+}
+
+.noResult img {
+  margin-inline: 20px;
+}
+
+.noResult img:last-child {
+  transform: scaleX(-1);
+}

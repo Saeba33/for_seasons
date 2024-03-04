@@ -1,0 +1,113 @@
+.description {
+  width: 60%;
+  align-self: center;
+  margin: 32px;
+  font-size: var(--fsSub);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  width: 320px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: var(--bgImg);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  grid-row: 1;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card h3 {
+  text-align: center;
+  font-size: var(--fsSub);
+}
+
+.content {
+  grid-row: 2;
+  padding: 12px 20px;
+}
+
+.content p {
+  word-spacing: 2px;
+  display: flex;
+  align-items: baseline;
+}
+
+.difficultyImagesContainer {
+  display: flex;
+  align-items: baseline;
+}
+
+.difficultyImage img {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+.favorites {
+  background: orange;
+  padding: 10px 20px;
+  margin: 50px auto;
+}
+
+.showRecipe {
+  display: flex;
+  padding-top: 12px;
+  padding-bottom: 32px;
+
+}
+
+.showRecipe:hover {
+  text-decoration: underline;
+    font-weight: bold;
+}
+
+.noRecipe {
+  width: 60%;
+  font-size: var(--fsSub);
+  font-weight: bold;
+  align-self: center;
+}
+
+.noRecipe a {
+  color: var(--bgNav);
+}
+
+.numberRecipes {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1024px) {
+  .description,
+  .noRecipe {
+    width: 80%;
+  }
+  .showRecipe {
+    padding-bottom: 20px;
+  }
+}

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 100px auto auto auto;
+  gap: 32px;
+  font-size: var(--fsSub);
+}
+
+.product,
+.recipe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px #ffffff;
+  padding: 15px 10px 15px 15px;
+  background-color: white;
+}
+
+.product img,
+.recipe img {
+  margin-left: 10px;
+}

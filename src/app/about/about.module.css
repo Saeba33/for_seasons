@@ -1,0 +1,31 @@
+.description {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto auto 2vw auto;
+  font-size: var(--fsSub);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  font-size: var(--fsSub);
+}
+
+.section {
+  margin-top: 48px;
+}
+
+.section h2 {
+  font-size: var(--fsh);
+  line-height: 1.5;
+}
+
+.link {
+  text-decoration: underline;
+  color: var(--bgNav);
+}

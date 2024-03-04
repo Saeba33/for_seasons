@@ -1,27 +1,41 @@
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 80%;
+  margin: auto;
 }
 
-.wrapper{
-  width: 500px;
-  background-color: var(--bgSoft);
-  padding: 50px;
+.form {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 30px;
+  width: 500px;
+  padding: 50px;
+  gap: 32px;
   border-radius: 5px;
+  background-color: var(--bgSoft);
+  border: 1px solid var(--bgNav);
 }
 
-.github{
-  width: 100%;
-  padding: 20px;
-  cursor: pointer;
-  background-color: #fff;
-  color: #000;
-  font-weight: bold;
+.form input {
+  padding: 16px;
   border: none;
   border-radius: 5px;
+  outline: none;
+}
+
+.form input:focus {
+  outline: 2px solid var(--bgNav);
+}
+
+.form button {
+  padding: 16px;
+  background-color: var(--bgNav);
+  color: var(--textSoft);
+  font-weight: bold;
+}
+
+.register {
+  text-decoration: underline;
 }

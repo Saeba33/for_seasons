@@ -1,0 +1,158 @@
+.container {
+  margin: auto;
+}
+
+.card {
+  display: grid;
+  width: 80%;
+  max-width: 1600px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px #ffffff;
+  gap: 20px;
+  padding: 20px;
+  margin: auto;
+}
+
+.picture {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background-color: lightgray;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3D5F36;
+  border: 3px solid var(--bgNav);
+  font-size: 7vw;
+  grid-column: 2;
+  grid-row: 1;
+  font-weight: bold;
+}
+
+.infos {
+  grid-column: 1;
+  grid-row: 2;
+background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
+  padding: 20px;
+    border-radius: 10px;
+}
+
+
+
+.varieties {
+  grid-column: 1;
+  grid-row: 3;
+background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.description {
+  grid-column: 2;
+  grid-row: 2;
+background: rgb(224,235,222);
+background: -moz-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0ebde",endColorstr="#94bb8b",GradientType=1);
+  padding: 20px;
+    border-radius: 10px;
+}
+
+
+.other {
+  grid-column: 2;
+  grid-row: 3;
+background: rgb(224,235,222);
+background: -moz-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+background: linear-gradient(90deg, rgba(224,235,222,1) 0%, rgba(148,187,139,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0ebde",endColorstr="#94bb8b",GradientType=1);
+  padding: 20px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .card {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto;
+    padding: 0;
+    margin: 0;
+    box-shadow: 2px 2px 0px #c4c4c4, -2px -2px 0px transparent;
+    margin: auto;
+    gap: 0;
+  }
+
+  .picture {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .title {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: none;
+    color: white;
+  }
+
+  .description {
+    grid-column: 1;
+    grid-row: 2;
+    border-radius: 0;
+    background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
+  }
+
+  .infos {
+    grid-column: 1;
+    grid-row: 3;
+        border-radius: 0;
+  }
+
+  .varieties {
+    grid-column: 1;
+    grid-row: 4;
+        border-radius: 0;
+  }
+
+  .other {
+    grid-column: 1;
+    grid-row: 5;
+        border-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: rgb(148,187,139);
+background: -moz-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+background: linear-gradient(90deg, rgba(148,187,139,1) 0%, rgba(224,235,222,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bb8b",endColorstr="#e0ebde",GradientType=1);
+  }
+}
