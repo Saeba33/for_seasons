@@ -49,10 +49,10 @@ CREATE TABLE recipes (
 );
 
 
-CREATE TABLE ingredients (
-  ingredient_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  quantity DECIMAL NOT NULL,
-  label VARCHAR(255) NOT NULL,
+CREATE TABLE recipes_products_quantities (
+  quantity_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  quantity_number DECIMAL NOT NULL,
+  unit VARCHAR(255) NOT NULL,
   recipe_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
   FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)ON UPDATE CASCADE ON DELETE CASCADE,
@@ -66,3 +66,9 @@ CREATE TABLE favorites (
   FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+
+
+
+
+

@@ -18,21 +18,24 @@ if (!isAdmin) {
     <>
       <h1 className={styles.title}>Admin Panel</h1>
       <div className={styles.container}>
-        <div className={styles.product}>
+        <section className={styles.product}>
           <Link className={styles.link} href="/admin/products">
             Gestion des produits
           </Link>
           <Image src={product} alt={product} width={50} height={50} />
-        </div>
-        <div className={styles.recipe}>
+        </section>
+        <section className={styles.recipe}>
           <Link className={styles.link} href="/admin/recipes">
             Gestion des recettes
           </Link>
           <Image src={recipe} alt={recipe} width={50} height={50} />
-        </div>
+        </section>
       </div>
     </>
   );
 };
 
 export default Admin;
+
+
+
