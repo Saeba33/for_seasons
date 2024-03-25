@@ -51,7 +51,7 @@ CREATE TABLE recipes (
 
 CREATE TABLE recipes_products_quantities (
   quantity_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  quantity_number DECIMAL NOT NULL,
+  quantity DECIMAL NOT NULL,
   unit VARCHAR(255) NOT NULL,
   recipe_id INTEGER NOT NULL,
   product_id INTEGER NOT NULL,

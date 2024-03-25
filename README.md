@@ -31,7 +31,7 @@ Bienvenue dans le README de "4 seasons". Cette application a été conçue pour 
 - Gestion des mots de passe oubliés.
 - Personnaliser la description de chaque produit.
 - Développer les catalogues de produits et de recettes.
-- Optimiser la sélection des produits à faible empreinte carbonne (éviter les produits importés depuis des régions trop éloignées).
+- Optimiser la sélection des produits à faible empreinte carbone (éviter les produits importés depuis des régions trop éloignées).
 
 
 ## Vrac

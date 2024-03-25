@@ -166,7 +166,7 @@ const RecipeDetails = () => {
       return (
         <li key={index}>
           {product ? product.name : "Produit inconnu"} -{" "}
-          {adjustedQuantity.toFixed(2)} {ingredient.label}
+          {adjustedQuantity.toFixed(2)} {ingredient.unit}
         </li>
       );
     });
