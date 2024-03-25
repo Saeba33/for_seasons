@@ -47,7 +47,7 @@ const seed = async () => {
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description, picture) VALUES (7, 'Citron', 'fruits', 'Description du citron.','/products/citron.webp')"
+        "INSERT INTO products (product_id, name, category, description, picture, informations, varieties, other) VALUES (7, 'Citron', 'fruits', 'Le citron occupe une place de choix dans nos cuisines. On l''aime pour sa chair juteuse, sa saveur qui oscille entre acide et amère, et sa belle couleur jaune doré.','/products/citron.webp','Le citron doit être lourd et ferme, son écorce brillante, d’un jaune éclatant. Ce sont la pulpe et le jus qui vous intéressent ? Privilégiez des citrons à écorce fine : ils y seront présents en plus grande quantité !','Eureka, Lisbon, Meyer, Sorrente, Yuzu...','Le citronnier est sensible au froid. Mais il s’adapte particulièrement bien aux climats subtropicaux, à la fois secs et doux. C’est pourquoi l’essentiel de la production mondiale est localisé dans ces zones : bassin méditerranéen, côte californienne et zones semi-tropicales de Piémont (Himalaya, Andes). Sous ces climats, le caractère remontant des citronniers peut s’exprimer et permet une production étalée sur une grande partie de l’année.')"
       )
     );
     queries.push(

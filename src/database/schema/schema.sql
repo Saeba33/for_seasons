@@ -22,7 +22,7 @@ CREATE TABLE products (
   description TEXT,
   informations TEXT,
   varieties VARCHAR(255),
-  other VARCHAR (255)
+  other VARCHAR (500)
 );
 
 CREATE TABLE products_of_month (
