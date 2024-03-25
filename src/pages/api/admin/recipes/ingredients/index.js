@@ -5,12 +5,12 @@ export default async function handler(req, res) {
 
   try {
     if (method === "POST") {
-      const { recipeId, productId, quantity, label } = req.body;
+      const { recipeId, productId, quantity, unit } = req.body;
       const result = await createIngredient(
         recipeId,
         productId,
         quantity,
-        label
+        unit
       );
       res.status(201).json({ message: result.message, id: result.id });
     } else {

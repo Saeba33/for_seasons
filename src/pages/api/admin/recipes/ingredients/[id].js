@@ -22,14 +22,14 @@ export default async function handler(req, res) {
       const recipeId = req.body.recipe_id;
       const productId = req.body.product_id;
       const quantity = req.body.quantity;
-      const label = req.body.label;
+      const unit = req.body.unit;
       try {
         const result = await updateIngredientById(
           id,
           recipeId,
           productId,
           quantity,
-          label
+          unit
         );
         res.status(200).json(result);
       } catch (error) {

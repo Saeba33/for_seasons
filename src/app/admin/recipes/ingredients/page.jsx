@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Toaster, toast } from "sonner";
 import { useEffect, useState } from "react";
+import { Toaster, toast } from "sonner";
 import {
   fetchIngredients,
   fetchProducts,
@@ -20,13 +20,13 @@ const AdminIngredients = ({ selectedRecipeId }) => {
   const [newIngredient, setNewIngredient] = useState({
     quantity: "",
     productId: "",
-    label: "",
+    unit: "",
   });
   const [editingIngredientId, setEditingIngredientId] = useState(null);
   const [editingIngredient, setEditingIngredient] = useState({
     quantity: "",
     productId: "",
-    label: "",
+    unit: "",
   });
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
     if (
       newIngredient.quantity &&
       newIngredient.productId &&
-      newIngredient.label &&
+      newIngredient.unit &&
       newIngredient.productId !== ""
     ) {
       await handleAddIngredient(selectedRecipeId, {
@@ -78,19 +78,21 @@ const AdminIngredients = ({ selectedRecipeId }) => {
       setNewIngredient({
         quantity: "",
         productId: "",
-        label: "",
+        unit: "",
       });
     } else {
-      toast.warning("Veuillez remplir tous les champs et sélectionner un produit.");
+      toast.warning(
+        "Veuillez remplir tous les champs et sélectionner un produit."
+      );
     }
   };
 
   const startEditing = (ingredient) => {
-    setEditingIngredientId(ingredient.ingredient_id);
+    setEditingIngredientId(ingredient.quantity_id);
     setEditingIngredient({
       quantity: ingredient.quantity,
       productId: ingredient.product_id.toString(),
-      label: ingredient.label,
+      unit: ingredient.unit,
     });
   };
 
@@ -99,31 +101,35 @@ const AdminIngredients = ({ selectedRecipeId }) => {
       ingredients.some(
         (ingredient) =>
           ingredient.product_id.toString() === editingIngredient.productId &&
-          ingredient.ingredient_id !== editingIngredientId
+          ingredient.quantity_id !== editingIngredientId
       )
     ) {
-      toast.warning("Un autre ingrédient avec ce produit existe déjà dans la recette.");
+      toast.warning(
+        "Un autre ingrédient avec ce produit existe déjà dans la recette."
+      );
       return;
     }
     if (
       editingIngredient.quantity &&
       editingIngredient.productId &&
-      editingIngredient.label &&
+      editingIngredient.unit &&
       editingIngredient.productId !== ""
     ) {
       await handleChangeIngredient(editingIngredientId, {
         recipe_id: selectedRecipeId,
         quantity: editingIngredient.quantity,
         product_id: parseInt(editingIngredient.productId),
-        label: editingIngredient.label,
+        unit: editingIngredient.unit,
       });
 
       const updatedIngredients = await fetchIngredients(selectedRecipeId);
       setIngredients(updatedIngredients);
       setEditingIngredientId(null);
-      setEditingIngredient({ quantity: "", productId: "", label: "" });
+      setEditingIngredient({ quantity: "", productId: "", unit: "" });
     } else {
-      toast.warning("Veuillez remplir tous les champs et sélectionner un produit.");
+      toast.warning(
+        "Veuillez remplir tous les champs et sélectionner un produit."
+      );
     }
   };
 
@@ -138,7 +144,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
       <h2>Ingrédients</h2>
       {ingredients.map((ingredient, index) => (
         <div key={index} className={styles.toto}>
-          {editingIngredientId === ingredient.ingredient_id ? (
+          {editingIngredientId === ingredient.quantity_id ? (
             <div className={styles.editIngredient}>
               <select
                 value={editingIngredient.productId}
@@ -170,11 +176,11 @@ const AdminIngredients = ({ selectedRecipeId }) => {
               />
               <input
                 type="text"
-                value={editingIngredient.label}
+                value={editingIngredient.unit}
                 onChange={(e) =>
                   setEditingIngredient((prev) => ({
                     ...prev,
-                    label: e.target.value,
+                    unit: e.target.value,
                   }))
                 }
                 placeholder="Unité"
@@ -191,7 +197,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
             <div className={styles.listIngredients}>
               <div className={styles.description}>
                 <span>
-                  {ingredient.quantity} {ingredient.label}{" "}
+                  {ingredient.quantity} {ingredient.unit}{" "}
                   {
                     products.find(
                       (p) =>
@@ -214,9 +220,7 @@ const AdminIngredients = ({ selectedRecipeId }) => {
                   id={styles.remove}
                   src={remove}
                   alt="supprimer"
-                  onClick={() =>
-                    handleRemoveIngredient(ingredient.ingredient_id)
-                  }
+                  onClick={() => handleRemoveIngredient(ingredient.quantity_id)}
                 />
               </div>
             </div>
@@ -245,8 +249,8 @@ const AdminIngredients = ({ selectedRecipeId }) => {
         <input
           className={styles.input}
           type="text"
-          value={newIngredient.label}
-          onChange={(e) => updateNewIngredient("label", e.target.value)}
+          value={newIngredient.unit}
+          onChange={(e) => updateNewIngredient("unit", e.target.value)}
           placeholder="Unité"
         />
         <Image

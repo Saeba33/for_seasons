@@ -47,7 +47,7 @@ const seed = async () => {
     );
     queries.push(
       database.query(
-        "INSERT INTO products (product_id, name, category, description, picture) VALUES (7, 'Citron', 'fruits', 'Description du citron.','/products/citron.webp')"
+        "INSERT INTO products (product_id, name, category, description, picture, informations, varieties, other) VALUES (7, 'Citron', 'fruits', 'Le citron occupe une place de choix dans nos cuisines. On l''aime pour sa chair juteuse, sa saveur qui oscille entre acide et amère, et sa belle couleur jaune doré.','/products/citron.webp','Le citron doit être lourd et ferme, son écorce brillante, d’un jaune éclatant. Ce sont la pulpe et le jus qui vous intéressent ? Privilégiez des citrons à écorce fine : ils y seront présents en plus grande quantité !','Eureka, Lisbon, Meyer, Sorrente, Yuzu...','Le citronnier est sensible au froid. Mais il s’adapte particulièrement bien aux climats subtropicaux, à la fois secs et doux. C’est pourquoi l’essentiel de la production mondiale est localisé dans ces zones : bassin méditerranéen, côte californienne et zones semi-tropicales de Piémont (Himalaya, Andes). Sous ces climats, le caractère remontant des citronniers peut s’exprimer et permet une production étalée sur une grande partie de l’année.')"
       )
     );
     queries.push(
@@ -799,176 +799,176 @@ const seed = async () => {
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (1, 'Salade Croquante d''Automne', 'easy', '15 min', 4, '1. Faire cuire les pommes de terre.\\n2. Pendant la cuisson des pommes de terre, pelez puis râpez les carottes. \\n3. Rincez, puis coupez le radis en fines lamelles. \\n4. Lavez correctement votre salade et effeuillez-la. \\n5. Lorsque les pommes de terre sont cuites, découpez-les en dés. \\n6. Mélangez l''ensemble des ingrédients dans un saladier. \\n7. Assaisonnez à votre convenance. La vinaigrette de mamie est toujours la bienvenue.', 'casserole, saladier, cuillère', 'Les pommes de terre peuvent être cuites à l''eau entière ou en quartiers, avec ou sans la peau. Dans tous les cas, démarrez la cuisson des pommes de terre à l’eau froide pour assurer une tenue parfaite et une cuisson à cœur. Ajoutez 10g de gros sel par litre d’eau à l’ébullition. Faites cuire pendant 20 à 25 minutes selon la taille des pommes de terre. Pour vérifier la cuisson, piquez les pommes de terre à l''aide de la pointe d''un couteau. Si celui-ci se retire facilement, vos pommes de terre sont cuites, sinon prolongez la cuisson pendant quelques minutes.', 1, '/recipes/salade.webp')"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (1, 'Salade d''Automne', 'easy', '15 min', 4, '1. Faire cuire les pommes de terre.\\n2. Pendant la cuisson des pommes de terre, pelez puis râpez les carottes. \\n3. Rincez, puis coupez le radis en fines lamelles. \\n4. Lavez correctement votre salade et effeuillez-la. \\n5. Lorsque les pommes de terre sont cuites, découpez-les en dés. \\n6. Mélangez l''ensemble des ingrédients dans un saladier. \\n7. Assaisonnez à votre convenance. La vinaigrette de mamie est toujours la bienvenue.', 'casserole, saladier, cuillère', 'Les pommes de terre peuvent être cuites à l''eau entière ou en quartiers, avec ou sans la peau. Dans tous les cas, démarrez la cuisson des pommes de terre à l’eau froide pour assurer une tenue parfaite et une cuisson à cœur. Ajoutez 10g de gros sel par litre d’eau à l’ébullition. Faites cuire pendant 20 à 25 minutes selon la taille des pommes de terre. Pour vérifier la cuisson, piquez les pommes de terre à l''aide de la pointe d''un couteau. Si celui-ci se retire facilement, vos pommes de terre sont cuites, sinon prolongez la cuisson pendant quelques minutes.', 1, '/recipes/salade.webp')"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (2, 'Curry Végétarien de Butternut et Pois Chiches', 'medium', '45 min', 4, '1. Faites revenir l''oignon haché et vos gousses d''ail écrasées dans une grande casserole avec un peu d''huile jusqu''à ce qu''ils soient translucides.\\n2. Ajoutez la courge butternut coupée en cubes, les pois chiches égouttés, le lait de coco, et 2 cuillères à soupe de pâte de curry. \\n3. Laissez mijoter pendant 30 minutes ou jusqu''à ce que la courge soit bien tendre.\\n4. Servez avec du riz basmati et garnissez de coriandre fraîche.', 'casserole, cuillère en bois', 'Curry riche en saveurs', 1, '/recipes/curry.webp');"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (2, 'Curry végétarien', 'medium', '45 min', 4, '1. Faites revenir l''oignon haché et vos gousses d''ail écrasées dans une grande casserole avec un peu d''huile jusqu''à ce qu''ils soient translucides.\\n2. Ajoutez la courge butternut coupée en cubes, les pois chiches égouttés, le lait de coco, et 2 cuillères à soupe de pâte de curry. \\n3. Laissez mijoter pendant 30 minutes ou jusqu''à ce que la courge soit bien tendre.\\n4. Servez avec du riz basmati et garnissez de coriandre fraîche.', 'casserole, cuillère en bois', 'Curry riche en saveurs', 1, '/recipes/curry.webp');"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (3, 'Pizza Végétarienne aux Légumes Grillés', 'medium', '30 min', 4, '1. Étalez une base de pâte à pizza puis ajoutez une fine couche de sauce tomate. \\n2. Garnissez la pizza avec l''aubergine grillée, le poivron rouge grillé, l''oignon rouge émincé, et les champignons tranchés.\\n3. Saupoudrez de fromage mozzarella râpé et faites cuire dans un four préchauffé à 220°C pendant 15-20 minutes, jusqu''à ce que la pâte soit dorée et croustillante.\\n4. Avant de servir, ajoutez un filet d''huile d''olive et des feuilles de basilic frais.', 'four, rouleau à pâtisserie', 'Pizza croustillante et garnie', 1, '/recipes/pizza.webp');"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (3, 'Pizza végétarienne', 'medium', '30 min', 4, '1. Étalez une base de pâte à pizza puis ajoutez une fine couche de sauce tomate. \\n2. Garnissez la pizza avec l''aubergine grillée, le poivron rouge grillé, l''oignon rouge émincé, et les champignons tranchés.\\n3. Saupoudrez de fromage mozzarella râpé et faites cuire dans un four préchauffé à 220°C pendant 15-20 minutes, jusqu''à ce que la pâte soit dorée et croustillante.\\n4. Avant de servir, ajoutez un filet d''huile d''olive et des feuilles de basilic frais.', 'four, rouleau à pâtisserie', 'Pizza croustillante et garnie', 1, '/recipes/pizza.webp');"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (4, 'Risotto aux Champignons et Épinards', 'medium', '40 min', 4, '1. Dans une casserole, faites revenir l''oignon finement haché dans un peu d''huile jusqu''à ce qu''il soit translucide. \\n2. Ajoutez votre riz arborio et faites-le cuire jusqu''à ce qu''il soit légèrement transparent.\\n3. Ajoutez progressivement 1 litre de bouillon de légumes chaud, en remuant constamment, jusqu''à ce que le riz soit crémeux et al dente.\\n4. Incorporez les champignons préalablement tranchés et sautés, les épinards frais, et le parmesan râpé. \\n5. Servez chaud, garni de plus de parmesan et d''un filet d''huile de truffe pour un goût extra.', 'casserole', 'Risotto crémeux et savoureux', 1, '/recipes/risotto.webp');"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (4, 'Risotto aux champignons', 'medium', '40 min', 4, '1. Dans une casserole, faites revenir l''oignon finement haché dans un peu d''huile jusqu''à ce qu''il soit translucide. \\n2. Ajoutez votre riz arborio et faites-le cuire jusqu''à ce qu''il soit légèrement transparent.\\n3. Ajoutez progressivement 1 litre de bouillon de légumes chaud, en remuant constamment, jusqu''à ce que le riz soit crémeux et al dente.\\n4. Incorporez les champignons préalablement tranchés et sautés, les épinards frais, et le parmesan râpé. \\n5. Servez chaud, garni de plus de parmesan et d''un filet d''huile de truffe pour un goût extra.', 'casserole', 'Risotto crémeux et savoureux', 1, '/recipes/risotto.webp');"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (5, 'Linguine au Citron et Parmesan', 'easy', '20 min', 4, '1. Faites cuire les linguine al dente dans une grande casserole d''eau salée. \\n2. Pendant ce temps, zestez et pressez les citrons pour en extraire le jus.\\n3. Dans une poêle, faites revenir l''ail haché dans de l''huile d''olive, puis ajoutez le jus de citron et le zeste.\\n4. Égouttez les pâtes et mélangez-les avec la sauce au citron dans la poêle. Ajoutez du parmesan râpé, du sel, et du poivre au goût.\\n5. Servez immédiatement, garni de persil frais haché et de zestes de citron supplémentaires.', 'casserole, poêle', 'Plat léger et rafraîchissant', 1, '/recipes/linguine.webp');"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (5, 'Linguine citron/parmesan', 'easy', '20 min', 4, '1. Faites cuire les linguine al dente dans une grande casserole d''eau salée. \\n2. Pendant ce temps, zestez et pressez les citrons pour en extraire le jus.\\n3. Dans une poêle, faites revenir l''ail haché dans de l''huile d''olive, puis ajoutez le jus de citron et le zeste.\\n4. Égouttez les pâtes et mélangez-les avec la sauce au citron dans la poêle. Ajoutez du parmesan râpé, du sel, et du poivre au goût.\\n5. Servez immédiatement, garni de persil frais haché et de zestes de citron supplémentaires.', 'casserole, poêle', 'Plat léger et rafraîchissant', 1, '/recipes/linguine.webp');"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (6, 'Soupe Crémeuse de Navet', 'easy', '30 min', 4, '1. Pelez et coupez les navets et les pommes de terre en dés.\\n2. Dans une grande casserole, faites revenir l''oignon haché dans du beurre jusqu''à ce qu''il soit translucide.\\n3. Ajoutez les dés de navet et de pomme de terre, puis couvrez de bouillon de légumes. \\n4. Portez à ébullition, puis réduisez le feu et laissez mijoter jusqu''à ce que les légumes soient tendres.\\n5. Mixez la soupe jusqu''à obtenir une consistance lisse. Incorporez la crème fraîche, salez et poivrez à votre convenance.\\n6. Servez chaud, garni de ciboulette fraîchement hachée.', 'casserole, mixeur', 'Soupe onctueuse et réconfortante', 1, '/recipes/soupe.webp');"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (6, 'Soupe crémeuse de navet', 'easy', '30 min', 4, '1. Pelez et coupez les navets et les pommes de terre en dés.\\n2. Dans une grande casserole, faites revenir l''oignon haché dans du beurre jusqu''à ce qu''il soit translucide.\\n3. Ajoutez les dés de navet et de pomme de terre, puis couvrez de bouillon de légumes. \\n4. Portez à ébullition, puis réduisez le feu et laissez mijoter jusqu''à ce que les légumes soient tendres.\\n5. Mixez la soupe jusqu''à obtenir une consistance lisse. Incorporez la crème fraîche, salez et poivrez à votre convenance.\\n6. Servez chaud, garni de ciboulette fraîchement hachée.', 'casserole, mixeur', 'Soupe onctueuse et réconfortante', 1, '/recipes/soupe.webp');"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (7, 'Gratin d''Épinards et Ricotta', 'medium', '40 min', 4, '1. Préchauffez le four à 180°C.\\n2. Faites revenir l''ail haché dans une grande poêle avec un peu d''huile d''olive.\\n3. Ajoutez les épinards et faites-les réduire.\\n4. Dans un bol, mélangez les épinards cuits avec la ricotta, un peu de noix de muscade râpée, du sel, et du poivre.\\n5. Transférez le mélange dans un plat à gratin. Saupoudrez de parmesan râpé et de chapelure.\\n6. Enfournez et faites cuire jusqu''à ce que le dessus soit doré et croustillant, environ 20 minutes.', 'poêle, plat à gratin', 'Gratin riche et crémeux', 1, '/recipes/gratin.webp');"
+        "INSERT INTO recipes (recipe_id, title, difficulty, duration, number_persons, instructions, ustensils, information, user_id, photo) VALUES (7, 'Gratin épinards ricotta', 'medium', '40 min', 4, '1. Préchauffez le four à 180°C.\\n2. Faites revenir l''ail haché dans une grande poêle avec un peu d''huile d''olive.\\n3. Ajoutez les épinards et faites-les réduire.\\n4. Dans un bol, mélangez les épinards cuits avec la ricotta, un peu de noix de muscade râpée, du sel, et du poivre.\\n5. Transférez le mélange dans un plat à gratin. Saupoudrez de parmesan râpé et de chapelure.\\n6. Enfournez et faites cuire jusqu''à ce que le dessus soit doré et croustillant, environ 20 minutes.', 'poêle, plat à gratin', 'Gratin riche et crémeux', 1, '/recipes/gratin.webp');"
       )
     );
 
-    await database.query("delete from ingredients");
+    await database.query("delete from recipes_products_quantities");
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (200, 'gr', 1, 45);"
-      )
-    );
-
-    queries.push(
-      database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (50, 'gr', 1, 47);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (200, 'gr', 1, 45);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (100, 'gr', 1, 38);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (50, 'gr', 1, 47);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (150, 'gr', 1, 66);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (100, 'gr', 1, 38);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (400, 'ml', 2, 79);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (150, 'gr', 1, 66);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (400, 'gr', 2, 80);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (400, 'ml', 2, 79);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (500, 'gr', 2, 58);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (400, 'gr', 2, 80);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (100, 'gr', 3, 73);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (500, 'gr', 2, 58);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (50, 'gr', 3, 72);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (100, 'gr', 3, 73);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (100, 'gr', 3, 57);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (50, 'gr', 3, 72);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (100, 'gr', 3, 56);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (100, 'gr', 3, 57);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (50, 'gr', 4, 75);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (100, 'gr', 3, 56);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (150, 'gr', 4, 43);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (50, 'gr', 4, 75);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (200, 'gr', 4, 73);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (150, 'gr', 4, 43);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (300, 'gr', 4, 77);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (200, 'gr', 4, 73);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (400, 'gr', 5, 78);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (300, 'gr', 4, 77);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (2, 'pièces', 5, 7);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (400, 'gr', 5, 78);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (100, 'gr', 5, 75);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (2, 'pièces', 5, 7);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (500, 'gr', 6, 44);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (100, 'gr', 5, 75);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (300, 'gr', 6, 66);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (500, 'gr', 6, 44);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (500, 'gr', 7, 43);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (300, 'gr', 6, 66);"
       )
     );
 
     queries.push(
       database.query(
-        "INSERT INTO ingredients (quantity, label, recipe_id, product_id) VALUES (250, 'gr', 7, 76);"
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (500, 'gr', 7, 43);"
+      )
+    );
+
+    queries.push(
+      database.query(
+        "INSERT INTO recipes_products_quantities (quantity, unit, recipe_id, product_id) VALUES (250, 'gr', 7, 76);"
       )
     );
 

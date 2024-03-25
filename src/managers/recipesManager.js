@@ -63,8 +63,8 @@ const readRecipesByProduct = async (productId) => {
     const [rows] = await db.query(
       `SELECT DISTINCT recipes.* 
        FROM recipes
-       JOIN ingredients ON recipes.recipe_id = ingredients.recipe_id
-       WHERE ingredients.product_id = ?`,
+       JOIN recipes_products_quantities ON recipes.recipe_id = recipes_products_quantities.recipe_id
+       WHERE recipes_products_quantities.product_id = ?`,
       [productId]
     );
     return rows;

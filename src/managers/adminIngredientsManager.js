@@ -1,13 +1,13 @@
 import { connectToDb, db } from "@/database/connection";
 
 //C
-const createIngredient = async (recipeId, productId, quantity, label) => {
+const createIngredient = async (recipeId, productId, quantity, unit) => {
   const connection = await connectToDb();
   try {
     await connection.beginTransaction();
     const [rows] = await connection.query(
-      "INSERT INTO ingredients (recipe_id, product_id, quantity, label) VALUES (?, ?, ?, ?)",
-      [recipeId, productId, quantity, label]
+      "INSERT INTO recipes_products_quantities (recipe_id, product_id, quantity, unit) VALUES (?, ?, ?, ?)",
+      [recipeId, productId, quantity, unit]
     );
     await connection.commit();
     return {
@@ -27,7 +27,7 @@ const createIngredient = async (recipeId, productId, quantity, label) => {
 const readIngredientsByRecipeId = async (recipeId) => {
   try {
     const [rows] = await db.query(
-      "SELECT * FROM ingredients WHERE recipe_id = ?",
+      "SELECT * FROM recipes_products_quantities WHERE recipe_id = ?",
       [recipeId]
     );
     return rows;
@@ -44,12 +44,12 @@ const updateIngredientById = async (
   recipeId,
   productId,
   quantity,
-  label
+  unit
 ) => {
   try {
     const [result] = await db.query(
-      "UPDATE ingredients SET quantity = ?, label = ?, product_id = ? WHERE ingredient_id = ? AND recipe_id = ?",
-      [quantity, label, productId, ingredientId, recipeId]
+      "UPDATE recipes_products_quantities SET quantity = ?, unit = ?, product_id = ? WHERE quantity_id = ? AND recipe_id = ?",
+      [quantity, unit, productId, ingredientId, recipeId]
     );
     return {
       message: `Ingredient with ID: ${ingredientId} successfully updated.`,
@@ -69,7 +69,7 @@ const updateIngredientById = async (
 const deleteIngredientById = async (ingredientId) => {
   try {
     const [rows] = await db.query(
-      "DELETE FROM ingredients WHERE ingredient_id = ?",
+      "DELETE FROM recipes_products_quantities WHERE quantity_id = ?",
       [ingredientId]
     );
     return {
